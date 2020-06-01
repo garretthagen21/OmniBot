@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  OmniRobot-iOS
+//  OmniBot
 //
-//  Created by Garrett Hagen on 5/18/20.
+//  Created by Garrett Hagen on 6/1/20.
 //  Copyright © 2020 Garrett Hagen. All rights reserved.
 //
 

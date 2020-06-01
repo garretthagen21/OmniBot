@@ -1,15 +1,15 @@
 //
-//  OmniRobot_iOSTests.swift
-//  OmniRobot-iOSTests
+//  OmniBotTests.swift
+//  OmniBotTests
 //
-//  Created by Garrett Hagen on 5/18/20.
+//  Created by Garrett Hagen on 6/1/20.
 //  Copyright © 2020 Garrett Hagen. All rights reserved.
 //
 
 import XCTest
-@testable import OmniRobot_iOS
+@testable import OmniBot
 
-class OmniRobot_iOSTests: XCTestCase {
+class OmniBotTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
