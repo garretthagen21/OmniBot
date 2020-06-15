@@ -12,41 +12,47 @@ import UIKit
 
 class DashboardViewController : UIViewController,BluetoothSerialDelegate
 {
-    let AUTOCONNECT_BT_PERIPHERALS = ["DSD TECH","OmniBot"]
+    
+    private let AUTOCONNECT_BT_PERIPHERALS = ["DSD TECH","OmniBot"]
+    
+
+    /// UI Outlets
+    @IBOutlet weak var bluetoothStatusImage: UIImageView!
+    @IBOutlet weak var bluetoothStatusLabel: UILabel!
+    @IBOutlet weak var speedValueLabel: UILabel!
+    @IBOutlet weak var speedUnitsLabel: UILabel!
+    @IBOutlet weak var steeringImage: UIImageView!
+    @IBOutlet weak var steeringLabel: UILabel!
+    @IBOutlet weak var autopilotValueLabel: UILabel!
+    @IBOutlet weak var autopilotDescriptionLabel: UILabel!
+    @IBOutlet weak var bluetoothStack: UIStackView!
+    @IBOutlet weak var speedStack: UIStackView!
     
     deinit { NotificationCenter.default.removeObserver(self) }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        // Assign the blueooth delegate to us
-        serial.delegate = self
+        
+        // Setup gesture recognizer for bluetooth
+        let bluetoothTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBluetoothTap(_:)))
+        bluetoothStack.addGestureRecognizer(bluetoothTap)
+        bluetoothStack.isUserInteractionEnabled = true
+        
+        // Setup gesture recognizer for speed units
+        let speedTap = UITapGestureRecognizer(target: self, action: #selector(self.handleSpeedTap(_:)))
+        speedStack.addGestureRecognizer(speedTap)
+        speedStack.isUserInteractionEnabled = true
+        
+        // Init the bluetooth delegate to us
+        serial = BluetoothSerial(delegate: self)
         
         // Add velocity observer
         NotificationCenter.default.addObserver(self,
-            selector: #selector(velocityDidChange),
-            name: .velocityChanged,
+            selector: #selector(commanderDidChange),
+            name: .commanderChanged,
             object: nil
-        )
-        // Add turning observer
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(steeringDidChange),
-            name: .steeringChanged,
-            object: nil
-        )
-        
-        // Add autopilot observer
-        NotificationCenter.default.addObserver(self,
-                selector: #selector(autopilotDidChange),
-                name: .autopilotChanged,
-                object: nil
-        )
-        
-        // Add bluetooth status observer
-        NotificationCenter.default.addObserver(self,
-                selector: #selector(bluetoothDidChange),
-                name: .bluetoothStatusChanged,
-                object: nil
         )
     }
     
@@ -57,38 +63,55 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             return
         }
     }
+
+    /// Triggered when user taps bluetooth
+    @objc private func handleBluetoothTap(_ sender: UITapGestureRecognizer) {
+        // Start scan if we are not connected
+        if !serial.isReady
+        {
+            startScanning()
+        }
+    }
     
+    /// Triggered when user taps speed
+    @objc private func handleSpeedTap(_ sender: UITapGestureRecognizer) {
+        // If the text is mph toggle to mps
+        if self.speedUnitsLabel.text == "mph"{
+            self.speedUnitsLabel.text = "mps"
+            self.speedValueLabel.text =  String(format: "%.1f", RobotCommander.speedMetersSec)
+        }
+        else{
+            self.speedUnitsLabel.text = "mph"
+            self.speedValueLabel.text =  String(format: "%.1f", RobotCommander.speedMilesHour)
+        }
+          
+    }
+       
     
-    
+    /// Triggered when our bluetooth status changes
     @objc private func bluetoothDidChange(_ notification: Notification) {
           if let bluetoothStatus = notification.object as? BluetoothStatus{
-              // TODO: Populate speed labels and maybe animate velocity gauge or something
-              // bluetoothStatusLabel.text = bluetoothStatus.description
+            bluetoothStatusLabel.text = bluetoothStatus.description
+            bluetoothStatusLabel.textColor = bluetoothStatus.color
+            bluetoothStatusImage.image = bluetoothStatus.image
           }
        }
-
-    @objc private func velocityDidChange(_ notification: Notification) {
-        if let commander = notification.object as? RobotCommander{
-            // TODO: Populate speed labels and maybe animate velocity gauge or something
-            // speedLabel.text = String(format: "%.2f", commander.speedValue)
+    
+    /// Triggered when the robot state is changed (could be set by any view controller)
+    @objc private func commanderDidChange(_ notification: Notification) {
+        if let changeTrigger = notification.object as? RobotCommander.ChangeTrigger{
+            // Update speed values
+            speedValueLabel.text = String(format: "%.1f",self.speedUnitsLabel.text == "mph" ? RobotCommander.speedMilesHour : RobotCommander.speedMetersSec)
             
+            // Rotate our steering image
+            steeringImage.rotate(degrees: CGFloat(RobotCommander.turnAngle))
+            
+            // Update autopilot status
+            autopilotValueLabel.text = RobotCommander.autopilot ? "On" : "Off"
         }
      }
     
-    @objc private func steeringDidChange(_ notification: Notification) {
-         if let commander = notification.object as? RobotCommander{
-             // TODO: Populate speed labels and maybe animate velocity gauge or something
-             // speedLabel.text = String(format: "%.2f", commander.speedValue)
-             
-         }
-      }
-    @objc private func autopilotDidChange(_ notification: Notification) {
-         if let commander = notification.object as? RobotCommander{
-             // TODO: Populate speed labels and maybe animate velocity gauge or something
-             // speedLabel.text = String(format: "%.2f", commander.speedValue)
-             
-         }
-    }
+
 
 
 }
@@ -99,12 +122,12 @@ extension DashboardViewController
     
     
     enum BluetoothStatus:String{
-        case off = "Off"
-        case disconnected = "Disconnected"
-        case scanning = "Scanning"
-        case connecting = "Connecting"
-        case connected = "Connected"
-        case ready = "Ready"
+        case off = "off"
+        case disconnected = "disconnected"
+        case scanning = "scanning"
+        case connecting = "connecting"
+        case connected = "connected"
+        case ready = "ready"
    
         
         var description:String{
@@ -114,7 +137,7 @@ extension DashboardViewController
             switch(self)
             {
             case .off:
-                return .systemGray
+                return .lightText
             case .disconnected:
                 return .systemRed
             case .scanning:
@@ -126,6 +149,24 @@ extension DashboardViewController
             case .ready:
                 return .systemGreen
             }
+        }
+        
+        var image:UIImage{
+            switch(self){
+                case .off:
+                    return UIImage(named:  "icons8-bluetooth-white-100")!
+                 case .disconnected:
+                     return UIImage(named:  "icons8-bluetooth-red-100")!
+                 case .scanning:
+                      return UIImage(named:  "icons8-bluetooth-orange-100")!
+                 case .connecting:
+                     return UIImage(named:  "icons8-bluetooth-orange-100")!
+                 case .connected:
+                     return UIImage(named:  "icons8-bluetooth-yellow-100")!
+                 case .ready:
+                     return UIImage(named:  "icons8-bluetooth-green-100")!
+            }
+           
         }
     }
     
