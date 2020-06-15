@@ -56,6 +56,16 @@ extension RobotCommander{
      static var speedMilesHour:Double { return speedMetersSec * 2.23694 }
      static var turnMagnitude:Double{ return abs(turnValue) }
      static var turnAngle:Double{ return turnValue * 90.0 }
+     static var compassOrientation:Double{
+            switch driveDirection {
+            case .drive:
+                return turnAngle
+            case .reverse:
+                return 180 - turnAngle
+            default:
+                return 0.0
+            }
+        }
      static var steeringDirection:SteeringDirection{
          if turnValue < 0.0 { return .left }
          else if turnValue > 0.0 { return .right }
@@ -64,7 +74,7 @@ extension RobotCommander{
      static var driveDirection:DriveDirection
      {
          if velocityValue < 0.0 { return .reverse }
-         else if turnValue > 0.0 { return .drive }
+         else if velocityValue > 0.0 { return .drive }
          else{ return .park }
      }
     

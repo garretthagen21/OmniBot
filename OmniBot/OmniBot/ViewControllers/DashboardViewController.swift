@@ -25,6 +25,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
     @IBOutlet weak var steeringLabel: UILabel!
     @IBOutlet weak var autopilotValueLabel: UILabel!
     @IBOutlet weak var autopilotDescriptionLabel: UILabel!
+    @IBOutlet weak var transmissionValLabel: UILabel!
+    @IBOutlet weak var transmissionTextLabel: UILabel!
     @IBOutlet weak var bluetoothStack: UIStackView!
     @IBOutlet weak var speedStack: UIStackView!
     
@@ -66,6 +68,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
 
     /// Triggered when user taps bluetooth
     @objc private func handleBluetoothTap(_ sender: UITapGestureRecognizer) {
+        print("Bluetooth Tapped")
+        
         // Start scan if we are not connected
         if !serial.isReady
         {
@@ -104,10 +108,17 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             speedValueLabel.text = String(format: "%.1f",self.speedUnitsLabel.text == "mph" ? RobotCommander.speedMilesHour : RobotCommander.speedMetersSec)
             
             // Rotate our steering image
-            steeringImage.rotate(degrees: CGFloat(RobotCommander.turnAngle))
+            steeringImage.rotate(degrees: CGFloat(RobotCommander.compassOrientation))
             
             // Update autopilot status
             autopilotValueLabel.text = RobotCommander.autopilot ? "On" : "Off"
+            
+            // Update transmission labels
+            transmissionValLabel.text = RobotCommander.driveDirection.symbol
+            transmissionTextLabel.text = RobotCommander.driveDirection.description
+            
+            // TODO: Do we want this here
+            // serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
         }
      }
     

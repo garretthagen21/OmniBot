@@ -36,6 +36,7 @@ extension UIView {
         self.transform =  CGAffineTransform(rotationAngle: degreesToRadians(degrees))
 
     }
+
 }
 
 extension UIImage {

@@ -83,6 +83,9 @@
                                                     <rect key="frame" x="309" y="7" width="47" height="31"/>
                                                     <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="thumbTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="autopilotDidChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="ejg-TX-54j"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -108,10 +111,13 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZjM-Mc-4vh">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZjM-Mc-4vh">
                                                     <rect key="frame" x="101" y="8" width="255" height="30"/>
                                                     <color key="minimumTrackTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="thumbTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="autopilotSpeedDidChange:" destination="9pv-A4-QxB" eventType="valueChanged" id="i8v-l1-pwN"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
@@ -179,6 +185,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Remote Control" image="location.circle" catalog="system" selectedImage="location.circle.fill" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="autopilotSpeed" destination="ZjM-Mc-4vh" id="FwV-4c-QEK"/>
+                        <outlet property="autopilotSwitch" destination="ttv-aJ-OcZ" id="Kc8-cM-VvG"/>
                         <outlet property="joystickView" destination="pXu-ug-b8J" id="jqc-Gg-s3O"/>
                     </connections>
                 </viewController>
@@ -262,32 +270,34 @@
                                         <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="X6d-Zx-XBP" userLabel="StatsStack">
                                             <rect key="frame" x="30" y="65" width="314" height="80"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="I66-iG-EGD" userLabel="SpeedStack">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="I66-iG-EGD" userLabel="SpeedStack">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBZ-z3-d1x" userLabel="SpeedVal">
-                                                            <rect key="frame" x="15" y="0.0" width="50" height="50"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="50" id="4r3-AS-jYN"/>
-                                                                <constraint firstAttribute="height" constant="50" id="f7M-Pw-ERC"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBZ-z3-d1x" userLabel="SpeedVal">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="50.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuK-fp-DfX" userLabel="SpeedLabel">
-                                                            <rect key="frame" x="23" y="59.5" width="34.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="59.5" width="80" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="VuK-fp-DfX" secondAttribute="bottom" id="7Ud-J3-bxB"/>
                                                         <constraint firstAttribute="width" constant="80" id="FTe-Kv-uxn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="IBZ-z3-d1x" secondAttribute="trailing" id="N7L-Nx-Vif"/>
+                                                        <constraint firstItem="VuK-fp-DfX" firstAttribute="leading" secondItem="I66-iG-EGD" secondAttribute="leading" id="TDH-Wd-uWf"/>
+                                                        <constraint firstItem="IBZ-z3-d1x" firstAttribute="leading" secondItem="I66-iG-EGD" secondAttribute="leading" id="cnK-7M-bbo"/>
                                                         <constraint firstAttribute="height" constant="80" id="dkx-n0-BkC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="VuK-fp-DfX" secondAttribute="trailing" id="ebY-ae-ngf"/>
+                                                        <constraint firstItem="IBZ-z3-d1x" firstAttribute="top" secondItem="I66-iG-EGD" secondAttribute="top" id="rUT-OA-SmJ"/>
                                                     </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-Vh-hzN" userLabel="SteerStack">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-Vh-hzN" userLabel="SteerStack">
                                                     <rect key="frame" x="117" y="0.0" width="80" height="80"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-YD-wRF" userLabel="SteerArrow">
@@ -310,34 +320,39 @@
                                                         <constraint firstAttribute="height" constant="80" id="nvg-ib-FYN"/>
                                                     </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="dhO-Ji-eLy" userLabel="TransmissionStack">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="dhO-Ji-eLy" userLabel="TransmissionStack">
                                                     <rect key="frame" x="234" y="0.0" width="80" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-Gi-4rt" userLabel="TransmissionVal">
-                                                            <rect key="frame" x="28" y="0.0" width="24.5" height="46.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-Gi-4rt" userLabel="TransmissionVal">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="52.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="drive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-54-Ty7" userLabel="TransmissionLabel">
-                                                            <rect key="frame" x="21" y="60.5" width="38" height="19.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-54-Ty7" userLabel="TransmissionLabel">
+                                                            <rect key="frame" x="0.0" y="59.5" width="80" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="Hox-54-Ty7" firstAttribute="leading" secondItem="dhO-Ji-eLy" secondAttribute="leading" id="5lO-ZG-cNb"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Hox-54-Ty7" secondAttribute="trailing" id="9Re-br-LQF"/>
+                                                        <constraint firstItem="bvY-Gi-4rt" firstAttribute="leading" secondItem="dhO-Ji-eLy" secondAttribute="leading" id="I8g-me-rt9"/>
                                                         <constraint firstAttribute="height" constant="80" id="SYV-5l-U3R"/>
+                                                        <constraint firstItem="bvY-Gi-4rt" firstAttribute="top" secondItem="dhO-Ji-eLy" secondAttribute="top" id="YH7-3t-uPJ"/>
                                                         <constraint firstAttribute="width" constant="80" id="Zu2-qU-6Dx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bvY-Gi-4rt" secondAttribute="trailing" id="aUS-h7-Yvf"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="142" translatesAutoresizingMaskIntoConstraints="NO" id="Rdf-GO-GFg">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="Rdf-GO-GFg">
                                             <rect key="frame" x="8" y="16" width="358" height="30"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-gB-2fr" userLabel="BluetoothStack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-gB-2fr" userLabel="BluetoothStack">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-bluetooth-white-100" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-uc-ew4" userLabel="BluetoothImage">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -348,7 +363,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Fu-2WJ" userLabel="BluetoothLabel">
-                                                            <rect key="frame" x="32" y="5" width="81.5" height="20.5"/>
+                                                            <rect key="frame" x="32" y="5" width="96" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -356,22 +371,25 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-xz-4lg" userLabel="AutopilotStack">
-                                                    <rect key="frame" x="255.5" y="0.0" width="102.5" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="2" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-xz-4lg" userLabel="AutopilotStack">
+                                                    <rect key="frame" x="248" y="0.0" width="110" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-pA-gLd" userLabel="AutopilotVal">
-                                                            <rect key="frame" x="0.0" y="2" width="30.5" height="26.5"/>
+                                                            <rect key="frame" x="0.0" y="2" width="33.5" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="autopilot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur3-35-5PK" userLabel="AutopilotLabel">
-                                                            <rect key="frame" x="35.5" y="5" width="67" height="20.5"/>
+                                                            <rect key="frame" x="35.5" y="5" width="74.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="110" id="aFn-DK-bH3"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                         </stackView>
@@ -413,6 +431,8 @@
                         <outlet property="speedValueLabel" destination="IBZ-z3-d1x" id="dsh-bW-0FB"/>
                         <outlet property="steeringImage" destination="Q6f-YD-wRF" id="Ddf-3p-2zK"/>
                         <outlet property="steeringLabel" destination="kXe-zZ-Z2R" id="ddZ-bV-lhi"/>
+                        <outlet property="transmissionTextLabel" destination="Hox-54-Ty7" id="NF4-33-azX"/>
+                        <outlet property="transmissionValLabel" destination="bvY-Gi-4rt" id="QWB-2U-bRE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAi-zA-aud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -421,7 +441,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4bl-ON-lne"/>
+        <segue reference="MOd-2g-b0D"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FancyBase" width="100" height="100"/>

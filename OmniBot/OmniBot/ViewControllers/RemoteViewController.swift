@@ -11,6 +11,8 @@ import BRHJoyStickView
 
 class RemoteViewController: UIViewController {
 
+    @IBOutlet weak var autopilotSwitch: UISwitch!
+    @IBOutlet weak var autopilotSpeed: UISlider!
     @IBOutlet weak var joystickView: JoyStickView!
     
     override func viewDidLoad() {
@@ -19,22 +21,54 @@ class RemoteViewController: UIViewController {
         // Setup joystick to update our robot command on changes
         let bundle = Bundle(for: JoyStickView.self).podResource(name: "BRHJoyStickView")
         let joystickMonitor: JoyStickViewXYMonitor = { joystickReport in
-            if joystickReport.x > 0.0 || joystickReport.y > 0.0 {
-               print("Joystick XY: (\(joystickReport.x),\(joystickReport.y))")
-                
-               // TODO: Need to scale joystick values to be in range -1.0 to 1.0
-                
-               // TODO: If they touch the joystick with auto pilot on, notify somehow that we
-               // are turning off auto pilot or give them the option too
-               RobotCommander.velocityValue = Double(joystickReport.y)
-               RobotCommander.turnValue = Double(joystickReport.x)
-           }
+                self.joystickDidMove(joystickReport: joystickReport)
         }
         joystickView.baseImage = UIImage(named: "FancyBase", in: bundle, compatibleWith: nil)
         joystickView.handleImage = UIImage(named: "FancyHandle", in: bundle, compatibleWith: nil)
         joystickView.monitor = .xy(monitor: joystickMonitor)
+    
+    }
+    
+    
+    private func joystickDidMove(joystickReport: JoyStickViewXYReport){
+        
+        // Normalize the values to be in the range zero and one
+        let joyXRange = joystickView.layer.frame.width / 2.0
+        let joyYRange = joystickView.layer.frame.height / 2.0
+        
+        let joyXNormalized = joystickReport.x / joyXRange
+        let joyYNormalized = joystickReport.y / joyYRange
+        
+        print("Joystick XY: (\(joystickReport.x),\(joystickReport.y)) -> (\(joyXNormalized),\(joyYNormalized))")
+        
+        // Turn off auto pilot if it is on
+        if RobotCommander.autopilot{
+            print("Disabling autopilot")
+            autopilotSwitch.isOn = false
+            autopilotDidChange(self)
+        }
+        RobotCommander.turnValue = Double(joyXNormalized)
+        RobotCommander.velocityValue = Double(joyYNormalized)
+       
     }
 
-
+    @IBAction func autopilotDidChange(_ sender: Any) {
+        // Turn auto pilot on or off
+        RobotCommander.autopilot = autopilotSwitch.isOn
+        
+        // Enable our speed control based on auto pilot
+        // autopilotSpeed.isEnabled = autopilotSwitch.isOn
+        
+        // Set the velocity value based on our slider or disable it
+        RobotCommander.velocityValue = RobotCommander.autopilot ? Double(autopilotSpeed.value) : 0.0
+      
+    }
+    @IBAction func autopilotSpeedDidChange(_ sender: Any) {
+        // Set our speed if the value did change
+        if RobotCommander.autopilot{
+            RobotCommander.velocityValue = Double(autopilotSpeed.value)
+        }
+    }
+    
 }
 
