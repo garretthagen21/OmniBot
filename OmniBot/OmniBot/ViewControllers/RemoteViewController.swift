@@ -39,7 +39,7 @@ class RemoteViewController: UIViewController {
         let joyXNormalized = joystickReport.x / joyXRange
         let joyYNormalized = joystickReport.y / joyYRange
         
-        print("Joystick XY: (\(joystickReport.x),\(joystickReport.y)) -> (\(joyXNormalized),\(joyYNormalized))")
+        // print("Joystick XY: (\(joystickReport.x),\(joystickReport.y)) -> (\(joyXNormalized),\(joyYNormalized))")
         
         // Turn off auto pilot if it is on
         if RobotCommander.autopilot{

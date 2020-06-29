@@ -50,10 +50,17 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         // Init the bluetooth delegate to us
         serial = BluetoothSerial(delegate: self)
         
-        // Add velocity observer
+        // Add commander observer
         NotificationCenter.default.addObserver(self,
             selector: #selector(commanderDidChange),
             name: .commanderChanged,
+            object: nil
+        )
+        
+        // Add bluetooth observer
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(bluetoothDidChange),
+            name: .bluetoothStatusChanged,
             object: nil
         )
     }
@@ -71,7 +78,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         print("Bluetooth Tapped")
         
         // Start scan if we are not connected
-        if !serial.isReady
+        if !serial.isReady && !serial.isScanning
         {
             startScanning()
         }
@@ -118,7 +125,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             transmissionTextLabel.text = RobotCommander.driveDirection.description
             
             // TODO: Do we want this here
-            // serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
+            print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
+            //serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
         }
      }
     
@@ -152,7 +160,7 @@ extension DashboardViewController
             case .disconnected:
                 return .systemRed
             case .scanning:
-                return .systemPink
+                return .systemOrange
             case .connecting:
                 return .systemOrange
             case .connected:
