@@ -68,6 +68,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
     
     func serialDidReceiveString(_ message: String) {
         let incomingString = message.components(separatedBy: ":")
+        print("[serialDidReceiveString] Recieved Bluetooth String: \(incomingString)")
+        
         if incomingString.count != 2{
             return
         }
@@ -81,6 +83,22 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         if !serial.isReady && !serial.isScanning
         {
             startScanning()
+        }
+        else if !serial.isScanning{
+            // If we are not scanning display a two option alert to disconnect
+            let twoOptionAlert = UIAlertController(title: "😨 Disconnect", message: "Are you sure you want to disconnect from OmniBot?" ,preferredStyle: UIAlertController.Style.alert)
+                  
+                  twoOptionAlert.addAction(UIAlertAction(title: "Disconnect", style: UIAlertAction.Style.default, handler: { (action) in
+                      twoOptionAlert.dismiss(animated: true, completion: nil)
+                      RobotCommander.emergencyStop()
+                      serial.disconnect()
+                  }))
+                  twoOptionAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+                      twoOptionAlert.dismiss(animated: true, completion: nil)
+                      
+                  }))
+                  self.present(twoOptionAlert, animated: true, completion: nil)
+            
         }
     }
     
@@ -126,7 +144,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             
             // TODO: Do we want this here
             print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
-            //serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
+            serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
         }
      }
     

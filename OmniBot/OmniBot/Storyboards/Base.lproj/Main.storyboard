@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -59,7 +60,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </label>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="211" translatesAutoresizingMaskIntoConstraints="NO" id="ez8-Np-prh" userLabel="EnabledStack">
+                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ez8-Np-prh" userLabel="EnabledStack">
                                             <rect key="frame" x="10" y="74" width="354" height="45"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enabled" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL0-6z-4g5">
@@ -79,7 +80,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ttv-aJ-OcZ">
-                                                    <rect key="frame" x="309" y="7" width="47" height="31"/>
+                                                    <rect key="frame" x="305" y="7" width="51" height="31"/>
                                                     <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="thumbTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
@@ -273,41 +274,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="155"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="X6d-Zx-XBP" userLabel="StatsStack">
-                                            <rect key="frame" x="30" y="65" width="314" height="80"/>
+                                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="X6d-Zx-XBP" userLabel="StatsStack">
+                                            <rect key="frame" x="30" y="56.5" width="314" height="88.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="I66-iG-EGD" userLabel="SpeedStack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="I66-iG-EGD" userLabel="SpeedStack">
+                                                    <rect key="frame" x="0.0" y="7.5" width="99.5" height="74"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBZ-z3-d1x" userLabel="SpeedVal">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="50.5"/>
+                                                            <rect key="frame" x="33" y="0.0" width="33.5" height="45.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuK-fp-DfX" userLabel="SpeedLabel">
-                                                            <rect key="frame" x="0.0" y="59.5" width="80" height="20.5"/>
+                                                            <rect key="frame" x="32.5" y="53.5" width="34.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="VuK-fp-DfX" secondAttribute="bottom" id="7Ud-J3-bxB"/>
-                                                        <constraint firstAttribute="width" constant="80" id="FTe-Kv-uxn"/>
-                                                        <constraint firstAttribute="trailing" secondItem="IBZ-z3-d1x" secondAttribute="trailing" id="N7L-Nx-Vif"/>
-                                                        <constraint firstItem="VuK-fp-DfX" firstAttribute="leading" secondItem="I66-iG-EGD" secondAttribute="leading" id="TDH-Wd-uWf"/>
-                                                        <constraint firstItem="IBZ-z3-d1x" firstAttribute="leading" secondItem="I66-iG-EGD" secondAttribute="leading" id="cnK-7M-bbo"/>
-                                                        <constraint firstAttribute="height" constant="80" id="dkx-n0-BkC"/>
-                                                        <constraint firstAttribute="trailing" secondItem="VuK-fp-DfX" secondAttribute="trailing" id="ebY-ae-ngf"/>
-                                                        <constraint firstItem="IBZ-z3-d1x" firstAttribute="top" secondItem="I66-iG-EGD" secondAttribute="top" id="rUT-OA-SmJ"/>
-                                                    </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-Vh-hzN" userLabel="SteerStack">
-                                                    <rect key="frame" x="117" y="0.0" width="80" height="80"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-Vh-hzN" userLabel="SteerStack">
+                                                    <rect key="frame" x="107.5" y="0.0" width="99" height="88.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-YD-wRF" userLabel="SteerArrow">
-                                                            <rect key="frame" x="10" y="0.5" width="60" height="59"/>
+                                                            <rect key="frame" x="19.5" y="0.5" width="60" height="59"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="Xsx-lF-GDK"/>
@@ -315,28 +306,24 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="steering" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXe-zZ-Z2R" userLabel="SteerLabel">
-                                                            <rect key="frame" x="9" y="62" width="62.5" height="18"/>
+                                                            <rect key="frame" x="18.5" y="68" width="62.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="e1m-Vy-sRf"/>
-                                                        <constraint firstAttribute="height" constant="80" id="nvg-ib-FYN"/>
-                                                    </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="dhO-Ji-eLy" userLabel="TransmissionStack">
-                                                    <rect key="frame" x="234" y="0.0" width="80" height="80"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dhO-Ji-eLy" userLabel="TransmissionStack">
+                                                    <rect key="frame" x="214.5" y="7.5" width="99.5" height="74"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-Gi-4rt" userLabel="TransmissionVal">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="52.5"/>
+                                                            <rect key="frame" x="38.5" y="0.0" width="22.5" height="45.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-54-Ty7" userLabel="TransmissionLabel">
-                                                            <rect key="frame" x="0.0" y="59.5" width="80" height="20.5"/>
+                                                            <rect key="frame" x="10" y="53.5" width="80" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="e8Z-c5-TCa"/>
                                                             </constraints>
@@ -345,23 +332,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="Hox-54-Ty7" firstAttribute="leading" secondItem="dhO-Ji-eLy" secondAttribute="leading" id="5lO-ZG-cNb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Hox-54-Ty7" secondAttribute="trailing" id="9Re-br-LQF"/>
-                                                        <constraint firstItem="bvY-Gi-4rt" firstAttribute="leading" secondItem="dhO-Ji-eLy" secondAttribute="leading" id="I8g-me-rt9"/>
-                                                        <constraint firstAttribute="height" constant="80" id="SYV-5l-U3R"/>
-                                                        <constraint firstItem="bvY-Gi-4rt" firstAttribute="top" secondItem="dhO-Ji-eLy" secondAttribute="top" id="YH7-3t-uPJ"/>
-                                                        <constraint firstAttribute="width" constant="80" id="Zu2-qU-6Dx"/>
-                                                        <constraint firstAttribute="trailing" secondItem="bvY-Gi-4rt" secondAttribute="trailing" id="aUS-h7-Yvf"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="Rdf-GO-GFg">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Rdf-GO-GFg">
                                             <rect key="frame" x="8" y="16" width="358" height="30"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-gB-2fr" userLabel="BluetoothStack">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-gB-2fr" userLabel="BluetoothStack">
+                                                    <rect key="frame" x="0.0" y="0.0" width="134" height="30"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-bluetooth-white-100" translatesAutoresizingMaskIntoConstraints="NO" id="XDl-uc-ew4" userLabel="BluetoothImage">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -371,11 +349,8 @@
                                                                 <constraint firstAttribute="width" constant="30" id="u8f-nZ-vip"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Fu-2WJ" userLabel="BluetoothLabel">
-                                                            <rect key="frame" x="32" y="5" width="96" height="20.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="96" id="2hZ-d6-LA7"/>
-                                                            </constraints>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="disconnected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Fu-2WJ" userLabel="BluetoothLabel">
+                                                            <rect key="frame" x="30" y="5" width="104" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -383,17 +358,17 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="2" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-xz-4lg" userLabel="AutopilotStack">
-                                                    <rect key="frame" x="248" y="0.0" width="110" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-xz-4lg" userLabel="AutopilotStack">
+                                                    <rect key="frame" x="248" y="2" width="110" height="26.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-pA-gLd" userLabel="AutopilotVal">
-                                                            <rect key="frame" x="0.0" y="2" width="33.5" height="26.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="30.5" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="autopilot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur3-35-5PK" userLabel="AutopilotLabel">
-                                                            <rect key="frame" x="35.5" y="5" width="74.5" height="20.5"/>
+                                                            <rect key="frame" x="43" y="3" width="67" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>

@@ -81,7 +81,7 @@ extension RobotCommander{
      /// A Bluetooth command string to be sent to the arduino
      static var asBluetoothCommand:String
      {
-         return "CMD:\(String(format: "%.2f", turnValue)),\(String(format: "%.2f", velocityValue)),\(autopilot)"
+        return "CMD:\(String(format: "%.2f", turnValue)),\(String(format: "%.2f", velocityValue)),\(autopilot ? 1 : 0)\n"
      }
      
       /// A dictionary representaiton of our values
@@ -91,6 +91,12 @@ extension RobotCommander{
                  "turning":turnValue,
                  "autopilot":autopilot]
      }
+    
+    static func emergencyStop(){
+        RobotCommander.velocityValue = 0.0
+        RobotCommander.turnValue = 0.0
+        RobotCommander.autopilot = false
+    }
 }
 
 /// Extension for enums
