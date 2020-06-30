@@ -17,16 +17,20 @@ class RobotCommander
     static let TURNING_LIMIT_X:Double = 1.0
     static let SPEED_LIMIT_Y:Double = 1.0
     static let SPEED_LIMIT_METERS_SEC:Double = 5
+    static let CHANGE_THRESH:Double = 0.0
     
     
     /// Notificaiton center instance
     static private let notificationCenter : NotificationCenter = .default
     
+    /// This is used when we want to avoid sending multiple notifications if we are setting multiple attributes at the same time
+    static private var notificationsEnabled = true
+    
    
     /// A value between -1.0 (left full turn) and 1.0 (right full turn)
     static var turnValue:Double = 0.0{ didSet{
         turnValue = min(max(turnValue,-TURNING_LIMIT_X),TURNING_LIMIT_X)
-        if turnValue != oldValue{
+        if notificationsEnabled && abs(turnValue - oldValue) > CHANGE_THRESH{
             notificationCenter.post(name: .commanderChanged, object: ChangeTrigger.steeringChanged)
         }}
     }
@@ -34,16 +38,34 @@ class RobotCommander
     /// A value between -1.0 (backwards full velocity) and 1.0 (forwards full velocity)
     static var velocityValue:Double = 0.0{ didSet{
         velocityValue = min(max(velocityValue,-SPEED_LIMIT_Y),SPEED_LIMIT_Y)
-        if velocityValue != oldValue {
+        if notificationsEnabled && abs(velocityValue - oldValue) >= CHANGE_THRESH{
             notificationCenter.post(name: .commanderChanged, object: ChangeTrigger.velocityChanged)
         }}}
     
     /// Whether we will operate in autonmous mode
     static var autopilot:Bool = false{  didSet{
-        if autopilot != oldValue{
+        if notificationsEnabled && autopilot != oldValue{
             notificationCenter.post(name: .commanderChanged, object: ChangeTrigger.autopilotChanged)
         }
     }}
+    
+    /// Set multiple values, but only send one notification for the update
+    @objc static func groupValueUpdate(turnVal:Double,velocityVal:Double,autopilotVal:Bool)
+    {
+        // Temporarily disable sending notifications
+        notificationsEnabled = false
+        
+        // Set our values
+        turnValue = turnVal
+        velocityValue = velocityVal
+        autopilot = autopilotVal
+        
+        // Send update and reanable notificationTrigger
+        notificationCenter.post(name: .commanderChanged, object: ChangeTrigger.multipleChanged)
+        notificationsEnabled = true
+        
+        
+    }
     
 }
 
@@ -105,6 +127,7 @@ extension RobotCommander{
            case velocityChanged
            case steeringChanged
            case autopilotChanged
+           case multipleChanged
     }
     
     enum SteeringDirection : Int

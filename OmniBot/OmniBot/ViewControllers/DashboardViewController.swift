@@ -13,7 +13,7 @@ import UIKit
 class DashboardViewController : UIViewController,BluetoothSerialDelegate
 {
     
-    private let AUTOCONNECT_BT_PERIPHERALS = ["DSD TECH","OmniBot"]
+    private let AUTOCONNECT_BT_PERIPHERALS = ["OmniBot","DSD TECH"]
     
 
     /// UI Outlets
@@ -65,6 +65,16 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         )
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Auto connect on startup
+        if !serial.isReady && !serial.isScanning
+        {
+           startScanning()
+        }
+    }
+    
     
     func serialDidReceiveString(_ message: String) {
         let incomingString = message.components(separatedBy: ":")
@@ -86,7 +96,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         }
         else if !serial.isScanning{
             // If we are not scanning display a two option alert to disconnect
-            let twoOptionAlert = UIAlertController(title: "😨 Disconnect", message: "Are you sure you want to disconnect from OmniBot?" ,preferredStyle: UIAlertController.Style.alert)
+            let twoOptionAlert = UIAlertController(title: "😨 Disconnect", message: "Are you sure you want to disconnect from  \(serial.connectedPeripheral?.name ?? "Unknown Device")?" ,preferredStyle: UIAlertController.Style.alert)
                   
                   twoOptionAlert.addAction(UIAlertAction(title: "Disconnect", style: UIAlertAction.Style.default, handler: { (action) in
                       twoOptionAlert.dismiss(animated: true, completion: nil)
@@ -143,8 +153,11 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             transmissionTextLabel.text = RobotCommander.driveDirection.description
             
             // TODO: Do we want this here
-            print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
-            serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
+            if serial.isReady{
+                print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
+                serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
+            }
+         
         }
      }
     
@@ -275,7 +288,7 @@ extension DashboardViewController
     func startScanning()
     {
         // Disconnect from any current connections
-        //serial.disconnect()
+        serial.disconnect()
         serial.startScan()
         updateBluetoothStatus()
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(DashboardViewController.scanTimeOut), userInfo: nil, repeats: false)

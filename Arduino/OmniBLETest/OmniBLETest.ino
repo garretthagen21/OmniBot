@@ -14,7 +14,7 @@ void setup() {
   botBT.printDebugToSerial = false;
   botBT.begin(9600);
 
-  // Note: We probably only need to do this once and were good
+  // Note: This sets the broadcasting name of the HM-10 bluetooth module. We only need to do this once
   //botBT.setPeripheralName("OmniBot");
   
 }
@@ -25,18 +25,18 @@ void loop() {
   botBT.sync();
   
   // Print the stats
-  //Serial.println("");
-  //Serial.println("---------------------------------------");
+  Serial.println("");
+  Serial.println("---------------------------------------");
   Serial.println("Current Command: "+botBT.mostRecentCommand());
-  //Serial.println("Turning Value: "+String(botBT.turnValue()));
-  //Serial.println("Velocity Value: "+String(botBT.velocityValue()));
-  //Serial.println("Autopilot Value: "+String(botBT.autopilotValue()));
+  Serial.println("Turning Value: "+String(botBT.turnValue()));
+  Serial.println("Velocity Value: "+String(botBT.velocityValue()));
+  Serial.println("Autopilot Value: "+String(botBT.autopilotValue()));
 
-  // Send sensor vals
+  // Send sensor vals to device. Note we should only send a message when these change to avoid clobbering bluetooth channel
   botBT.sendProximityMeasurements(sensorProximities,NUM_SONIC_SENSORS);
 
   
-
+  // Should probably use a delay so bluetooth doesnt get overloaded
   delay(100);
 
 }
