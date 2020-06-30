@@ -72,8 +72,15 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     /// The connected peripheral (nil if none is connected)
     var connectedPeripheral: CBPeripheral?
     
+    /// Timers for pending messages
+    private var pendingTimer:Timer?
+    private var pendingMessage:String?
+    
+    
     /// The characteristic 0xFFE1 we need to write to, of the connectedPeripheral
     weak var writeCharacteristic: CBCharacteristic?
+    
+    
     
     /// Whether this serial is ready to send and receive data
     var isReady: Bool {
@@ -160,9 +167,32 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     func sendMessageToDevice(_ message: String) {
         guard isReady else { return }
         
+        print("[BluetoothSerial.sendMessage()] \(message)")
         if let data = message.data(using: String.Encoding.utf8) {
             connectedPeripheral!.writeValue(data, for: writeCharacteristic!, type: writeType)
         }
+    }
+    
+    /// Set the pending message to be sent if it is not adjusted after a timeout
+    func setPendingMessage(_ message: String,_ timeout: Double = 0.05)
+    {
+        // Invalidate pending timer
+        pendingTimer?.invalidate()
+        
+        // Assign our pending message
+        pendingMessage = message
+        
+        // Reset the timer to trigger after 0.1 seconds (e.g. the user must not move the joystick for atleast 0.1 secs)
+        pendingTimer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(BluetoothSerial.releasePending), userInfo: nil, repeats: false)
+    }
+          
+        
+    /// Callback to send pending message
+    @objc func releasePending()
+      {
+          if let message = pendingMessage{
+            self.sendMessageToDevice(message)
+          }
     }
     
     /// Send an array of bytes to the device

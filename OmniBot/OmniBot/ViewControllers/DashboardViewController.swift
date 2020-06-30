@@ -77,6 +77,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
     
     
     func serialDidReceiveString(_ message: String) {
+        // TODO: Add UI elements to display proximities
         let incomingString = message.components(separatedBy: ":")
         print("[serialDidReceiveString] Recieved Bluetooth String: \(incomingString)")
         
@@ -154,8 +155,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             
             // TODO: Do we want this here
             if serial.isReady{
-                print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
-                serial.sendMessageToDevice(RobotCommander.asBluetoothCommand)
+                serial.setPendingMessage(RobotCommander.asBluetoothCommand)
             }
          
         }
