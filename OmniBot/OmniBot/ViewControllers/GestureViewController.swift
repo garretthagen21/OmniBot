@@ -12,6 +12,36 @@ import ARKit
 import Vision
 
 class GestureViewController: UIViewController, ARSCNViewDelegate {
+    
+    /// An enumeration representing our possible outcomes
+    enum HandGesture:String{
+        case closedFistRight = "fist-UB-RHand" // TODO: maybe make closed fist a reset?
+        // case noDetection = "None"
+        
+        var symbol:String{
+            switch(self){
+                case .closedFistRight: return "R 👊"
+            }
+        }
+        
+        var description:String{
+            switch(self)
+            {
+                case .closedFistRight: return "Closed Fist Right Hand"
+            }
+        }
+        
+        var action:String{
+            switch(self)
+            {
+                case .closedFistRight: return "Stop"
+            }
+        }
+        
+        func applyToRobot(){
+            // TODO: Might not want to apply more than once
+        }
+    }
 
     @IBOutlet weak var ARVideoSceneView: ARSCNView!
     
