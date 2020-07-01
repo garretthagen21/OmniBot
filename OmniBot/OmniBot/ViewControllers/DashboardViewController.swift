@@ -13,6 +13,7 @@ import UIKit
 class DashboardViewController : UIViewController,BluetoothSerialDelegate
 {
     
+    static var commonViewLoaded = false
     private let AUTOCONNECT_BT_PERIPHERALS = ["OmniBot","DSD TECH"]
     
 
@@ -36,6 +37,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         
         super.viewDidLoad()
         
+        // TODO: This is being called every time the tab view changes
+        print("Dashboard viewDidLoad() Triggered")
         
         // Setup gesture recognizer for bluetooth
         let bluetoothTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBluetoothTap(_:)))
@@ -47,9 +50,9 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         speedStack.addGestureRecognizer(speedTap)
         speedStack.isUserInteractionEnabled = true
         
-        // Init the bluetooth delegate to us
-        serial = BluetoothSerial(delegate: self)
+    
         
+      
         // Add commander observer
         NotificationCenter.default.addObserver(self,
             selector: #selector(commanderDidChange),
@@ -63,11 +66,21 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             name: .bluetoothStatusChanged,
             object: nil
         )
+        // Init the bluetooth delegate to us. Note this is a hack to avoid duplicate calls
+        if(!DashboardViewController.commonViewLoaded){
+            serial = BluetoothSerial(delegate: self)
+        }
+        else{
+            serial.delegate = self
+        }
+        
+        // We have loaded the common view to avoid BT interrupts (this is a a hack)
+        DashboardViewController.commonViewLoaded = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+         print("Dashboard viewDidAppear() Triggered")
         // Auto connect on startup
         if !serial.isReady && !serial.isScanning
         {

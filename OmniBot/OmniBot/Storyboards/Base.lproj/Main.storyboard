@@ -219,7 +219,7 @@
                                 <rect key="frame" x="20" y="233" width="374" height="550"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </arscnView>
@@ -237,6 +237,9 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Gesture" image="hand.raised" catalog="system" selectedImage="hand.raised.fill" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="ARVideoSceneView" destination="qvk-El-6Ci" id="ydm-wh-nyv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
