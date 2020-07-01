@@ -206,14 +206,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HandExample" translatesAutoresizingMaskIntoConstraints="NO" id="Akt-ZZ-Eyg">
-                                <rect key="frame" x="20" y="233" width="374" height="550"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dP8-eh-gFs">
                                 <rect key="frame" x="20" y="44" width="374" height="155"/>
                                 <constraints>
@@ -223,16 +215,24 @@
                                     <segue destination="KXe-TJ-STt" kind="embed" id="MOd-2g-b0D"/>
                                 </connections>
                             </containerView>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvk-El-6Ci">
+                                <rect key="frame" x="20" y="233" width="374" height="550"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </arscnView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="Akt-ZZ-Eyg" secondAttribute="bottom" constant="30" id="0zx-fA-LBm"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="dP8-eh-gFs" secondAttribute="trailing" constant="20" id="BnL-nW-d7w"/>
-                            <constraint firstItem="Akt-ZZ-Eyg" firstAttribute="top" secondItem="dP8-eh-gFs" secondAttribute="bottom" constant="34" id="R28-cC-DKi"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="qvk-El-6Ci" secondAttribute="trailing" constant="20" id="C0X-et-mYf"/>
+                            <constraint firstItem="qvk-El-6Ci" firstAttribute="top" secondItem="dP8-eh-gFs" secondAttribute="bottom" constant="34" id="LkN-eV-bwW"/>
                             <constraint firstItem="dP8-eh-gFs" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="XjJ-nP-MQK"/>
                             <constraint firstItem="dP8-eh-gFs" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="YcK-bJ-Dei"/>
-                            <constraint firstItem="Akt-ZZ-Eyg" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="ayU-Eo-sd0"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Akt-ZZ-Eyg" secondAttribute="trailing" constant="20" id="muG-3w-fme"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="qvk-El-6Ci" secondAttribute="bottom" constant="30" id="cjm-xp-AdV"/>
+                            <constraint firstItem="qvk-El-6Ci" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="eTg-8z-dth"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
@@ -428,12 +428,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4bl-ON-lne"/>
+        <segue reference="MOd-2g-b0D"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FancyBase" width="100" height="100"/>
         <image name="FancyHandle" width="100" height="100"/>
-        <image name="HandExample" width="362" height="505"/>
         <image name="arrow.up.circle" catalog="system" width="128" height="121"/>
         <image name="hand.raised" catalog="system" width="128" height="128"/>
         <image name="hand.raised.fill" catalog="system" width="128" height="128"/>
