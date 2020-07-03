@@ -76,6 +76,9 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         
         // We have loaded the common view to avoid BT interrupts (this is a a hack)
         DashboardViewController.commonViewLoaded = true
+        
+        // Show BT Status
+        updateBluetoothStatus()
     }
     
     override func viewDidAppear(_ animated: Bool) {

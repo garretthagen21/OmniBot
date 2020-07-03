@@ -14,36 +14,63 @@ import Vision
 class GestureViewController: UIViewController, ARSCNViewDelegate {
     
     /// An enumeration representing our possible outcomes
-    enum HandGesture:String{
-        case closedFistRight = "fist-UB-RHand" // TODO: maybe make closed fist a reset?
-        // case noDetection = "None"
+    enum HandGesture:String, CaseIterable{
+        case closedFist = "closed-fist" // TODO: maybe make closed fist a reset?
+        case okSign = "ok-sign"
+        case aloha = "aloha-sign"
+        case flatHand = "flat-hand"
+        case peace = "peace-sign"
+        case tuckedThumb = "tucked-thumb"
+        case rockOn = "rock-on"
+        case noDetection = "Negative"
         
         var symbol:String{
             switch(self){
-                case .closedFistRight: return "R 👊"
+                case .closedFist: return "👊"
+                case .okSign: return "👌"
+                case .aloha: return "🤙"
+                case .flatHand: return "✋"
+                case .peace: return "✌️"
+                case .tuckedThumb: return "✊"
+                case .rockOn: return "🤘"
+                case .noDetection: return "⛔️"
             }
         }
         
         var description:String{
-            switch(self)
-            {
-                case .closedFistRight: return "Closed Fist Right Hand"
-            }
+                switch(self){
+                   case .closedFist: return "Closed Fist"
+                   case .okSign: return "Ok"
+                   case .aloha: return "Aloha"
+                   case .flatHand: return "Open Hand"
+                   case .peace: return "Peace"
+                   case .tuckedThumb: return "Tucked Thumb"
+                   case .rockOn: return "Rock On"
+                   case .noDetection: return "No Detection"
+               }
         }
         
         var action:String{
-            switch(self)
-            {
-                case .closedFistRight: return "Stop"
-            }
+              switch(self){
+                     case .closedFist: return "Reset"
+                     case .okSign: return "Turn Right"
+                     case .aloha: return "Turn Left"
+                     case .flatHand: return "Speed Up"
+                     case .rockOn: return "Slow Down"
+                     case .peace: return "Toggle Autopilot"
+                     case .tuckedThumb: return "Stop"
+                     case .noDetection: return "No Detection"
+                 }
         }
         
         func applyToRobot(){
             // TODO: Might not want to apply more than once
         }
     }
-
+    
+    @IBOutlet weak var gestureOptionView: GestureOptionView!
     @IBOutlet weak var ARVideoSceneView: ARSCNView!
+    @IBOutlet weak var gestureOptionsButton: UIButton!
     
     /// Asynchronus dispatch queue for ML udpates
     let dispatchQueueML = DispatchQueue(label: "com.hw.dispatchqueueml")
@@ -55,6 +82,12 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure gesture options
+        gestureOptionsButton.layer.borderWidth = 1.0
+        gestureOptionsButton.layer.borderColor = .init(srgbRed: 175, green: 175, blue: 175, alpha: 1.0)
+        gestureOptionView.setOptions(gestureOptions: HandGesture.allCases)
+        gestureOptionView.isHidden = true
+        
         // Set the scene view delegate
         ARVideoSceneView.delegate = self
                 
@@ -62,19 +95,18 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
         ARVideoSceneView.scene = SCNScene()
         
               
-      /* Setup Vision Model
-      guard let selectedModel = try? VNCoreMLModel(for: example_5s0_hand_model().model) else {
-          fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
-      }
-      
-      // Set up Vision-CoreML Request
-      let classificationRequest = VNCoreMLRequest(model: selectedModel, completionHandler: classificationCompleteHandler)
-      classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOption.centerCrop // Crop from centre of images and scale to appropriate size.
-      visionRequests = [classificationRequest]
-         */
-      
-      // Begin Loop to Update CoreML
-      loopCoreMLUpdate()
+          // Setup Vision Model
+          guard let selectedModel = try? VNCoreMLModel(for: handgestures().model) else {
+              fatalError("Could not load model. Ensure model has been drag and dropped (copied) to XCode Project. Also ensure the model is part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
+          }
+          
+          // Set up Vision-CoreML Request
+          let classificationRequest = VNCoreMLRequest(model: selectedModel, completionHandler: classificationCompleteHandler)
+          classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOption.centerCrop // Crop from centre of images and scale to appropriate size.
+          visionRequests = [classificationRequest]
+            
+          // Begin Loop to Update CoreML
+          loopCoreMLUpdate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,23 +154,20 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                 // Prepare CoreML/Vision Request
                 let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, options: [:])
                 
-                /* Run Vision Image Request
+                // Run Vision Image Request
                 do {
                     try imageRequestHandler.perform(self.visionRequests)
                 } catch {
                     print(error)
                 }
-                */
-            
-            
-            
+          
         }
     
     
        }
        
        func classificationCompleteHandler(request: VNRequest, error: Error?) {
-           /* Catch Errors
+           // Catch Errors
            if error != nil {
                print("Error: " + (error?.localizedDescription)!)
                return
@@ -150,36 +179,42 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
            
            // Get Classifications
            let classifications = observations[0...2] // top 3 results
-               .flatMap({ $0 as? VNClassificationObservation })
+            .compactMap({ $0 as? VNClassificationObservation })
                .map({ "\($0.identifier) \(String(format:" : %.2f", $0.confidence))" })
                .joined(separator: "\n")
            
            // Render Classifications
            DispatchQueue.main.async {
-               // Print Classifications
-                   // print(classifications)
-                   // print("-------------")
-               
-               // Display Debug Text on screen
-               self.debugTextView.text = "TOP 3 PROBABILITIES: \n" + classifications
+         
                
                // Display Top Symbol
-               var symbol = "❎"
                let topPrediction = classifications.components(separatedBy: "\n")[0]
                let topPredictionName = topPrediction.components(separatedBy: ":")[0].trimmingCharacters(in: .whitespaces)
                // Only display a prediction if confidence is above 1%
                let topPredictionScore:Float? = Float(topPrediction.components(separatedBy: ":")[1].trimmingCharacters(in: .whitespaces))
                if (topPredictionScore != nil && topPredictionScore! > 0.01) {
-                   if (topPredictionName == "fist-UB-RHand") { symbol = "👊" }
-                   if (topPredictionName == "FIVE-UB-RHand") { symbol = "🖐" }
+                  // TODO: Convert to enum and display
+                  print("Prediction: \(topPredictionName)")
                }
                
-               self.textOverlay.text = symbol
+               // self.textOverlay.text = symbol
                
            }
-         */
+       
        }
-        
+    
+    /// To hide/show the gesture options
+    @IBAction func didTapGestureOptions(_ sender: Any) {
+        if gestureOptionView.isHidden{
+            gestureOptionView.isHidden = false
+            gestureOptionsButton.backgroundColor = UIColor.darkText
+        }
+        else{
+             gestureOptionView.isHidden = true
+             gestureOptionsButton.backgroundColor = UIColor.clear
+        }
+    }
+    
 
 }
 

@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0643E24B248EB2C50008FF0F /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0643E24A248EB2C50008FF0F /* Dashboard.swift */; };
-		0643E24D248EB3BB0008FF0F /* Dashboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0643E24C248EB3BB0008FF0F /* Dashboard.xib */; };
+		060CCC3824AE9C8B00148C42 /* handgestures.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 060CCC3524AE9C8B00148C42 /* handgestures.mlmodel */; };
+		060CCC3924AE9C8B00148C42 /* cvexport.manifest in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3624AE9C8B00148C42 /* cvexport.manifest */; };
+		060CCC3A24AE9C8B00148C42 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3724AE9C8B00148C42 /* labels.txt */; };
+		060CCC3C24AEAD5200148C42 /* GestureOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CCC3B24AEAD5200148C42 /* GestureOptionView.swift */; };
+		060CCC3E24AEAD6C00148C42 /* GestureOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */; };
+		060CCC3F24AEDD9D00148C42 /* GestureOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */; };
+		060CCC4024AEDD9E00148C42 /* GestureOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */; };
 		06516CBC248552C500CFA05F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CBB248552C500CFA05F /* AppDelegate.swift */; };
 		06516CBE248552C500CFA05F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CBD248552C500CFA05F /* SceneDelegate.swift */; };
 		06516CC0248552C500CFA05F /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CBF248552C500CFA05F /* RemoteViewController.swift */; };
@@ -47,8 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0643E24A248EB2C50008FF0F /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
-		0643E24C248EB3BB0008FF0F /* Dashboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Dashboard.xib; sourceTree = "<group>"; };
+		060CCC3524AE9C8B00148C42 /* handgestures.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = handgestures.mlmodel; sourceTree = "<group>"; };
+		060CCC3624AE9C8B00148C42 /* cvexport.manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cvexport.manifest; sourceTree = "<group>"; };
+		060CCC3724AE9C8B00148C42 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
+		060CCC3B24AEAD5200148C42 /* GestureOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureOptionView.swift; sourceTree = "<group>"; };
+		060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GestureOptionView.xib; sourceTree = "<group>"; };
 		06516CB8248552C500CFA05F /* OmniBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06516CBB248552C500CFA05F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06516CBD248552C500CFA05F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,11 +116,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		060CCC3424AE9C0B00148C42 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				060CCC3624AE9C8B00148C42 /* cvexport.manifest */,
+				060CCC3524AE9C8B00148C42 /* handgestures.mlmodel */,
+				060CCC3724AE9C8B00148C42 /* labels.txt */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
 		0643E249248EB2990008FF0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0643E24A248EB2C50008FF0F /* Dashboard.swift */,
-				0643E24C248EB3BB0008FF0F /* Dashboard.xib */,
+				060CCC3B24AEAD5200148C42 /* GestureOptionView.swift */,
+				060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +160,7 @@
 		06516CBA248552C500CFA05F /* OmniBot */ = {
 			isa = PBXGroup;
 			children = (
+				060CCC3424AE9C0B00148C42 /* MLModels */,
 				06516CED248553F300CFA05F /* Backend */,
 				06516CF92485B58F00CFA05F /* ViewControllers */,
 				0643E249248EB2990008FF0F /* Views */,
@@ -335,9 +354,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				06516CCA248552C700CFA05F /* LaunchScreen.storyboard in Resources */,
+				060CCC3A24AE9C8B00148C42 /* labels.txt in Resources */,
 				06516CC7248552C700CFA05F /* Assets.xcassets in Resources */,
-				0643E24D248EB3BB0008FF0F /* Dashboard.xib in Resources */,
+				060CCC3924AE9C8B00148C42 /* cvexport.manifest in Resources */,
 				06516CC5248552C500CFA05F /* Main.storyboard in Resources */,
+				060CCC3E24AEAD6C00148C42 /* GestureOptionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				060CCC3F24AEDD9D00148C42 /* GestureOptionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				060CCC4024AEDD9E00148C42 /* GestureOptionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,8 +491,9 @@
 				06516CC2248552C500CFA05F /* GestureViewController.swift in Sources */,
 				06516CC0248552C500CFA05F /* RemoteViewController.swift in Sources */,
 				06516CBC248552C500CFA05F /* AppDelegate.swift in Sources */,
+				060CCC3824AE9C8B00148C42 /* handgestures.mlmodel in Sources */,
 				06516CBE248552C500CFA05F /* SceneDelegate.swift in Sources */,
-				0643E24B248EB2C50008FF0F /* Dashboard.swift in Sources */,
+				060CCC3C24AEAD5200148C42 /* GestureOptionView.swift in Sources */,
 				0686F65E24972A890032AA30 /* Extensions.swift in Sources */,
 				06516CF32485560400CFA05F /* BluetoothSerial.swift in Sources */,
 				06516CF72485A04400CFA05F /* Utilities.swift in Sources */,
