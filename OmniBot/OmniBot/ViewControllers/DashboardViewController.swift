@@ -14,7 +14,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
 {
     
     static var commonViewLoaded = false
-    private let AUTOCONNECT_BT_PERIPHERALS = ["OmniBot","DSD TECH"]
+    // private let AUTOCONNECT_BT_PERIPHERALS = ["OmniBot","DSD TECH"]
+    
     
 
     /// UI Outlets
@@ -44,6 +45,10 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         let bluetoothTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBluetoothTap(_:)))
         bluetoothStack.addGestureRecognizer(bluetoothTap)
         bluetoothStack.isUserInteractionEnabled = true
+        
+        // Setup gesture recognizer for bluetooth
+         let bluetoothHold = UILongPressGestureRecognizer(target: self, action: #selector(self.handleBluetoothHold(_:)))
+         bluetoothStack.addGestureRecognizer(bluetoothHold)
         
         // Setup gesture recognizer for speed units
         let speedTap = UITapGestureRecognizer(target: self, action: #selector(self.handleSpeedTap(_:)))
@@ -100,6 +105,12 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         if incomingString.count != 2{
             return
         }
+    }
+    
+    /// Triggered when user holds bluetooth
+    @objc private func handleBluetoothHold(_ sender: UITapGestureRecognizer)
+    {
+        
     }
 
     /// Triggered when user taps bluetooth
@@ -315,7 +326,7 @@ extension DashboardViewController
         // Print debugging message
         print("[serialDidDiscoverPeripheral] Discovered Peripheral --> Name: \(peripheral.name ?? "") Services: \(peripheral.services ?? [])")
         
-        if AUTOCONNECT_BT_PERIPHERALS.contains(peripheral.name ?? ""){
+        if UserSettings.defaultBluetoothPeripheral == peripheral.name ?? ""{
             // Stop the current scan and begin connecting procedure
             serial.stopScan()
             serial.connectToPeripheral(peripheral)

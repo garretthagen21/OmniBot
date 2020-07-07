@@ -64,10 +64,27 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
         }
         
         func applyToRobot(){
-            // TODO: Might not want to apply more than once
+              switch(self){
+            
+                   case .okSign:
+                     RobotCommander.turnValue += 0.1 // TODO: Alert user if we are maxed out
+                   case .aloha:
+                     RobotCommander.turnValue -= 0.1 // TODO: Alert user if we are maxed out
+                   case .flatHand:
+                     RobotCommander.velocityValue += 0.1
+                   case .rockOn:
+                     RobotCommander.velocityValue -= 0.1
+                   case .peace:
+                     RobotCommander.autopilot = !RobotCommander.autopilot
+                   case .tuckedThumb:
+                     RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
+                   case .closedFist, .noDetection:
+                     print("No Command")
+            }
         }
     }
     
+    @IBOutlet weak var overlaySymbolLabel: UILabel!
     @IBOutlet weak var gestureOptionView: GestureOptionView!
     @IBOutlet weak var ARVideoSceneView: ARSCNView!
     @IBOutlet weak var gestureOptionsButton: UIButton!
@@ -77,6 +94,9 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     
     /// Our vision request list
     var visionRequests = [VNRequest]()
+    
+    /// Latest prediction
+    var mostRecentPrediction:HandGesture = .noDetection
     
     
     override func viewDidLoad() {
@@ -112,19 +132,32 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
           super.viewWillAppear(animated)
           
-          // Create a session configuration
-          let configuration = ARWorldTrackingConfiguration()
-
-          // Run the view's session
-          ARVideoSceneView.session.run(configuration)
+         self.setARSessionRunStatus(isOn: true)
       }
     
     override func viewWillDisappear(_ animated: Bool) {
          super.viewWillDisappear(animated)
          
-         // Pause the view's session
-         ARVideoSceneView.session.pause()
+        self.setARSessionRunStatus(isOn: false)
      }
+    
+    func setARSessionRunStatus(isOn:Bool)
+    {
+        if isOn{
+            // Create a session configuration
+              let configuration = ARWorldTrackingConfiguration()
+
+              // Run the view's session
+              ARVideoSceneView.session.run(configuration)
+        }
+        else{
+            // Pause the view's session
+            ARVideoSceneView.session.pause()
+            // Clear the text
+            self.overlaySymbolLabel.text = ""
+        }
+        
+    }
     
     // MARK: - ARSCNViewDelegate
        
@@ -150,6 +183,9 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
         if let pixbuff : CVPixelBuffer? = (ARVideoSceneView.session.currentFrame?.capturedImage){
                 // Convert to an image
                 let ciImage = CIImage(cvPixelBuffer: pixbuff!)
+            
+                // Our input images in the ML model are rotated 90 degrees so do the same here
+                //let rotatedImage = ciImage.oriented(forExifOrientation: Int32(CGImagePropertyOrientation.right.rawValue))
                 
                 // Prepare CoreML/Vision Request
                 let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, options: [:])
@@ -185,7 +221,8 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
            
            // Render Classifications
            DispatchQueue.main.async {
-         
+                
+               var foundPrediction:HandGesture = .noDetection
                
                // Display Top Symbol
                let topPrediction = classifications.components(separatedBy: "\n")[0]
@@ -195,9 +232,19 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                if (topPredictionScore != nil && topPredictionScore! > 0.01) {
                   // TODO: Convert to enum and display
                   print("Prediction: \(topPredictionName)")
+                  foundPrediction = HandGesture(rawValue: topPredictionName) ?? .noDetection
+                 
                }
                
-               // self.textOverlay.text = symbol
+             
+            // Apply the prediction if it is new or a reset has been appplied
+            if foundPrediction != self.mostRecentPrediction || self.mostRecentPrediction == HandGesture.closedFist || self.mostRecentPrediction == HandGesture.noDetection{
+                foundPrediction.applyToRobot()
+            }
+            
+            // Show the prediction and set our most recent to our found
+            self.overlaySymbolLabel.text = foundPrediction.symbol+" "+foundPrediction.action
+            self.mostRecentPrediction = foundPrediction
                
            }
        
@@ -208,10 +255,12 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
         if gestureOptionView.isHidden{
             gestureOptionView.isHidden = false
             gestureOptionsButton.backgroundColor = UIColor.darkText
+            setARSessionRunStatus(isOn: false)
         }
         else{
              gestureOptionView.isHidden = true
              gestureOptionsButton.backgroundColor = UIColor.clear
+             setARSessionRunStatus(isOn: true)
         }
     }
     

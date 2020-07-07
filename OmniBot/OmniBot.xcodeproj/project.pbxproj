@@ -14,6 +14,11 @@
 		060CCC3E24AEAD6C00148C42 /* GestureOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */; };
 		060CCC3F24AEDD9D00148C42 /* GestureOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */; };
 		060CCC4024AEDD9E00148C42 /* GestureOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */; };
+		060CCC4224B3ED6E00148C42 /* BluetoothScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CCC4124B3ED6E00148C42 /* BluetoothScannerViewController.swift */; };
+		060CCC4624B3EEBA00148C42 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 060CCC4524B3EEBA00148C42 /* MBProgressHUD.m */; };
+		060CCC4824B3EF9800148C42 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CCC4724B3EF9800148C42 /* UserSettings.swift */; };
+		060CCC4C24B3F38100148C42 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060CCC4B24B3F38100148C42 /* AppStoryboard.swift */; };
+		060CCC4F24B405AB00148C42 /* BluetoothScanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 060CCC5124B405AB00148C42 /* BluetoothScanner.storyboard */; };
 		06516CBC248552C500CFA05F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CBB248552C500CFA05F /* AppDelegate.swift */; };
 		06516CBE248552C500CFA05F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CBD248552C500CFA05F /* SceneDelegate.swift */; };
 		06516CC0248552C500CFA05F /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CBF248552C500CFA05F /* RemoteViewController.swift */; };
@@ -57,6 +62,13 @@
 		060CCC3724AE9C8B00148C42 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
 		060CCC3B24AEAD5200148C42 /* GestureOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureOptionView.swift; sourceTree = "<group>"; };
 		060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GestureOptionView.xib; sourceTree = "<group>"; };
+		060CCC4124B3ED6E00148C42 /* BluetoothScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothScannerViewController.swift; sourceTree = "<group>"; };
+		060CCC4324B3EE8D00148C42 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		060CCC4424B3EEBA00148C42 /* OmniBot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OmniBot-Bridging-Header.h"; sourceTree = "<group>"; };
+		060CCC4524B3EEBA00148C42 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		060CCC4724B3EF9800148C42 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		060CCC4B24B3F38100148C42 /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
+		060CCC5024B405AB00148C42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BluetoothScanner.storyboard; sourceTree = "<group>"; };
 		06516CB8248552C500CFA05F /* OmniBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06516CBB248552C500CFA05F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06516CBD248552C500CFA05F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,11 +205,15 @@
 		06516CED248553F300CFA05F /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				060CCC4424B3EEBA00148C42 /* OmniBot-Bridging-Header.h */,
 				06516CBD248552C500CFA05F /* SceneDelegate.swift */,
 				06516CF62485A04400CFA05F /* Utilities.swift */,
 				06516CF22485560400CFA05F /* BluetoothSerial.swift */,
 				06516CEE2485544600CFA05F /* RobotState.swift */,
 				0686F65D24972A890032AA30 /* Extensions.swift */,
+				060CCC4324B3EE8D00148C42 /* MBProgressHUD.h */,
+				060CCC4524B3EEBA00148C42 /* MBProgressHUD.m */,
+				060CCC4724B3EF9800148C42 /* UserSettings.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -208,6 +224,7 @@
 				06516CBF248552C500CFA05F /* RemoteViewController.swift */,
 				06516CF4248571F400CFA05F /* DashboardViewController.swift */,
 				06516CC1248552C500CFA05F /* GestureViewController.swift */,
+				060CCC4124B3ED6E00148C42 /* BluetoothScannerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -217,6 +234,8 @@
 			children = (
 				06516CC3248552C500CFA05F /* Main.storyboard */,
 				06516CC8248552C700CFA05F /* LaunchScreen.storyboard */,
+				060CCC5124B405AB00148C42 /* BluetoothScanner.storyboard */,
+				060CCC4B24B3F38100148C42 /* AppStoryboard.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -317,6 +336,7 @@
 				TargetAttributes = {
 					06516CB7248552C500CFA05F = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1150;
 					};
 					06516CCF248552C700CFA05F = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -354,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06516CCA248552C700CFA05F /* LaunchScreen.storyboard in Resources */,
+				060CCC4F24B405AB00148C42 /* BluetoothScanner.storyboard in Resources */,
 				060CCC3A24AE9C8B00148C42 /* labels.txt in Resources */,
 				06516CC7248552C700CFA05F /* Assets.xcassets in Resources */,
 				060CCC3924AE9C8B00148C42 /* cvexport.manifest in Resources */,
@@ -490,13 +511,17 @@
 			files = (
 				06516CC2248552C500CFA05F /* GestureViewController.swift in Sources */,
 				06516CC0248552C500CFA05F /* RemoteViewController.swift in Sources */,
+				060CCC4224B3ED6E00148C42 /* BluetoothScannerViewController.swift in Sources */,
 				06516CBC248552C500CFA05F /* AppDelegate.swift in Sources */,
 				060CCC3824AE9C8B00148C42 /* handgestures.mlmodel in Sources */,
 				06516CBE248552C500CFA05F /* SceneDelegate.swift in Sources */,
 				060CCC3C24AEAD5200148C42 /* GestureOptionView.swift in Sources */,
 				0686F65E24972A890032AA30 /* Extensions.swift in Sources */,
 				06516CF32485560400CFA05F /* BluetoothSerial.swift in Sources */,
+				060CCC4624B3EEBA00148C42 /* MBProgressHUD.m in Sources */,
+				060CCC4C24B3F38100148C42 /* AppStoryboard.swift in Sources */,
 				06516CF72485A04400CFA05F /* Utilities.swift in Sources */,
+				060CCC4824B3EF9800148C42 /* UserSettings.swift in Sources */,
 				06516CEF2485544600CFA05F /* RobotState.swift in Sources */,
 				06516CF5248571F400CFA05F /* DashboardViewController.swift in Sources */,
 			);
@@ -535,6 +560,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		060CCC5124B405AB00148C42 /* BluetoothScanner.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				060CCC5024B405AB00148C42 /* Base */,
+			);
+			name = BluetoothScanner.storyboard;
+			sourceTree = "<group>";
+		};
 		06516CC3248552C500CFA05F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -673,6 +706,7 @@
 			baseConfigurationReference = C29A4F19ED7E3EB9DF35FA81 /* Pods-OmniBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZQ76B4GZJY;
 				INFOPLIST_FILE = OmniBot/Info.plist;
@@ -682,6 +716,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.GarrettHagen.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -692,6 +728,7 @@
 			baseConfigurationReference = A102C42765C83C095BC6CE2E /* Pods-OmniBot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZQ76B4GZJY;
 				INFOPLIST_FILE = OmniBot/Info.plist;
@@ -701,6 +738,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.GarrettHagen.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
