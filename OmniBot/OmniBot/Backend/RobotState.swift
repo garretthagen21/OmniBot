@@ -78,8 +78,17 @@ extension RobotCommander{
      static var speedMilesHour:Double { return speedMetersSec * 2.23694 }
      static var turnMagnitude:Double{ return abs(turnValue) }
      static var turnAngle:Double{ return turnValue * 90.0 }
+     static var cardinalDirection:String{
+        // Where left/right always overrides north/south
+        switch steeringDirection{
+            case .center:
+                return driveDirection.cardinal
+            case .left,.right:
+                return steeringDirection.cardinal
+        }
+     }
      static var compassOrientation:Double{
-            switch driveDirection {
+        switch driveDirection {
             case .drive:
                 return turnAngle
             case .reverse:
@@ -89,7 +98,7 @@ extension RobotCommander{
             }
         }
      static var steeringDirection:SteeringDirection{
-         if turnValue < 0.0 { return .left }
+         if turnValue < -0.0 { return .left }
          else if turnValue > 0.0 { return .right }
          else{ return .center }
      }
@@ -100,11 +109,18 @@ extension RobotCommander{
          else{ return .park }
      }
     
-     /// A Bluetooth command string to be sent to the arduino
+     /// A Bluetooth command string to be sent to the arduino with continous values
      static var asBluetoothCommand:String
      {
-        return "CMD:\(String(format: "%.2f", turnValue)),\(String(format: "%.2f", velocityValue)),\(autopilot ? 1 : 0)\n"
+        return "C:\(String(format: "%.2f", turnValue)),\(String(format: "%.2f", velocityValue)),\(autopilot ? 1 : 0)\n"
      }
+    
+    /* DEPRACATED
+    /// A Bluetooth command string containing cardinal direction and motor speed
+    static var asBluetoothCommandCardinal:String{
+        return "CC:\(cardinalDirection),\(String(format: "%.2f", velocityValue)),\(autopilot ? 1 : 0)\n"
+    }
+     */
      
       /// A dictionary representaiton of our values
      static var asDictionary:[String:Any]
@@ -115,9 +131,7 @@ extension RobotCommander{
      }
     
     static func emergencyStop(){
-        RobotCommander.velocityValue = 0.0
-        RobotCommander.turnValue = 0.0
-        RobotCommander.autopilot = false
+        RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
     }
 }
 
@@ -144,6 +158,28 @@ extension RobotCommander{
                 return "center"
             case .left:
                 return "left"
+            }
+        }
+        
+        var symbol:String{
+            switch self{
+                   case .right:
+                       return "R"
+                   case .center:
+                       return "S"
+                   case .left:
+                       return "L"
+            }
+        }
+        
+        var cardinal:String{
+            switch self{
+                 case .right:
+                     return "E"
+                 case .center:
+                     return "-"
+                 case .left:
+                     return "W"
             }
         }
     }
@@ -173,6 +209,17 @@ extension RobotCommander{
                 case .reverse:
                     return "R"
             }
+        }
+        
+        var cardinal:String{
+              switch self{
+                   case .drive:
+                       return "N"
+                   case .park:
+                       return "-"
+                   case .reverse:
+                       return "S"
+              }
         }
     }
 }

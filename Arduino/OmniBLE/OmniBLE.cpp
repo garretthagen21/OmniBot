@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "OmniBLE.h"
 
 
@@ -31,7 +30,7 @@ void OmniBLE::sync(){
     // Assign the current command
     if(!inputCommand.equals("")){
         currentCommand = inputCommand;
-        parseCommand(currentCommand,"CMD");
+        parseCommand(currentCommand,incomingCommandPrefix);
         
         if(printDebugToSerial)
             Serial.println("[OmniBLE::sync()] Recieved Commmand: "+currentCommand);
@@ -41,7 +40,8 @@ void OmniBLE::sync(){
 float OmniBLE::turnValue(){
     float extractedVal = 0.0f;
     if (!extractedData[0].equals(""))
-        extractedVal = extractedData[1].toFloat();
+        extractedVal = extractedData[0].toFloat();
+    
     return extractedVal;
 }
 
@@ -55,10 +55,34 @@ float OmniBLE::velocityValue(){
 boolean OmniBLE::autopilotValue()
 {
     float extractedVal = false;
-       if (!extractedData[1].equals(""))
-           extractedVal = (boolean)extractedData[2].toInt();
-       return extractedVal;
+    if (!extractedData[2].equals(""))
+       extractedVal = (boolean)extractedData[2].toInt();
+    return extractedVal;
 }
+
+char OmniBLE::cardinalDirection(){
+    char direction = 'N';
+    float turnVal = turnValue();
+    float velocityVal = velocityValue();
+    
+    // Left/right will take priority over north/south
+    if(turnVal < -turnThreshhold)
+        direction = 'W';
+    else if(turnVal > turnThreshhold)
+        direction = 'E';
+    else if (velocityVal < 0.0)
+        direction = 'S';
+    else
+        direction = 'N';
+    
+    return direction;
+}
+
+float OmniBLE::speedValue(){
+    return abs(velocityValue());
+}
+
+
 
 
 void OmniBLE::sendMessage(String message,boolean newLine)
@@ -81,8 +105,7 @@ String OmniBLE::mostRecentCommand(){
 
 void OmniBLE::sendProximityMeasurements(float measurements[],int arrLength)
 {
-    String measureString = "PRX:";
-    //size_t arrLength = sizeof(measurements) / sizeof(measurements[0]);
+    String measureString = outgoingProxPrefix+":";
     
     for(int i = 0; i < arrLength; i++){
         measureString+=String(round(measurements[i] * 10) / 10);

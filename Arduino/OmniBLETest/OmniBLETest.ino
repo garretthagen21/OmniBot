@@ -15,7 +15,7 @@ void setup() {
   botBT.begin(9600);
 
   // Note: This sets the broadcasting name of the HM-10 bluetooth module. We only need to do this once
-  //botBT.setPeripheralName("OmniBot");
+  botBT.setPeripheralName("OmniBot");
   
 }
 
@@ -32,8 +32,12 @@ void loop() {
   Serial.println("Velocity Value: "+String(botBT.velocityValue()));
   Serial.println("Autopilot Value: "+String(botBT.autopilotValue()));
 
+  // Note: These are the new commands where cardinalDirection() returns either N,S,E,W and speedValue() is a value from 0.0 - 1.0
+  Serial.println("Cardinal Direction: "+String(botBT.cardinalDirection()));
+  Serial.println("Speed Value: "+String(botBT.speedValue()));
+
   // Send sensor vals to device. Note we should only send a message when these change to avoid clobbering bluetooth channel
-  botBT.sendProximityMeasurements(sensorProximities,NUM_SONIC_SENSORS);
+  // botBT.sendProximityMeasurements(sensorProximities,NUM_SONIC_SENSORS);
 
   
   // Should probably use a delay so bluetooth doesnt get overloaded

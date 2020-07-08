@@ -98,9 +98,12 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
     
     
     func serialDidReceiveString(_ message: String) {
+        
+        print("[serialDidReceiveString] Recieved Bluetooth String: \(message)")
+        
         // TODO: Add UI elements to display proximities
         let incomingString = message.components(separatedBy: ":")
-        print("[serialDidReceiveString] Recieved Bluetooth String: \(incomingString)")
+     
         
         if incomingString.count != 2{
             return
@@ -180,7 +183,9 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             transmissionValLabel.text = RobotCommander.driveDirection.symbol
             transmissionTextLabel.text = RobotCommander.driveDirection.description
             
-            // TODO: Do we want this here
+            // TEMPORARY
+            print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
+            // Set a pending message
             if serial.isReady{
                 serial.setPendingMessage(RobotCommander.asBluetoothCommand)
             }
@@ -324,9 +329,11 @@ extension DashboardViewController
     func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
         
         // Print debugging message
-        print("[serialDidDiscoverPeripheral] Discovered Peripheral --> Name: \(peripheral.name ?? "") Services: \(peripheral.services ?? [])")
+        print("[serialDidDiscoverPeripheral] Discovered Peripheral --> Name: \(peripheral.name ?? ""), Services: \(peripheral.services ?? [])")
         
-        if UserSettings.defaultBluetoothPeripheral == peripheral.name ?? ""{
+        // TODO: Remove this once we add peripheral options
+        let isDSDTECH = peripheral.name == "DSD TECH";
+        if UserSettings.defaultBluetoothPeripheral == peripheral.name ?? "" || isDSDTECH{
             // Stop the current scan and begin connecting procedure
             serial.stopScan()
             serial.connectToPeripheral(peripheral)
