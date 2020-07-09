@@ -168,13 +168,16 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     func setARSessionRunStatus(isOn:Bool)
     {
         if isOn{
-            // Create a session configuration
+              print("Gesture Video Started")
+              // Create a session configuration
               let configuration = ARWorldTrackingConfiguration()
 
               // Run the view's session
               ARVideoSceneView.session.run(configuration)
         }
         else{
+            print("Gesture Video Paused")
+
             // Pause the view's session
             ARVideoSceneView.session.pause()
             // Clear the text
