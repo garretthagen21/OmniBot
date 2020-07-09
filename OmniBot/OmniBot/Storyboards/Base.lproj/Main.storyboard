@@ -212,7 +212,7 @@
                                     <constraint firstAttribute="height" constant="155" id="gws-EK-Gpp"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="KXe-TJ-STt" kind="embed" id="MOd-2g-b0D"/>
+                                    <segue destination="KXe-TJ-STt" kind="embed" identifier="EmbeddedDashboardSegue" id="MOd-2g-b0D"/>
                                 </connections>
                             </containerView>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvk-El-6Ci">
@@ -474,15 +474,26 @@
                         <outlet property="steeringLabel" destination="kXe-zZ-Z2R" id="ddZ-bV-lhi"/>
                         <outlet property="transmissionTextLabel" destination="Hox-54-Ty7" id="NF4-33-azX"/>
                         <outlet property="transmissionValLabel" destination="bvY-Gi-4rt" id="QWB-2U-bRE"/>
+                        <segue destination="1dS-vb-Knn" kind="show" identifier="BluetoothScannerSegue" id="D0K-1q-6yG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAi-zA-aud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="-0.33482142857142855"/>
         </scene>
+        <!--BluetoothScanner-->
+        <scene sceneID="W3n-QA-Ixq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BluetoothScanner" id="1dS-vb-Knn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="flB-go-yKM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xtx-Jr-Vub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424" y="0.0"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4bl-ON-lne"/>
+        <segue reference="MOd-2g-b0D"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FancyBase" width="100" height="100"/>

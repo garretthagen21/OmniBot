@@ -10,12 +10,11 @@
 import UIKit
 import CoreBluetooth
 
-final class BluetoothScannerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BluetoothSerialDelegate {
+final class BluetoothScannerViewController: UITableViewController, UIAdaptivePresentationControllerDelegate, BluetoothSerialDelegate {
 
 //MARK: IBOutlets
     
     @IBOutlet weak var tryAgainButton: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
     
     
 //MARK: Variables
@@ -29,12 +28,22 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
     /// Progress hud shown
     var progressHUD: MBProgressHUD?
     
+    /// Our delegate to notify views when we dismiss
+    weak var delegate: BluetoothScannerViewControllerDelegate?
+
+    
     
 //MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set presentation controller as modal
+        self.isModalInPresentation = true
+        
+        // Assign our delegates
+        self.navigationController?.presentationController?.delegate = self
+
         // tryAgainButton is only enabled when we've stopped scanning
         tryAgainButton.isEnabled = false
 
@@ -64,7 +73,6 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         // timeout has occurred, stop scanning and give the user the option to try again
         serial.stopScan()
         tryAgainButton.isEnabled = true
-        title = "Done scanning"
     }
     
     /// Should be called 10s after we've begun connecting
@@ -84,26 +92,25 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
             selectedPeripheral = nil
         }
         
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud?.mode = MBProgressHUDMode.text
-        hud?.labelText = "Failed to connect"
-        hud?.hide(true, afterDelay: 2)
+        if self.viewIfLoaded?.window != nil {
+            Alerts.createHUD(textValue: "❌ Failed to Connect", delayLength: 1.0)
+        }
     }
     
     
 //MARK: UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return peripherals.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // return a cell with the peripheral name as text in the label
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoundPeripheralCell")!
         let label = cell.viewWithTag(1) as! UILabel?
         label?.text = peripherals[(indexPath as NSIndexPath).row].peripheral.name
         return cell
@@ -112,7 +119,7 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
     
 //MARK: UITableViewDelegate
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -121,7 +128,7 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         selectedPeripheral = peripherals[(indexPath as NSIndexPath).row].peripheral
         serial.connectToPeripheral(selectedPeripheral!)
         progressHUD = MBProgressHUD.showAdded(to: view, animated: true)
-        progressHUD!.labelText = "Connecting"
+        progressHUD!.labelText = "Connecting..."
         
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(BluetoothScannerViewController.connectTimeOut), userInfo: nil, repeats: false)
     }
@@ -149,10 +156,10 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         
         tryAgainButton.isEnabled = true
                 
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud?.mode = MBProgressHUDMode.text
-        hud?.labelText = "Failed to connect"
-        hud?.hide(true, afterDelay: 1.0)
+          if self.viewIfLoaded?.window != nil {
+                Alerts.createHUD(textValue: "❌ Failed to Connect", delayLength: 1.0)
+        }
+       
     }
     
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
@@ -162,10 +169,10 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         
         tryAgainButton.isEnabled = true
         
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud?.mode = MBProgressHUDMode.text
-        hud?.labelText = "Failed to connect"
-        hud?.hide(true, afterDelay: 1.0)
+        if self.viewIfLoaded?.window != nil {
+             Alerts.createHUD(textValue: "❌ Failed to Connect", delayLength: 1.0)
+        }
+      
 
     }
     
@@ -173,9 +180,17 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         if let hud = progressHUD {
             hud.hide(false)
         }
+                
+        // Ask if we want to set the default peripheral name if it is different
+        if serial.connectedPeripheral!.name != UserSettings.defaultBluetoothPeripheral, let periphName = serial.connectedPeripheral!.name{
+              changeDefaultPeripheralName(newName: periphName)
+        }else{
+            // Close the main view
+            self.cancel(self)
+        }
+       
         
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "reloadStartViewController"), object: self)
-        dismiss(animated: true, completion: nil)
+      
     }
     
     func serialDidChangeState() {
@@ -189,14 +204,39 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         }
     }
     
+    private func changeDefaultPeripheralName(newName:String){
+        // If we are not scanning display a two option alert to disconnect
+       let twoOptionAlert = UIAlertController(title: "📲 New Default Peripheral", message: "You have connected to a new BLE peripheral named \(newName). Would you like to set it as your default BLE peripheral?" ,preferredStyle: UIAlertController.Style.alert)
+             
+             twoOptionAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
+                UserSettings.defaultBluetoothPeripheral = newName
+                Alerts.createHUD(textValue: "✅ Default Peripheral Changed to: \(newName)", delayLength: 1.0)
+                twoOptionAlert.dismiss(animated: true, completion: nil)
+                self.cancel(self)
+             }))
+             twoOptionAlert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { (action) in
+                 twoOptionAlert.dismiss(animated: true, completion: nil)
+                 self.cancel(self)
+             }))
+         self.present(twoOptionAlert, animated: true, completion: nil)
+    }
+    
 
 //MARK: IBActions
     
     @IBAction func cancel(_ sender: AnyObject) {
-        // go back
+        // Stop scan
         serial.stopScan()
-        dismiss(animated: true, completion: nil)
+        
+        // Call our completion delegate upon dismissal
+        dismiss(animated: true, completion: {
+            self.delegate?.bluetoothScannerViewControllerDidFinish(self)
+        })
     }
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+          print("presentationControllerDidAttemptToDismiss")
+          self.cancel(self)
+      }
 
     @IBAction func tryAgain(_ sender: AnyObject) {
         // empty array an start again
@@ -207,6 +247,8 @@ final class BluetoothScannerViewController: UIViewController, UITableViewDataSou
         serial.startScan()
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(BluetoothScannerViewController.scanTimeOut), userInfo: nil, repeats: false)
     }
+    
+  
     
 }
 

@@ -21,6 +21,11 @@ enum AppStoryboard : String{
         return instance.instantiateViewController(withIdentifier: storyboardID) as! T
     }
     
+     func navigationController<T : UINavigationController>(navigationControllerClass : T.Type) -> T{
+         let storyboardID = (navigationControllerClass as UINavigationController.Type).storyboardID
+         return instance.instantiateViewController(withIdentifier: storyboardID) as! T
+     }
+    
     func initialViewController() -> UIViewController? {
         return instance.instantiateInitialViewController()
     }

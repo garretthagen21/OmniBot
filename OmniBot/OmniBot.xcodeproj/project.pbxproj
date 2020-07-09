@@ -31,9 +31,10 @@
 		06516CEF2485544600CFA05F /* RobotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CEE2485544600CFA05F /* RobotState.swift */; };
 		06516CF32485560400CFA05F /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF22485560400CFA05F /* BluetoothSerial.swift */; };
 		06516CF5248571F400CFA05F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF4248571F400CFA05F /* DashboardViewController.swift */; };
-		06516CF72485A04400CFA05F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF62485A04400CFA05F /* Utilities.swift */; };
 		06516CF82485A42500CFA05F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF4248571F400CFA05F /* DashboardViewController.swift */; };
 		0686F65E24972A890032AA30 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0686F65D24972A890032AA30 /* Extensions.swift */; };
+		06B7D64024B6ACF800FF18C6 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D63F24B6ACF800FF18C6 /* Alerts.swift */; };
+		06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D64124B6CF2000FF18C6 /* Protocols.swift */; };
 		769382D29D9183AF9A80EEAC /* Pods_OmniBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */; };
 		9D172351F853D6FC081A1B96 /* Pods_OmniBot_OmniBotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BFE5250160E4845F2EB1C5 /* Pods_OmniBot_OmniBotUITests.framework */; };
 		C34B2E0CE8F1158BB1BBB69E /* Pods_OmniBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */; };
@@ -87,8 +88,9 @@
 		06516CEE2485544600CFA05F /* RobotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotState.swift; sourceTree = "<group>"; };
 		06516CF22485560400CFA05F /* BluetoothSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
 		06516CF4248571F400CFA05F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		06516CF62485A04400CFA05F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0686F65D24972A890032AA30 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		06B7D63F24B6ACF800FF18C6 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		06B7D64124B6CF2000FF18C6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		1AB465AE2D950222A09739F6 /* Pods-OmniBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBotTests.debug.xcconfig"; path = "Target Support Files/Pods-OmniBotTests/Pods-OmniBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 			children = (
 				060CCC3B24AEAD5200148C42 /* GestureOptionView.swift */,
 				060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */,
+				06B7D63F24B6ACF800FF18C6 /* Alerts.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				0643E249248EB2990008FF0F /* Views */,
 				06516CFA2485B5BE00CFA05F /* Storyboards */,
 				06516CBB248552C500CFA05F /* AppDelegate.swift */,
+				06516CBD248552C500CFA05F /* SceneDelegate.swift */,
 				06516CC6248552C700CFA05F /* Assets.xcassets */,
 				06516CCB248552C700CFA05F /* Info.plist */,
 			);
@@ -205,15 +209,14 @@
 		06516CED248553F300CFA05F /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				060CCC4424B3EEBA00148C42 /* OmniBot-Bridging-Header.h */,
-				06516CBD248552C500CFA05F /* SceneDelegate.swift */,
-				06516CF62485A04400CFA05F /* Utilities.swift */,
+				06B7D64124B6CF2000FF18C6 /* Protocols.swift */,
+				060CCC4724B3EF9800148C42 /* UserSettings.swift */,
 				06516CF22485560400CFA05F /* BluetoothSerial.swift */,
 				06516CEE2485544600CFA05F /* RobotState.swift */,
 				0686F65D24972A890032AA30 /* Extensions.swift */,
 				060CCC4324B3EE8D00148C42 /* MBProgressHUD.h */,
 				060CCC4524B3EEBA00148C42 /* MBProgressHUD.m */,
-				060CCC4724B3EF9800148C42 /* UserSettings.swift */,
+				060CCC4424B3EEBA00148C42 /* OmniBot-Bridging-Header.h */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 			files = (
 				06516CC2248552C500CFA05F /* GestureViewController.swift in Sources */,
 				06516CC0248552C500CFA05F /* RemoteViewController.swift in Sources */,
+				06B7D64024B6ACF800FF18C6 /* Alerts.swift in Sources */,
 				060CCC4224B3ED6E00148C42 /* BluetoothScannerViewController.swift in Sources */,
 				06516CBC248552C500CFA05F /* AppDelegate.swift in Sources */,
 				060CCC3824AE9C8B00148C42 /* handgestures.mlmodel in Sources */,
@@ -520,9 +524,9 @@
 				06516CF32485560400CFA05F /* BluetoothSerial.swift in Sources */,
 				060CCC4624B3EEBA00148C42 /* MBProgressHUD.m in Sources */,
 				060CCC4C24B3F38100148C42 /* AppStoryboard.swift in Sources */,
-				06516CF72485A04400CFA05F /* Utilities.swift in Sources */,
 				060CCC4824B3EF9800148C42 /* UserSettings.swift in Sources */,
 				06516CEF2485544600CFA05F /* RobotState.swift in Sources */,
+				06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */,
 				06516CF5248571F400CFA05F /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

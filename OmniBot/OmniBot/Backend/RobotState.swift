@@ -129,9 +129,29 @@ extension RobotCommander{
                  "turning":turnValue,
                  "autopilot":autopilot]
      }
-    
+    /// Convenience to apply a stop signal
     static func emergencyStop(){
         RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
+    }
+    
+    /// Pause updates to the robot
+    static func pauseControl(displayHUD:Bool = true){
+        emergencyStop()
+        notificationsEnabled = false
+        
+        if displayHUD{
+            Alerts.createHUD(textValue: "⏸ Control Paused", delayLength: 2.0)
+        }
+    }
+    /// Resume sending updates to the robot
+    static func resumeControl(displayHUD:Bool = true)
+    {
+       notificationsEnabled = true
+       emergencyStop()
+        
+        if displayHUD{
+            Alerts.createHUD(textValue: "▶️ Control Resumed", delayLength: 2.0)
+        }
     }
 }
 
@@ -227,8 +247,4 @@ extension RobotCommander{
 
 
 
-extension Notification.Name {
-    static var commanderChanged: Notification.Name {
-        return .init(rawValue: "RobotCommander.commanderChanged")
-    }
-}
+
