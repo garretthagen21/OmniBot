@@ -121,4 +121,26 @@ enum Segues:String{
 }
 
 
-
+extension UIColor{
+    static var systemLabel:UIColor{ UIColor{
+        traitCollection in
+        switch traitCollection.userInterfaceStyle {
+           case .dark:
+               return UIColor.white
+           default:
+               return UIColor.black
+            }
+        }
+    }
+    
+    static var systemSecondaryLabel:UIColor{ UIColor{
+        traitCollection in
+        switch traitCollection.userInterfaceStyle {
+           case .dark:
+               return UIColor.white
+           default:
+               return UIColor.black
+            }
+        }
+    }
+}

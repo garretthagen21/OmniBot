@@ -15,11 +15,18 @@ struct Alerts
 {
     private var progressHUD: MBProgressHUD?
     
-    static func dismissableAlert(title: String,message: String,option: String,view: UIViewController =  UIApplication.shared.currentViewController()!){
+    static func notificationAlert(title: String,message: String,view: UIViewController =  UIApplication.shared.currentViewController()!) -> UIViewController{
+        let alert = UIAlertController(title: title, message: message , preferredStyle: .alert)
+        view.present(alert, animated: true, completion: nil)
+        return alert
+        
+    }
+    static func dismissableAlert(title: String,message: String,option: String,view: UIViewController =  UIApplication.shared.currentViewController()!) -> UIViewController{
         
         let alert = UIAlertController(title: title, message: message , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: option, style: UIAlertAction.Style.default, handler: { action -> Void in alert.dismiss(animated: true, completion: nil) }))
         view.present(alert, animated: true, completion: nil)
+        return alert
     }
     
     static func createHUD(textValue: String, delayLength: Double, view: UIView =  UIApplication.shared.currentViewController()!.view){

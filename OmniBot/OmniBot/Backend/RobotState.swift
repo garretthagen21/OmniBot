@@ -135,7 +135,7 @@ extension RobotCommander{
     }
     
     /// Pause updates to the robot
-    static func pauseControl(displayHUD:Bool = true){
+    static func pauseControl(displayHUD:Bool = false){
         emergencyStop()
         notificationsEnabled = false
         
@@ -144,7 +144,7 @@ extension RobotCommander{
         }
     }
     /// Resume sending updates to the robot
-    static func resumeControl(displayHUD:Bool = true)
+    static func resumeControl(displayHUD:Bool = false)
     {
        notificationsEnabled = true
        emergencyStop()

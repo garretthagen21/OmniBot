@@ -253,7 +253,7 @@ extension DashboardViewController
             switch(self)
             {
             case .off:
-                return .lightText
+                return .label
             case .disconnected:
                 return .systemRed
             case .scanning:
@@ -270,7 +270,7 @@ extension DashboardViewController
         var image:UIImage{
             switch(self){
                 case .off:
-                    return UIImage(named:  "icons8-bluetooth-white-100")!
+                    return UITraitCollection.current.userInterfaceStyle == .dark ? UIImage(named:  "icons8-bluetooth-white-100")! :     UIImage(named:  "icons8-bluetooth-black-100")!
                  case .disconnected:
                      return UIImage(named:  "icons8-bluetooth-red-100")!
                  case .scanning:

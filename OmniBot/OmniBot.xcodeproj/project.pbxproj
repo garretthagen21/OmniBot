@@ -145,7 +145,6 @@
 			children = (
 				060CCC3B24AEAD5200148C42 /* GestureOptionView.swift */,
 				060CCC3D24AEAD6C00148C42 /* GestureOptionView.xib */,
-				06B7D63F24B6ACF800FF18C6 /* Alerts.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,6 +213,7 @@
 				06516CF22485560400CFA05F /* BluetoothSerial.swift */,
 				06516CEE2485544600CFA05F /* RobotState.swift */,
 				0686F65D24972A890032AA30 /* Extensions.swift */,
+				06B7D63F24B6ACF800FF18C6 /* Alerts.swift */,
 				060CCC4324B3EE8D00148C42 /* MBProgressHUD.h */,
 				060CCC4524B3EEBA00148C42 /* MBProgressHUD.m */,
 				060CCC4424B3EEBA00148C42 /* OmniBot-Bridging-Header.h */,
@@ -712,14 +712,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZQ76B4GZJY;
 				INFOPLIST_FILE = OmniBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pitt.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";
@@ -736,14 +736,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZQ76B4GZJY;
 				INFOPLIST_FILE = OmniBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pitt.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";

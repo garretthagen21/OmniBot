@@ -73,6 +73,7 @@ final class BluetoothScannerViewController: UITableViewController, UIAdaptivePre
         // timeout has occurred, stop scanning and give the user the option to try again
         serial.stopScan()
         tryAgainButton.isEnabled = true
+        title = "Done Scanning"
     }
     
     /// Should be called 10s after we've begun connecting
@@ -243,7 +244,7 @@ final class BluetoothScannerViewController: UITableViewController, UIAdaptivePre
         peripherals = []
         tableView.reloadData()
         tryAgainButton.isEnabled = false
-        title = "Scanning ..."
+        title = "Scanning..."
         serial.startScan()
         Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(BluetoothScannerViewController.scanTimeOut), userInfo: nil, repeats: false)
     }
