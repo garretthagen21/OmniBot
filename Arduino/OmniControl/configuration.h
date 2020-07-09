@@ -27,6 +27,7 @@
 
 const int distancelimit = 30; //distance limit for obstacles in front           
 const int sidedistancelimit = 30; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
+const int NUM_SONIC_SENSORS = 4;
 int distance;
 int numcycles = 0;
 const int turntime = 800; //Time the robot spends turning (miliseconds)

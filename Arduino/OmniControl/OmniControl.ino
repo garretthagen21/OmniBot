@@ -1,5 +1,9 @@
 #include "configuration.h"
+#include "OmniBLE.h"
 
+/*setup Bluetooth module*/
+OmniBLE botBT(3,4); // Pins: rx, rt
+  
 /*motor control*/
 void go_Advance(void) //Forward
 {
@@ -101,19 +105,11 @@ int watch_R(){
 }
 
 /*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode(){
+void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){
   int up_bound = 10; //cm
   int lo_bound = 2; //cm
   int back_time = 300; //ms
   int turn_time = 300; //ms
-  int dis_FL, dis_FR, dis_L, dis_R;
-  
-  dis_FL = watch_FL();
-  dis_FR = watch_FR();
-  dis_L = watch_L();
-  dis_R = watch_R();
-  
-  set_Motorspeed(120,120);
   
   if ( (dis_FL <= up_bound && dis_FL >= lo_bound) || (dis_FR <= up_bound && dis_FR >= lo_bound) ){
     go_Back();
@@ -136,34 +132,27 @@ void obstacle_avoidance_mode(){
 }
 
 /* Joystick Mode */
-void joystick_mode(){
-    int cmd; // TODO: from bluetooth
-    int spd; // TODO: from bluetooth
+void joystick_gesture_mode(){
+    char cmd;
     
+    cmd = botBT.cardinalDirection();
     switch(cmd){
-    case 0:
-      set_Motorspeed(spd, spd);
-      break;
-    case 1:
-      go_Advance();
-      break;
-    case 2:
-      go_Back();
-      break;
-    case 3:
-      go_Left();
-      break;
-    case 4:
-      go_Right();
-      break;
+      case 'N':
+        go_Advance();
+        break;
+      case 'S':
+        go_Back();
+        break;
+      case 'W':
+        go_Left();
+        break;
+      case 'E':
+        go_Right();
+        break;
    }
 }
 
-void gesture_mode(){
-  // TODO
-}
-
-void setup() {
+void setup() {  
   /*setup L298N pin mode*/
   pinMode(dir1PinL, OUTPUT); 
   pinMode(dir2PinL, OUTPUT); 
@@ -193,21 +182,37 @@ void setup() {
   /*baud rate*/
   Serial.begin(9600);
 
+  /*bluetooth wrapper*/
+  botBT.printDebugToSerial = false;
+  botBT.begin(9600);
+
+  // Note: This sets the broadcasting name of the HM-10 bluetooth module. We only need to do this once
+  botBT.setPeripheralName("OmniBot");
 }
 
 void loop() {
-  int mode; // TODO: from bluetooth
-  
-  switch(mode){
-    case 0:
-      obstacle_avoidance_mode();
-      break;
-    case 1:
-      joystick_mode();
-      break;
-    case 2:
-      gesture_mode();
-      break;
-   }
+  int dis_FL, dis_FR, dis_L, dis_R, spd;
 
+  dis_FL = watch_FL();
+  dis_FR = watch_FR();
+  dis_L = watch_L();
+  dis_R = watch_R();
+  
+  // Update our botBT with the latest data
+  botBT.sync();
+  
+  spd = round(botBT.speedValue()*255);
+  set_Motorspeed(spd, spd);
+  
+  if(botBT.autopilotValue()){
+      obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
+  }
+  else {
+      joystick_gesture_mode();
+  }
+  
+  // Send sensor vals to device. 
+  // Note we should only send a message when these change to avoid clobbering bluetooth channel
+  float sensorProximities[NUM_SONIC_SENSORS] = {float(dis_FL), float(dis_FR), float(dis_L), float(dis_R)};
+  botBT.sendProximityMeasurements(sensorProximities,NUM_SONIC_SENSORS);
 }
