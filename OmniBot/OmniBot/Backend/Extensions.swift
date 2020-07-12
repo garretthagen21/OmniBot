@@ -25,6 +25,19 @@ extension Bundle {
     }
 }
 
+extension Notification.Name {
+    static var commanderChanged: Notification.Name {
+        return .init(rawValue: "RobotCommander.commanderChanged")
+    }
+    
+    
+    static var bluetoothStatusChanged : Notification.Name{
+        return .init(rawValue: "BluetoothSerial.bluetoothStatusChanged")
+    }
+    
+ 
+}
+
 extension UIView {
 
     func rotate(degrees: CGFloat) {
@@ -74,6 +87,60 @@ extension UIViewController{
     static func instantiateFromAppStoryboard(appStoryboard : AppStoryboard) -> Self{
         return appStoryboard.viewController(viewControllerClass: self)
     }
+    
+    
+    func topMostViewController() -> UIViewController {
+        if self.presentedViewController == nil {
+            return self
+        }
+        if let navigation = self.presentedViewController as? UINavigationController {
+            return navigation.visibleViewController!.topMostViewController()
+        }
+        if let tab = self.presentedViewController as? UITabBarController {
+            if let selectedTab = tab.selectedViewController {
+                return selectedTab.topMostViewController()
+            }
+            return tab.topMostViewController()
+        }
+        return self.presentedViewController!.topMostViewController()
+    }
+    
 }
 
 
+extension UIApplication {
+    func currentViewController() -> UIViewController? {
+        let newKeyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        return newKeyWindow?.rootViewController?.topMostViewController()
+    }
+}
+
+enum Segues:String{
+    case BluetoothScannerSegue
+    case EmbeddedDashboardSegue
+}
+
+
+extension UIColor{
+    static var systemLabel:UIColor{ UIColor{
+        traitCollection in
+        switch traitCollection.userInterfaceStyle {
+           case .dark:
+               return UIColor.white
+           default:
+               return UIColor.black
+            }
+        }
+    }
+    
+    static var systemSecondaryLabel:UIColor{ UIColor{
+        traitCollection in
+        switch traitCollection.userInterfaceStyle {
+           case .dark:
+               return UIColor.white
+           default:
+               return UIColor.black
+            }
+        }
+    }
+}

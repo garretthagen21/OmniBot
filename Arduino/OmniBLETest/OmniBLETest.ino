@@ -25,16 +25,14 @@ void loop() {
   botBT.sync();
   
   // Print the stats
-  Serial.println("");
-  Serial.println("---------------------------------------");
-  Serial.println("Current Command: "+botBT.mostRecentCommand());
-  Serial.println("Turning Value: "+String(botBT.turnValue()));
-  Serial.println("Velocity Value: "+String(botBT.velocityValue()));
-  Serial.println("Autopilot Value: "+String(botBT.autopilotValue()));
-
+  //Serial.println("");
+  //Serial.println("---------------------------------------");
+  //Serial.println("Recieved Command: "+botBT.mostRecentCommand());
+  Serial.println("Turning: "+String(botBT.turnValue())+", Velocity: "+String(botBT.velocityValue())+" Autopilot: "+String(botBT.autopilotValue()));
+ 
   // Note: These are the new commands where cardinalDirection() returns either N,S,E,W and speedValue() is a value from 0.0 - 1.0
-  Serial.println("Cardinal Direction: "+String(botBT.cardinalDirection()));
-  Serial.println("Speed Value: "+String(botBT.speedValue()));
+  // Serial.println("Cardinal Direction: "+String(botBT.cardinalDirection()));
+  // Serial.println("Speed Value: "+String(botBT.speedValue()));
 
   // Send sensor vals to device. Note we should only send a message when these change to avoid clobbering bluetooth channel
   // botBT.sendProximityMeasurements(sensorProximities,NUM_SONIC_SENSORS);

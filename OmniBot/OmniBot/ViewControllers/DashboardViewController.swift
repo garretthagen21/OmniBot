@@ -10,14 +10,14 @@ import Foundation
 import CoreBluetooth
 import UIKit
 
-class DashboardViewController : UIViewController,BluetoothSerialDelegate
+class DashboardViewController : UIViewController,BluetoothSerialDelegate,BluetoothScannerViewControllerDelegate
 {
     
+    
+    
     static var commonViewLoaded = false
-    // private let AUTOCONNECT_BT_PERIPHERALS = ["OmniBot","DSD TECH"]
     
     
-
     /// UI Outlets
     @IBOutlet weak var bluetoothStatusImage: UIImageView!
     @IBOutlet weak var bluetoothStatusLabel: UILabel!
@@ -44,18 +44,17 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         // Setup gesture recognizer for bluetooth
         let bluetoothTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBluetoothTap(_:)))
         bluetoothStack.addGestureRecognizer(bluetoothTap)
-        bluetoothStack.isUserInteractionEnabled = true
         
         // Setup gesture recognizer for bluetooth
          let bluetoothHold = UILongPressGestureRecognizer(target: self, action: #selector(self.handleBluetoothHold(_:)))
          bluetoothStack.addGestureRecognizer(bluetoothHold)
         
+        bluetoothStack.isUserInteractionEnabled = true
+        
         // Setup gesture recognizer for speed units
         let speedTap = UITapGestureRecognizer(target: self, action: #selector(self.handleSpeedTap(_:)))
         speedStack.addGestureRecognizer(speedTap)
         speedStack.isUserInteractionEnabled = true
-        
-    
         
       
         // Add commander observer
@@ -75,26 +74,36 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
         if(!DashboardViewController.commonViewLoaded){
             serial = BluetoothSerial(delegate: self)
         }
-        else{
-            serial.delegate = self
-        }
         
         // We have loaded the common view to avoid BT interrupts (this is a a hack)
         DashboardViewController.commonViewLoaded = true
         
-        // Show BT Status
-        updateBluetoothStatus()
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+         super.viewDidAppear(animated)
          print("Dashboard viewDidAppear() Triggered")
+        
+        // Set the delegate to ourselves since we are in visible view
+        serial.delegate = self
+        
         // Auto connect on startup
         if !serial.isReady && !serial.isScanning
         {
            startScanning()
         }
+        
+        // Show BT Status
+        updateBluetoothStatus()
     }
+    
+    /// Delegate function for when we return from scanner
+    func bluetoothScannerViewControllerDidFinish(_ bluetoothScannerVC: BluetoothScannerViewController) {
+        print("bluetoothScannerViewControllerDidFinish called")
+        viewDidAppear(true)
+    }
+    
     
     
     func serialDidReceiveString(_ message: String) {
@@ -113,7 +122,32 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
     /// Triggered when user holds bluetooth
     @objc private func handleBluetoothHold(_ sender: UITapGestureRecognizer)
     {
-        
+        // Only segue at beginning of gesture
+        if sender.state == UIGestureRecognizer.State.began{
+            print("Bluetooth Held")
+           
+            
+            // Assign us as the delegate
+            let scannerVC = BluetoothScannerViewController.instantiateFromAppStoryboard(appStoryboard: .BluetoothScanner)
+            scannerVC.delegate = self
+            
+            // Move to scanner view
+            self.performSegue(withIdentifier: Segues.BluetoothScannerSegue.rawValue, sender: self)
+        }
+       
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.BluetoothScannerSegue.rawValue, let scannerNC = segue.destination as? UINavigationController{
+            // Stop scanning
+            self.scanTimeOut()
+            
+            // Set the scanner delegate to us
+            if let scannerVC = scannerNC.viewControllers.first as? BluetoothScannerViewController{
+                 scannerVC.delegate = self
+            }
+           
+        }
     }
 
     /// Triggered when user taps bluetooth
@@ -170,6 +204,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
     /// Triggered when the robot state is changed (could be set by any view controller)
     @objc private func commanderDidChange(_ notification: Notification) {
         if let changeTrigger = notification.object as? RobotCommander.ChangeTrigger{
+            // TEMPORARY
+            
             // Update speed values
             speedValueLabel.text = String(format: "%.1f",self.speedUnitsLabel.text == "mph" ? RobotCommander.speedMilesHour : RobotCommander.speedMetersSec)
             
@@ -183,8 +219,6 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate
             transmissionValLabel.text = RobotCommander.driveDirection.symbol
             transmissionTextLabel.text = RobotCommander.driveDirection.description
             
-            // TEMPORARY
-            print("Sending BT Command: \(RobotCommander.asBluetoothCommand)")
             // Set a pending message
             if serial.isReady{
                 serial.setPendingMessage(RobotCommander.asBluetoothCommand)
@@ -219,7 +253,7 @@ extension DashboardViewController
             switch(self)
             {
             case .off:
-                return .lightText
+                return .label
             case .disconnected:
                 return .systemRed
             case .scanning:
@@ -236,7 +270,7 @@ extension DashboardViewController
         var image:UIImage{
             switch(self){
                 case .off:
-                    return UIImage(named:  "icons8-bluetooth-white-100")!
+                    return UITraitCollection.current.userInterfaceStyle == .dark ? UIImage(named:  "icons8-bluetooth-white-100")! :     UIImage(named:  "icons8-bluetooth-black-100")!
                  case .disconnected:
                      return UIImage(named:  "icons8-bluetooth-red-100")!
                  case .scanning:
@@ -335,6 +369,7 @@ extension DashboardViewController
         let isDSDTECH = peripheral.name == "DSD TECH";
         if UserSettings.defaultBluetoothPeripheral == peripheral.name ?? "" || isDSDTECH{
             // Stop the current scan and begin connecting procedure
+            Alerts.createHUD(textValue: "✅ Found Default Peripheral: \(UserSettings.defaultBluetoothPeripheral)", delayLength: 2.0)
             serial.stopScan()
             serial.connectToPeripheral(peripheral)
             updateBluetoothStatus()
@@ -347,8 +382,4 @@ extension DashboardViewController
 }
 
 
-extension Notification.Name {
-    static var bluetoothStatusChanged : Notification.Name{
-        return .init(rawValue: "BluetoothSerial.bluetoothStatusChanged")
-    }
-}
+

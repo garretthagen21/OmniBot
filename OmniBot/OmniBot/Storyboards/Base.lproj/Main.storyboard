@@ -46,7 +46,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manual" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sja-Jb-fcy">
-                                            <rect key="frame" x="10" y="215" width="107" height="40"/>
+                                            <rect key="frame" x="10" y="197" width="107" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Hhf-zi-b62"/>
                                                 <constraint firstAttribute="width" constant="107" id="et4-Xr-1Rd"/>
@@ -126,7 +126,7 @@
                                             </constraints>
                                         </stackView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pXu-ug-b8J" customClass="JoyStickView" customModule="BRHJoyStickView">
-                                            <rect key="frame" x="70" y="273" width="234" height="234"/>
+                                            <rect key="frame" x="70" y="255" width="234" height="234"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="pXu-ug-b8J" secondAttribute="height" multiplier="1:1" id="sPR-fk-DKY"/>
                                             </constraints>
@@ -155,6 +155,7 @@
                                         <constraint firstItem="ez8-Np-prh" firstAttribute="top" secondItem="rgs-Lt-k7E" secondAttribute="bottom" constant="18" id="3bb-au-a59"/>
                                         <constraint firstItem="rgs-Lt-k7E" firstAttribute="leading" secondItem="7xE-zG-4FY" secondAttribute="leading" constant="10" id="45R-vc-Lqp"/>
                                         <constraint firstItem="ez8-Np-prh" firstAttribute="leading" secondItem="7xE-zG-4FY" secondAttribute="leading" constant="10" id="6OG-xj-DjT"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pXu-ug-b8J" secondAttribute="bottom" constant="10" id="F7P-EM-o8B"/>
                                         <constraint firstAttribute="trailing" secondItem="ez8-Np-prh" secondAttribute="trailing" constant="10" id="G4J-ea-feh"/>
                                         <constraint firstItem="Sja-Jb-fcy" firstAttribute="leading" secondItem="7xE-zG-4FY" secondAttribute="leading" constant="10" id="L0E-iu-5o9"/>
                                         <constraint firstAttribute="trailing" secondItem="pXu-ug-b8J" secondAttribute="trailing" constant="70" id="QG0-NI-rmg"/>
@@ -162,12 +163,12 @@
                                         <constraint firstAttribute="trailing" secondItem="uvt-1G-Dk9" secondAttribute="trailing" constant="10" id="SNU-QL-tpA"/>
                                         <constraint firstItem="rgs-Lt-k7E" firstAttribute="top" secondItem="7xE-zG-4FY" secondAttribute="top" constant="16" id="V2H-Cg-1Ht"/>
                                         <constraint firstItem="pXu-ug-b8J" firstAttribute="centerX" secondItem="7xE-zG-4FY" secondAttribute="centerX" id="YZY-YF-hFj"/>
-                                        <constraint firstItem="Sja-Jb-fcy" firstAttribute="top" secondItem="uvt-1G-Dk9" secondAttribute="bottom" constant="43" id="ZSw-Hm-9h2"/>
+                                        <constraint firstItem="Sja-Jb-fcy" firstAttribute="top" secondItem="uvt-1G-Dk9" secondAttribute="bottom" constant="25" id="ZSw-Hm-9h2"/>
                                         <constraint firstItem="uvt-1G-Dk9" firstAttribute="leading" secondItem="7xE-zG-4FY" secondAttribute="leading" constant="10" id="hbR-ee-ds4"/>
                                         <constraint firstItem="pXu-ug-b8J" firstAttribute="leading" secondItem="7xE-zG-4FY" secondAttribute="leading" constant="70" id="n1P-kd-fxd"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="prominent"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -212,7 +213,7 @@
                                     <constraint firstAttribute="height" constant="155" id="gws-EK-Gpp"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="KXe-TJ-STt" kind="embed" id="MOd-2g-b0D"/>
+                                    <segue destination="KXe-TJ-STt" kind="embed" identifier="EmbeddedDashboardSegue" id="MOd-2g-b0D"/>
                                 </connections>
                             </containerView>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvk-El-6Ci">
@@ -226,7 +227,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-7V-JrD">
                                 <rect key="frame" x="178" y="493" width="58.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUd-ob-UY4">
@@ -337,13 +338,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBZ-z3-d1x" userLabel="SpeedVal">
                                                             <rect key="frame" x="21.5" y="0.0" width="56.5" height="45.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuK-fp-DfX" userLabel="SpeedLabel">
                                                             <rect key="frame" x="32.5" y="53.5" width="34.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -353,7 +354,7 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Q6f-YD-wRF" userLabel="SteerArrow">
                                                             <rect key="frame" x="19.5" y="0.5" width="60" height="59"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="Xsx-lF-GDK"/>
                                                                 <constraint firstAttribute="height" constant="60" id="q5t-s6-Age"/>
@@ -362,7 +363,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="steering" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXe-zZ-Z2R" userLabel="SteerLabel">
                                                             <rect key="frame" x="18.5" y="68" width="62.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -373,7 +374,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="P" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvY-Gi-4rt" userLabel="TransmissionVal">
                                                             <rect key="frame" x="38.5" y="0.0" width="22.5" height="45.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="park" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-54-Ty7" userLabel="TransmissionLabel">
@@ -382,7 +383,7 @@
                                                                 <constraint firstAttribute="width" constant="80" id="e8Z-c5-TCa"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -406,7 +407,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="disconnected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Fu-2WJ" userLabel="BluetoothLabel">
                                                             <rect key="frame" x="30" y="5" width="104" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -418,13 +419,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-pA-gLd" userLabel="AutopilotVal">
                                                             <rect key="frame" x="0.0" y="0.0" width="30.5" height="26.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="autopilot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ur3-35-5PK" userLabel="AutopilotLabel">
                                                             <rect key="frame" x="43" y="3" width="67" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -444,7 +445,7 @@
                                         <constraint firstAttribute="bottom" secondItem="X6d-Zx-XBP" secondAttribute="bottom" constant="10" id="wQ3-dg-eag"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="dark"/>
+                                <blurEffect style="prominent"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -474,15 +475,26 @@
                         <outlet property="steeringLabel" destination="kXe-zZ-Z2R" id="ddZ-bV-lhi"/>
                         <outlet property="transmissionTextLabel" destination="Hox-54-Ty7" id="NF4-33-azX"/>
                         <outlet property="transmissionValLabel" destination="bvY-Gi-4rt" id="QWB-2U-bRE"/>
+                        <segue destination="1dS-vb-Knn" kind="show" identifier="BluetoothScannerSegue" id="D0K-1q-6yG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAi-zA-aud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="-0.33482142857142855"/>
         </scene>
+        <!--BluetoothScanner-->
+        <scene sceneID="W3n-QA-Ixq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BluetoothScanner" id="1dS-vb-Knn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="flB-go-yKM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xtx-Jr-Vub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424" y="0.0"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4bl-ON-lne"/>
+        <segue reference="MOd-2g-b0D"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="FancyBase" width="100" height="100"/>

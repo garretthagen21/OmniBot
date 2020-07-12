@@ -67,13 +67,37 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
               switch(self){
             
                    case .okSign:
-                     RobotCommander.turnValue += 0.1 // TODO: Alert user if we are maxed out
+                    if RobotCommander.turnValue >= RobotCommander.TURNING_LIMIT_X{
+                        Alerts.createHUD(textValue: "🔴 Right Turn Limit Reached!", delayLength: 1.0)
+                    }
+                    else{
+                         RobotCommander.turnValue += 0.1
+                    }
+                    
                    case .aloha:
-                     RobotCommander.turnValue -= 0.1 // TODO: Alert user if we are maxed out
+                    if RobotCommander.turnValue <= -RobotCommander.TURNING_LIMIT_X{
+                        Alerts.createHUD(textValue: "🔴 Left Turn Limit Reached!", delayLength: 1.0)
+                    }
+                    else{
+                        RobotCommander.turnValue -= 0.1
+                    }
+                     
                    case .flatHand:
-                     RobotCommander.velocityValue += 0.1
+                    if RobotCommander.velocityValue >= RobotCommander.SPEED_LIMIT_Y{
+                        Alerts.createHUD(textValue: "🔴 Forward Limit Reached!", delayLength: 1.0)
+                    }
+                    else{
+                        RobotCommander.velocityValue += 0.1
+                    }
+                    
                    case .rockOn:
-                     RobotCommander.velocityValue -= 0.1
+                    
+                      if RobotCommander.velocityValue <= -RobotCommander.SPEED_LIMIT_Y{
+                        Alerts.createHUD(textValue: "🔴 Reverse Limit Reached!", delayLength: 1.0)
+                      }
+                      else{
+                            RobotCommander.velocityValue -= 0.1
+                      }
                    case .peace:
                      RobotCommander.autopilot = !RobotCommander.autopilot
                    case .tuckedThumb:
@@ -144,13 +168,16 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     func setARSessionRunStatus(isOn:Bool)
     {
         if isOn{
-            // Create a session configuration
+              print("Gesture Video Started")
+              // Create a session configuration
               let configuration = ARWorldTrackingConfiguration()
 
               // Run the view's session
               ARVideoSceneView.session.run(configuration)
         }
         else{
+            print("Gesture Video Paused")
+
             // Pause the view's session
             ARVideoSceneView.session.pause()
             // Clear the text
