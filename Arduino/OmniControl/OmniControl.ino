@@ -1,5 +1,5 @@
 #include "configuration.h"
-#include "OmniBLE.h"
+#include <OmniBLE.h>
 
 /*setup Bluetooth module*/
 OmniBLE botBT(3,4); // Pins: rx, rt
