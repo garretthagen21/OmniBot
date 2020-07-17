@@ -30,7 +30,9 @@ const int sidedistancelimit = 30; //minimum distance in cm to obstacles at both 
 const int NUM_SONIC_SENSORS = 4;
 int distance;
 int numcycles = 0;
-const int turntime = 800; //Time the robot spends turning (miliseconds)
-const int backtime = 600; //Time the robot spends turning (miliseconds)
+const int turn_time = 400; //Time the robot spends turning (miliseconds)
+const int back_time = 300; //Time the robot spends turning (miliseconds)
+const int up_bound = 10; //cm
+const int lo_bound = 2; //cm
 
 int thereis;

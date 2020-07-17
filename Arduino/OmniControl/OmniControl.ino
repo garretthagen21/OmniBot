@@ -1,5 +1,5 @@
 #include "configuration.h"
-#include "OmniBLE.h"
+#include <OmniBLE.h>
 
 /*setup Bluetooth module*/
 OmniBLE botBT(3,4); // Pins: rx, rt
@@ -105,12 +105,7 @@ int watch_R(){
 }
 
 /*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){
-  int up_bound = 10; //cm
-  int lo_bound = 2; //cm
-  int back_time = 300; //ms
-  int turn_time = 300; //ms
-  
+void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){  
   if ( (dis_FL <= up_bound && dis_FL >= lo_bound) || (dis_FR <= up_bound && dis_FR >= lo_bound) ){
     go_Back();
     delay(back_time);
@@ -202,6 +197,10 @@ void loop() {
   botBT.sync();
   
   spd = round(botBT.speedValue()*255);
+  if (spd < 50 && spd > 0){
+    spd = 50;
+  }
+  
   set_Motorspeed(spd, spd);
   
   if(botBT.autopilotValue()){

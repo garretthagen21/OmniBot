@@ -1,8 +1,7 @@
 
 #include <OmniBLE.h>
 
-// OmniBLE botBT(3,4); // Use this for SoftwareSerial implementation
-OmniBLE botBT;        // Use this for Serial implementation
+OmniBLE botBT(3,4);
 
 // Test values to emulate proximity values from ultrasonic sensors
 const int NUM_SONIC_SENSORS = 4;
