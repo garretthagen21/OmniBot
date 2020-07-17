@@ -202,6 +202,10 @@ void loop() {
   botBT.sync();
   
   spd = round(botBT.speedValue()*255);
+  if (spd < 50 && spd > 0){
+    spd = 50;
+  }
+  
   set_Motorspeed(spd, spd);
   
   if(botBT.autopilotValue()){
