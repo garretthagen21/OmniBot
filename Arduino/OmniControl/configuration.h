@@ -24,13 +24,13 @@
 #define SPEED  200     //both sides of the motor speed
 #define BACK_SPEED1  100     //back speed
 #define BACK_SPEED2  150     //back speed
-
-const int distancelimit = 30; //distance limit for obstacles in front           
+         
 const int sidedistancelimit = 30; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
 const int NUM_SONIC_SENSORS = 4;
-int distance;
-int numcycles = 0;
-const int turntime = 800; //Time the robot spends turning (miliseconds)
-const int backtime = 600; //Time the robot spends turning (miliseconds)
+const int numcycles = 0;
+const int turn_time = 400; //Time the robot spends turning (miliseconds)
+const int back_time = 300; //Time the robot spends turning (miliseconds)
+const int up_bound = 10; //cm
+const int lo_bound = 2; //cm
 
-int thereis;
+int distance, thereis, dis_FL, dis_FR, dis_L, dis_R, spd;

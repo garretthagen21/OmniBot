@@ -5,22 +5,27 @@ OmniBLE::OmniBLE(int rx,int tx){
   rxPin = rx;
   txPin = tx;
   bluetoothLE = new SoftwareSerial(rxPin,txPin);
-  
+}
+
+OmniBLE::OmniBLE(){
+    useSerialChannel = true;
 }
 OmniBLE::~OmniBLE(){
-    free(bluetoothLE);
+    if (bluetoothLE)
+        free(bluetoothLE);
 }
 
 void OmniBLE::begin(long baudRate){
-    bluetoothLE->begin(baudRate);
-    if(printDebugToSerial)
+    useSerialChannel ? Serial.begin(baudRate) : bluetoothLE->begin(baudRate);
+    if(printDebugToSerial && !useSerialChannel)
         Serial.println("[OmniBLE::begin()] Started OmniBLE at baud "+String(baudRate));
 }
 
 void OmniBLE::sync(){
     String inputCommand = "";
-    while(bluetoothLE->available() > 0){
-        char streamChar = bluetoothLE->read();
+    int inputAvailable = useSerialChannel ? Serial.available() : bluetoothLE->available();
+    while(inputAvailable > 0){
+        char streamChar = useSerialChannel ? Serial.read() : bluetoothLE->read();
         inputCommand += streamChar;
 
         if (streamChar == '\n'){
@@ -32,7 +37,7 @@ void OmniBLE::sync(){
         currentCommand = inputCommand;
         parseCommand(currentCommand,incomingCommandPrefix);
         
-        if(printDebugToSerial)
+        if(printDebugToSerial && !useSerialChannel)
             Serial.println("[OmniBLE::sync()] Recieved Commmand: "+currentCommand);
     }
 }
@@ -88,11 +93,11 @@ float OmniBLE::speedValue(){
 void OmniBLE::sendMessage(String message,boolean newLine)
 {
     if(newLine)
-        bluetoothLE->println(message);
+        useSerialChannel ? Serial.println(message) : bluetoothLE->println(message);
     else
-        bluetoothLE->print(message);
+        useSerialChannel ? Serial.print(message) : bluetoothLE->print(message);
     
-    if(printDebugToSerial)
+    if(printDebugToSerial && !useSerialChannel)
             Serial.println("[OmniBLE::sendMessage()] Sent Message: "+message);
     
     
@@ -125,14 +130,14 @@ void OmniBLE::setPeripheralName(String name,unsigned long timeout)
 
     // Try for 5 seconds before giving up ~ approx 10 tries
     while(millis() - startTime < timeout){
-       bluetoothLE->print("AT+NAME?");
+       useSerialChannel ? Serial.print("AT+NAME?") : bluetoothLE->print("AT+NAME?");
        // Read for 250 ms or until the change takes place
        unsigned long readTime = millis();
        while(millis() - readTime < 250)
        {
-           bluetoothName = bluetoothLE->readString();
+           bluetoothName = useSerialChannel ? Serial.readString() : bluetoothLE->readString();
            if(bluetoothName.equals(name)){
-               if(printDebugToSerial)
+               if(printDebugToSerial && !useSerialChannel)
                     Serial.println("[OmniBLE::setPeripheralName()] Successfully Set BT Name: "+name);
                
                return;
@@ -141,11 +146,11 @@ void OmniBLE::setPeripheralName(String name,unsigned long timeout)
        }
 
        // Else set the name and try again
-       bluetoothLE->print("AT+NAME"+name);
+        useSerialChannel ? Serial.print("AT+NAME"+name) : bluetoothLE->print("AT+NAME"+name);
         delay(100);
      }
     
-    if(printDebugToSerial)
+    if(printDebugToSerial && !useSerialChannel)
         Serial.println("[OmniBLE::setPeripheralName()] Failed to Set BT Name: "+name+". Current Name: "+bluetoothName);
 }
 
