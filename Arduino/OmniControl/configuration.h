@@ -2,13 +2,13 @@
 //Define L298N Dual H-Bridge Motor Controller Pins
 #define dir1PinL  10    //Motor direction
 #define dir2PinL  9    //Motor direction
-#define speedPinL 2    // Needs to be a PWM pin to be able to control motor speed
+#define enableL 2    // Needs to be a PWM pin to be able to control motor speed
 
-#define dir1PinR  3    //Motor direction
-#define dir2PinR  11   //Motor direction
-#define speedPinR 4    // Needs to be a PWM pin to be able to control motor speed
+#define dir1PinR  11    //Motor direction
+#define dir2PinR  3   //Motor direction
+#define enableR 4    // Needs to be a PWM pin to be able to control motor speed
 
-#define Echo_PIN_FL    A4 // Ultrasonic Echo pin connect to D11
+#define Echo_PIN_FL    A2 // Ultrasonic Echo pin connect to D11
 #define Trig_PIN_FL    8  // Ultrasonic Trig pin connect to D12
 
 #define Echo_PIN_FR    A3 // Ultrasonic Echo pin connect to D11

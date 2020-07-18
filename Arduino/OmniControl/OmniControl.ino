@@ -2,50 +2,62 @@
 #include <OmniBLE.h>
 
 /*setup Bluetooth module*/
-OmniBLE botBT(3,4); // Pins: rx, rt
+OmniBLE botBT(5,6); // Pins: rx, rt
   
 /*motor control*/
 void go_Advance(void) //Forward
 {
-  digitalWrite(dir1PinL,HIGH);
+  enable_Motors();
+  analogWrite(dir1PinL,spd);
   digitalWrite(dir2PinL,LOW);
-  digitalWrite(dir1PinR,HIGH);
+  analogWrite(dir1PinR,spd);
   digitalWrite(dir2PinR,LOW);
 }
 void go_Left()  //Turn left
 {
-  digitalWrite(dir1PinL,HIGH);
+  enable_Motors();
+  analogWrite(dir1PinL,spd);
   digitalWrite(dir2PinL,LOW);
   digitalWrite(dir1PinR,LOW);
-  digitalWrite(dir2PinR,HIGH);
+  analogWrite(dir2PinR,spd);
 }
 void go_Right()  //Turn right
 {
+  enable_Motors();
   digitalWrite(dir1PinL,LOW);
-  digitalWrite(dir2PinL,HIGH);
-  digitalWrite(dir1PinR,HIGH);
+  analogWrite(dir2PinL,spd);
+  analogWrite(dir1PinR,spd);
   digitalWrite(dir2PinR,LOW);
 }
 void go_Back()  //Reverse
 {
+  enable_Motors();
   digitalWrite(dir1PinL,LOW);
-  digitalWrite(dir2PinL,HIGH);
+  analogWrite(dir2PinL,spd);
   digitalWrite(dir1PinR,LOW);
-  digitalWrite(dir2PinR,HIGH);
+  analogWrite(dir2PinR,spd);
 }
 void stop_Stop()    //Stop
 {
+  disable_Motors();
   digitalWrite(dir1PinL,LOW);
   digitalWrite(dir2PinL,LOW);
   digitalWrite(dir1PinR,LOW);
   digitalWrite(dir2PinR,LOW);
 }
 
-/*set motor speed */
-void set_Motorspeed(int speed_L,int speed_R)
+/*enable motor speed */
+void enable_Motors()
 {
-  analogWrite(speedPinL,speed_L); 
-  analogWrite(speedPinR,speed_R);   
+  digitalWrite(enableL,HIGH); 
+  digitalWrite(enableR,HIGH);   
+}
+
+/*disable motor speed */
+void disable_Motors()
+{
+  digitalWrite(enableL,LOW); 
+  digitalWrite(enableR,LOW);   
 }
 
 /*detection of FL ultrasonic distance*/
@@ -151,10 +163,10 @@ void setup() {
   /*setup L298N pin mode*/
   pinMode(dir1PinL, OUTPUT); 
   pinMode(dir2PinL, OUTPUT); 
-  pinMode(speedPinL, OUTPUT);  
+  pinMode(enableL, OUTPUT);  
   pinMode(dir1PinR, OUTPUT);
   pinMode(dir2PinR, OUTPUT); 
-  pinMode(speedPinR, OUTPUT); 
+  pinMode(enableR, OUTPUT); 
   stop_Stop(); // stop move
   
   /*init HC-SR04*/
@@ -198,9 +210,7 @@ void loop() {
   if (spd < 50 && spd > 0){
     spd = 50;
   }
-  
-  set_Motorspeed(spd, spd);
-  
+    
   if(botBT.autopilotValue()){
       obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
   }
