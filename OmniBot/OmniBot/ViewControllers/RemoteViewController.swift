@@ -35,6 +35,11 @@ class RemoteViewController: UIViewController {
     
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        autopilotSwitch.isOn = RobotCommander.autopilot
+    }
+    
     
     private func joystickDidMove(joystickReport: JoyStickViewXYReport){
         

@@ -16,7 +16,7 @@ class RobotCommander
     /// Constants for our mechanical limits
     static let TURNING_LIMIT_X:Double = 1.0
     static let SPEED_LIMIT_Y:Double = 1.0
-    static let SPEED_LIMIT_METERS_SEC:Double = 5
+    static let SPEED_LIMIT_METERS_SEC:Double = 0.4252
     static let CHANGE_THRESH:Double = 0.0
     
     
@@ -62,6 +62,8 @@ class RobotCommander
         
         // Send update and reanable notificationTrigger
         notificationCenter.post(name: .commanderChanged, object: ChangeTrigger.multipleChanged)
+        
+        // Reenable notifications
         notificationsEnabled = true
         
         
@@ -115,12 +117,6 @@ extension RobotCommander{
         return "C:\(String(format: "%.2f", turnValue)),\(String(format: "%.2f", velocityValue)),\(autopilot ? 1 : 0)\n"
      }
     
-    /* DEPRACATED
-    /// A Bluetooth command string containing cardinal direction and motor speed
-    static var asBluetoothCommandCardinal:String{
-        return "CC:\(cardinalDirection),\(String(format: "%.2f", velocityValue)),\(autopilot ? 1 : 0)\n"
-    }
-     */
      
       /// A dictionary representaiton of our values
      static var asDictionary:[String:Any]
@@ -129,29 +125,23 @@ extension RobotCommander{
                  "turning":turnValue,
                  "autopilot":autopilot]
      }
-    /// Convenience to apply a stop signal
+    
+    /// Convenience function to apply a stop signal
     static func emergencyStop(){
         RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
     }
     
     /// Pause updates to the robot
-    static func pauseControl(displayHUD:Bool = false){
+    static func pauseControl(){
         emergencyStop()
         notificationsEnabled = false
-        
-        if displayHUD{
-            Alerts.createHUD(textValue: "⏸ Control Paused", delayLength: 2.0)
-        }
+    
     }
     /// Resume sending updates to the robot
-    static func resumeControl(displayHUD:Bool = false)
+    static func resumeControl()
     {
        notificationsEnabled = true
        emergencyStop()
-        
-        if displayHUD{
-            Alerts.createHUD(textValue: "▶️ Control Resumed", delayLength: 2.0)
-        }
     }
 }
 

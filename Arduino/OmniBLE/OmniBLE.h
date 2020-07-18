@@ -15,6 +15,7 @@ class OmniBLE{
  
   public:
     OmniBLE(int rx,int tx);
+    OmniBLE();
     ~OmniBLE();
     void begin(long baudRate = 115200);
     void sync();
@@ -30,6 +31,7 @@ class OmniBLE{
     
     // Some defaults
     boolean printDebugToSerial = false;
+    boolean useSerialChannel = false;
     float turnThreshhold = 0.25f;
     String incomingCommandPrefix = "C";
     String outgoingProxPrefix = "P";
