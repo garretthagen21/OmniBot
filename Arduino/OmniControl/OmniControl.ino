@@ -190,7 +190,7 @@ void setup() {
   Serial.begin(9600);
 
   /*bluetooth wrapper*/
-  botBT.printDebugToSerial = false;
+  botBT.printDebugToSerial = true;
   botBT.begin(9600);
 
   // Note: This sets the broadcasting name of the HM-10 bluetooth module. We only need to do this once
