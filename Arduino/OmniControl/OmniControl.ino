@@ -8,34 +8,34 @@ OmniBLE botBT(5,6); // Pins: rx, rt
 void go_Advance(void) //Forward
 {
   enable_Motors();
-  analogWrite(dir1PinL,spd);
+  analogWrite(dir1PinL,spdL);
   digitalWrite(dir2PinL,LOW);
-  analogWrite(dir1PinR,spd);
+  analogWrite(dir1PinR,spdR);
   digitalWrite(dir2PinR,LOW);
 }
 void go_Left()  //Turn left
 {
   enable_Motors();
-  analogWrite(dir1PinL,spd);
+  analogWrite(dir1PinL,spdL);
   digitalWrite(dir2PinL,LOW);
   digitalWrite(dir1PinR,LOW);
-  analogWrite(dir2PinR,spd);
+  analogWrite(dir2PinR,spdR);
 }
 void go_Right()  //Turn right
 {
   enable_Motors();
   digitalWrite(dir1PinL,LOW);
-  analogWrite(dir2PinL,spd);
-  analogWrite(dir1PinR,spd);
+  analogWrite(dir2PinL,spdL);
+  analogWrite(dir1PinR,spdR);
   digitalWrite(dir2PinR,LOW);
 }
 void go_Back()  //Reverse
 {
   enable_Motors();
   digitalWrite(dir1PinL,LOW);
-  analogWrite(dir2PinL,spd);
+  analogWrite(dir2PinL,spdL);
   digitalWrite(dir1PinR,LOW);
-  analogWrite(dir2PinR,spd);
+  analogWrite(dir2PinR,spdR);
 }
 void stop_Stop()    //Stop
 {
@@ -190,7 +190,7 @@ void setup() {
   Serial.begin(9600);
 
   /*bluetooth wrapper*/
-  botBT.printDebugToSerial = true;
+  botBT.printDebugToSerial = false;
   botBT.begin(9600);
 
   // Note: This sets the broadcasting name of the HM-10 bluetooth module. We only need to do this once
@@ -207,8 +207,22 @@ void loop() {
   botBT.sync();
   
   spd = round(botBT.speedValue()*255);
-  if (spd < 50 && spd > 0){
-    spd = 50;
+  angle = round(botBT.angleValue()*90);
+
+  if(angle >= 0){
+    spdL = spd;
+    spdR = cos(angle)*spd;
+  }
+  if(angle < 0){
+    spdL = -cos(angle)*spd;
+    spdR = spd;
+  }
+  
+  if (spdL < 50 && spdL > 0){
+    spdL = 50;
+  }
+  if (spdR < 50 && spdR > 0){
+    spdR = 50;
   }
     
   if(botBT.autopilotValue()){
