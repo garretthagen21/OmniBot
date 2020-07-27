@@ -117,19 +117,34 @@ int watch_R(){
 }
 
 /*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){  
-  if ( (dis_FL <= up_bound && dis_FL >= lo_bound) || (dis_FR <= up_bound && dis_FR >= lo_bound) ){
+void obstacle_avoidance_mode(){  
+  dis_FL = watch_FL();
+  dis_FR = watch_FR();
+  dis_L = watch_L();
+  dis_R = watch_R();
+  
+  if ( (dis_FL <= up_bound) || (dis_FR <= up_bound) ){
     go_Back();
     delay(back_time);
     stop_Stop();
-    if (dis_L < dis_R && dis_L >= lo_bound){
+    if (dis_L <= dis_R){
       go_Right();
-      delay(turn_time);
+      while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space) || (dis_L <= up_bound)){
+        delay(turn_time);
+        dis_L = watch_L();
+        dis_FL = watch_FL();
+        dis_FR = watch_FR();
+      }
       stop_Stop();
     }
-    else if (dis_R < dis_L && dis_R >= lo_bound){
+    else if (dis_R < dis_L){
       go_Left();
-      delay(turn_time);
+      while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space) || (dis_R <= up_bound)){
+        delay(turn_time);
+        dis_R = watch_R();
+        dis_FL = watch_FL();
+        dis_FR = watch_FR();
+      }
       stop_Stop();      
     }
   }
@@ -226,7 +241,7 @@ void loop() {
   }
     
   if(botBT.autopilotValue()){
-      obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
+      obstacle_avoidance_mode();
   }
   else {
       joystick_gesture_mode();
