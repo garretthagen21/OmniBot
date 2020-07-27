@@ -28,10 +28,11 @@
 const int sidedistancelimit = 30; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
 const int NUM_SONIC_SENSORS = 4;
 const int numcycles = 0;
-const int turn_time = 400; //Time the robot spends turning (miliseconds)
+const int turn_time = 100; //Time the robot spends turning (miliseconds)
 const int back_time = 300; //Time the robot spends turning (miliseconds)
 const int up_bound = 10; //cm
 const int lo_bound = 2; //cm
+const int extra_space = 5; //cm
 
 const int test_len = 5000;
 const int stop_len = 1000;
