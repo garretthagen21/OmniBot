@@ -13,7 +13,7 @@ void go_Advance(void) //Forward
   analogWrite(dir1PinR,spdR);
   digitalWrite(dir2PinR,LOW);
 }
-void go_Left()  //Turn left
+void go_Right()  //Turn right
 {
   enable_Motors();
   analogWrite(dir1PinL,spdL);
@@ -21,7 +21,7 @@ void go_Left()  //Turn left
   digitalWrite(dir1PinR,LOW);
   analogWrite(dir2PinR,spdR);
 }
-void go_Right()  //Turn right
+void go_Left()  //Turn left
 {
   enable_Motors();
   digitalWrite(dir1PinL,LOW);
@@ -207,7 +207,7 @@ void loop() {
   botBT.sync();
   
   spd = round(botBT.speedValue()*255);
-  angle = round(botBT.angleValue()*90);
+  angle = round(botBT.turnValue()*90);
 
   if(angle >= 0){
     spdL = spd;

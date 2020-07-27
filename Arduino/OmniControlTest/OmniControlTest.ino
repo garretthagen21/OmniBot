@@ -9,7 +9,7 @@ void go_Advance(void) //Forward
   analogWrite(dir1PinR,spd);
   digitalWrite(dir2PinR,LOW);
 }
-void go_Left()  //Turn left
+void go_Right()  //Turn right
 {
   enable_Motors();
   analogWrite(dir1PinL,spd);
@@ -17,7 +17,7 @@ void go_Left()  //Turn left
   digitalWrite(dir1PinR,LOW);
   analogWrite(dir2PinR,spd);
 }
-void go_Right()  //Turn right
+void go_Left()  //Turn left
 {
   enable_Motors();
   digitalWrite(dir1PinL,LOW);
@@ -134,6 +134,17 @@ void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){
   }
 }
 
+/*Obstacle Avoidance Mode*/
+void testObstacleAvoidanceMode(){
+  dis_FL = watch_FL();
+  dis_FR = watch_FR();
+  dis_L = watch_L();
+  dis_R = watch_R();
+  
+  obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
+}
+
+
 void testStop(){
   Serial.println("Test Stop");
   stop_Stop();
@@ -249,20 +260,21 @@ void loop() {
 //  testForwardFast();
 //  testStop();
 //  
-  spd = 100;
+  spd = 70;
 //  testBackwards();
 //  testStop();
   
-  testLeft();
-  testStop();
+//  testLeft();
+//  testStop();
   
-  testRight();
-  testStop();
+//  testRight();
+//  testStop();
   
 //  testFLUS();
 //  testFRUS();
 //  testLUS();
 //  testRUS();
 
+  testObstacleAvoidanceMode();
 
 }
