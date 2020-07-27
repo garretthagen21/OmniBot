@@ -32,5 +32,6 @@ const int turn_time = 400; //Time the robot spends turning (miliseconds)
 const int back_time = 300; //Time the robot spends turning (miliseconds)
 const int up_bound = 10; //cm
 const int lo_bound = 2; //cm
+const int max_PWM = 150;
 
 int distance, thereis, dis_FL, dis_FR, dis_L, dis_R, angle, spd, spdL, spdR;

@@ -70,7 +70,7 @@ int watch_FL(){
   digitalWrite(Trig_PIN_FL,LOW);
   echo_distance=pulseIn(Echo_PIN_FL,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-  //Serial.println((int)echo_distance);
+//  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -84,7 +84,7 @@ int watch_FR(){
   digitalWrite(Trig_PIN_FR,LOW);
   echo_distance=pulseIn(Echo_PIN_FR,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-  //Serial.println((int)echo_distance);
+//  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -98,7 +98,7 @@ int watch_L(){
   digitalWrite(Trig_PIN_L,LOW);
   echo_distance=pulseIn(Echo_PIN_L,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-  //Serial.println((int)echo_distance);
+//  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -112,7 +112,7 @@ int watch_R(){
   digitalWrite(Trig_PIN_R,LOW);
   echo_distance=pulseIn(Echo_PIN_R,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-  //Serial.println((int)echo_distance);
+//  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -206,8 +206,8 @@ void loop() {
   // Update our botBT with the latest data
   botBT.sync();
   
-  spd = round(botBT.speedValue()*255);
-  angle = round(botBT.angleValue()*90);
+  spd = round(botBT.speedValue()*max_PWM);
+  angle = round(botBT.turnValue()*90);
 
   if(angle >= 0){
     spdL = spd;
