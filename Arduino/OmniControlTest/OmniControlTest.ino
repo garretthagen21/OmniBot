@@ -136,15 +136,22 @@ void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){
 
 
 /*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode_2(int dis_FL, int dis_FR, int dis_L, int dis_R){  
+void obstacle_avoidance_mode_2(){  
+  dis_FL = watch_FL();
+  dis_FR = watch_FR();
+  dis_L = watch_L();
+  dis_R = watch_R();
+  
   if ( (dis_FL <= up_bound) || (dis_FR <= up_bound) ){
     go_Back();
     delay(back_time);
     stop_Stop();
-    if (dis_L < dis_R){
+    if (dis_L <= dis_R){
       go_Right();
       while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space)){
         delay(turn_time);
+          dis_FL = watch_FL();
+          dis_FR = watch_FR();
       }
       stop_Stop();
     }
@@ -152,6 +159,8 @@ void obstacle_avoidance_mode_2(int dis_FL, int dis_FR, int dis_L, int dis_R){
       go_Left();
       while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space)){
         delay(turn_time);
+          dis_FL = watch_FL();
+          dis_FR = watch_FR();
       }
       stop_Stop();      
     }
@@ -162,24 +171,14 @@ void obstacle_avoidance_mode_2(int dis_FL, int dis_FR, int dis_L, int dis_R){
 }
 
 /*Obstacle Avoidance Mode*/
-void testObstacleAvoidanceMode(){
-  dis_FL = watch_FL();
-  dis_FR = watch_FR();
-  dis_L = watch_L();
-  dis_R = watch_R();
-  
+void testObstacleAvoidanceMode(){  
   obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
 }
 
 
 /*Obstacle Avoidance Mode*/
 void testObstacleAvoidanceMode2(){
-  dis_FL = watch_FL();
-  dis_FR = watch_FR();
-  dis_L = watch_L();
-  dis_R = watch_R();
-  
-  obstacle_avoidance_mode_2(dis_FL, dis_FR, dis_L, dis_R);
+  obstacle_avoidance_mode_2();
 }
 
 void testStop(){
