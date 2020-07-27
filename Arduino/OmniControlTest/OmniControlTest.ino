@@ -148,19 +148,21 @@ void obstacle_avoidance_mode_2(){
     stop_Stop();
     if (dis_L <= dis_R){
       go_Right();
-      while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space)){
+      while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space) || (dis_L <= up_bound)){
         delay(turn_time);
-          dis_FL = watch_FL();
-          dis_FR = watch_FR();
+        dis_L = watch_L();
+        dis_FL = watch_FL();
+        dis_FR = watch_FR();
       }
       stop_Stop();
     }
     else if (dis_R < dis_L){
       go_Left();
-      while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space)){
+      while( (dis_FL <= up_bound + extra_space) || (dis_FR <= up_bound + extra_space) || (dis_R <= up_bound)){
         delay(turn_time);
-          dis_FL = watch_FL();
-          dis_FR = watch_FR();
+        dis_R = watch_R();
+        dis_FL = watch_FL();
+        dis_FR = watch_FR();
       }
       stop_Stop();      
     }
