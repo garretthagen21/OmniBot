@@ -21,9 +21,9 @@
 #define Trig_PIN_R    13  // Ultrasonic Trig pin connect to D12
 
 
-//#define SPEED  200     //both sides of the motor speed
-//#define BACK_SPEED1  100     //back speed
-//#define BACK_SPEED2  150     //back speed
+#define SPEED  200     //both sides of the motor speed
+#define BACK_SPEED1  100     //back speed
+#define BACK_SPEED2  150     //back speed
          
 const int sidedistancelimit = 30; //minimum distance in cm to obstacles at both sides (the car will allow a shorter distance sideways)
 const int NUM_SONIC_SENSORS = 4;
@@ -32,7 +32,9 @@ const int turn_time = 100; //Time the robot spends turning (miliseconds)
 const int back_time = 300; //Time the robot spends turning (miliseconds)
 const int up_bound = 10; //cm
 const int lo_bound = 2; //cm
-const int max_PWM = 150;
 const int extra_space = 5; //cm
 
-int distance, thereis, dis_FL, dis_FR, dis_L, dis_R, angle, spd, spdL, spdR;
+const int test_len = 5000;
+const int stop_len = 1000;
+
+int distance, thereis, dis_FL, dis_FR, dis_L, dis_R, spd;

@@ -1,41 +1,37 @@
 #include "configuration.h"
-#include <OmniBLE.h>
-
-/*setup Bluetooth module*/
-OmniBLE botBT(5,6); // Pins: rx, rt
   
 /*motor control*/
 void go_Advance(void) //Forward
 {
   enable_Motors();
-  analogWrite(dir1PinL,spdL);
+  analogWrite(dir1PinL,spd);
   digitalWrite(dir2PinL,LOW);
-  analogWrite(dir1PinR,spdR);
+  analogWrite(dir1PinR,spd);
   digitalWrite(dir2PinR,LOW);
 }
 void go_Right()  //Turn right
 {
   enable_Motors();
-  analogWrite(dir1PinL,spdL);
+  analogWrite(dir1PinL,spd);
   digitalWrite(dir2PinL,LOW);
   digitalWrite(dir1PinR,LOW);
-  analogWrite(dir2PinR,spdR);
+  analogWrite(dir2PinR,spd);
 }
 void go_Left()  //Turn left
 {
   enable_Motors();
   digitalWrite(dir1PinL,LOW);
-  analogWrite(dir2PinL,spdL);
-  analogWrite(dir1PinR,spdR);
+  analogWrite(dir2PinL,spd);
+  analogWrite(dir1PinR,spd);
   digitalWrite(dir2PinR,LOW);
 }
 void go_Back()  //Reverse
 {
   enable_Motors();
   digitalWrite(dir1PinL,LOW);
-  analogWrite(dir2PinL,spdL);
+  analogWrite(dir2PinL,spd);
   digitalWrite(dir1PinR,LOW);
-  analogWrite(dir2PinR,spdR);
+  analogWrite(dir2PinR,spd);
 }
 void stop_Stop()    //Stop
 {
@@ -70,7 +66,7 @@ int watch_FL(){
   digitalWrite(Trig_PIN_FL,LOW);
   echo_distance=pulseIn(Echo_PIN_FL,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-//  Serial.println((int)echo_distance);
+  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -84,7 +80,7 @@ int watch_FR(){
   digitalWrite(Trig_PIN_FR,LOW);
   echo_distance=pulseIn(Echo_PIN_FR,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-//  Serial.println((int)echo_distance);
+  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -98,7 +94,7 @@ int watch_L(){
   digitalWrite(Trig_PIN_L,LOW);
   echo_distance=pulseIn(Echo_PIN_L,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-//  Serial.println((int)echo_distance);
+  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
@@ -112,12 +108,35 @@ int watch_R(){
   digitalWrite(Trig_PIN_R,LOW);
   echo_distance=pulseIn(Echo_PIN_R,HIGH);
   echo_distance=echo_distance*0.01657; //how far away is the object in cm
-//  Serial.println((int)echo_distance);
+  Serial.println((int)echo_distance);
   return round(echo_distance);
 }
 
 /*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode(){  
+void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){  
+  if ( (dis_FL <= up_bound && dis_FL >= lo_bound) || (dis_FR <= up_bound && dis_FR >= lo_bound) ){
+    go_Back();
+    delay(back_time);
+    stop_Stop();
+    if (dis_L < dis_R && dis_L >= lo_bound){
+      go_Right();
+      delay(turn_time);
+      stop_Stop();
+    }
+    else if (dis_R < dis_L && dis_R >= lo_bound){
+      go_Left();
+      delay(turn_time);
+      stop_Stop();      
+    }
+  }
+  else {
+    go_Advance();
+  }
+}
+
+
+/*Obstacle Avoidance Mode*/
+void obstacle_avoidance_mode_2(){  
   dis_FL = watch_FL();
   dis_FR = watch_FR();
   dis_L = watch_L();
@@ -153,25 +172,92 @@ void obstacle_avoidance_mode(){
   }
 }
 
-/* Joystick Mode */
-void joystick_gesture_mode(){
-    char cmd;
-    
-    cmd = botBT.cardinalDirection();
-    switch(cmd){
-      case 'N':
-        go_Advance();
-        break;
-      case 'S':
-        go_Back();
-        break;
-      case 'W':
-        go_Left();
-        break;
-      case 'E':
-        go_Right();
-        break;
-   }
+/*Obstacle Avoidance Mode*/
+void testObstacleAvoidanceMode(){  
+  obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
+}
+
+
+/*Obstacle Avoidance Mode*/
+void testObstacleAvoidanceMode2(){
+  obstacle_avoidance_mode_2();
+}
+
+void testStop(){
+  Serial.println("Test Stop");
+  stop_Stop();
+  delay(stop_len);
+}
+
+void testForwardSlow(){
+  Serial.println("Test Forward slow");
+  spd = 50;
+  go_Advance();
+  delay(test_len);
+}
+
+void testForwardMedium(){
+  Serial.println("Test Forward medium");
+  spd = 150;
+  go_Advance();
+  delay(test_len);
+}
+
+void testForwardFast(){
+  Serial.println("Test Forward fast");
+  spd = 250;
+  go_Advance();
+  delay(test_len);
+}
+
+void testBackwards(){
+  Serial.println("Test Backward");
+  go_Back();
+  delay(test_len);
+}
+
+void testLeft(){
+  Serial.println("Test Left");
+  go_Left();
+  delay(test_len);
+}
+
+void testRight(){
+  Serial.println("Test Right");
+  go_Right();
+  delay(test_len);
+}
+
+void testFLUS(){
+  Serial.println("Test Read Front Left Ultrasonic sensor");
+  for(int i = 0; i < test_len; i++){
+    dis_FL = watch_FL();
+    delay(1);
+  }
+}
+
+void testFRUS(){
+  Serial.println("Test Read Front Right Ultrasonic sensor");
+  for(int i = 0; i < test_len; i++){
+    dis_FR = watch_FR();
+    delay(1);
+  }
+}
+
+void testLUS(){
+  Serial.println("Test Read Left Ultrasonic sensor");
+  for(int i = 0; i < test_len; i++){
+    dis_L = watch_L();
+    delay(1);
+  }
+}
+
+void testRUS(){
+  Serial.println("Test Read Right Ultrasonic sensor");
+  for(int i = 0; i < test_len; i++){
+    dis_R = watch_R();
+    delay(1);
+  }
 }
 
 void setup() {  
@@ -203,52 +289,31 @@ void setup() {
   
   /*baud rate*/
   Serial.begin(9600);
-
-  /*bluetooth wrapper*/
-  botBT.printDebugToSerial = false;
-  botBT.begin(9600);
-
-  // Note: This sets the broadcasting name of the HM-10 bluetooth module. We only need to do this once
-  botBT.setPeripheralName("OmniBot");
 }
 
 void loop() {
-  dis_FL = watch_FL();
-  dis_FR = watch_FR();
-  dis_L = watch_L();
-  dis_R = watch_R();
+//
+//  testForwardSlow();
+//  testForwardMedium();
+//  testForwardFast();
+//  testStop();
+//  
+  spd = 70;
+//  testBackwards();
+//  testStop();
   
-  // Update our botBT with the latest data
-  botBT.sync();
+//  testLeft();
+//  testStop();
   
-  spd = round(botBT.speedValue()*max_PWM);
-  angle = round(botBT.turnValue()*90);
+//  testRight();
+//  testStop();
+  
+//  testFLUS();
+//  testFRUS();
+//  testLUS();
+//  testRUS();
 
-  if(angle >= 0){
-    spdL = spd;
-    spdR = cos(angle)*spd;
-  }
-  if(angle < 0){
-    spdL = -cos(angle)*spd;
-    spdR = spd;
-  }
-  
-  if (spdL < 50 && spdL > 0){
-    spdL = 50;
-  }
-  if (spdR < 50 && spdR > 0){
-    spdR = 50;
-  }
-    
-  if(botBT.autopilotValue()){
-      obstacle_avoidance_mode();
-  }
-  else {
-      joystick_gesture_mode();
-  }
-  
-  // Send sensor vals to device. 
-  // Note we should only send a message when these change to avoid clobbering bluetooth channel
-  float sensorProximities[NUM_SONIC_SENSORS] = {float(dis_FL), float(dis_FR), float(dis_L), float(dis_R)};
-  botBT.sendProximityMeasurements(sensorProximities,NUM_SONIC_SENSORS);
+//  testObstacleAvoidanceMode();
+  testObstacleAvoidanceMode2();
+
 }
