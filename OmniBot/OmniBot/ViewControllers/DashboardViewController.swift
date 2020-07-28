@@ -48,7 +48,6 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
         // Setup gesture recognizer for bluetooth
          let bluetoothHold = UILongPressGestureRecognizer(target: self, action: #selector(self.handleBluetoothHold(_:)))
          bluetoothStack.addGestureRecognizer(bluetoothHold)
-        
         bluetoothStack.isUserInteractionEnabled = true
         
         // Setup gesture recognizer for speed units
@@ -66,13 +65,21 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
         
         // Add bluetooth observer
         NotificationCenter.default.addObserver(self,
-            selector: #selector(bluetoothDidChange),
+            selector: #selector(bluetoothStatusDidChange),
             name: .bluetoothStatusChanged,
+            object: nil
+        )
+        
+        // Add bluetooth observer
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(bluetoothModeDidChange),
+            name: .bluetoothModeChanged,
             object: nil
         )
         // Init the bluetooth delegate to us. Note this is a hack to avoid duplicate calls
         if(!DashboardViewController.commonViewLoaded){
             serial = BluetoothSerial(delegate: self)
+            serial.setTransmissionMode(UserSettings.bluetoothMode,UserSettings.bluetoothTime)
         }
         
         // We have loaded the common view to avoid BT interrupts (this is a a hack)
@@ -89,7 +96,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
         serial.delegate = self
         
         // Auto connect on startup
-        if !serial.isReady && !serial.isScanning
+        if !serial.isReady && !serial.isScanning && UserSettings.autoConnect
         {
            startScanning()
         }
@@ -193,13 +200,18 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
        
     
     /// Triggered when our bluetooth status changes
-    @objc private func bluetoothDidChange(_ notification: Notification) {
+    @objc private func bluetoothStatusDidChange(_ notification: Notification) {
           if let bluetoothStatus = notification.object as? BluetoothStatus{
             bluetoothStatusLabel.text = bluetoothStatus.description
             bluetoothStatusLabel.textColor = bluetoothStatus.color
             bluetoothStatusImage.image = bluetoothStatus.image
           }
        }
+    
+    /// Triggered when our bluetooth status changes
+    @objc private func bluetoothModeDidChange(_ notification: Notification) {
+        serial.setTransmissionMode(UserSettings.bluetoothMode,UserSettings.bluetoothTime)
+    }
     
     /// Triggered when the robot state is changed (could be set by any view controller)
     @objc private func commanderDidChange(_ notification: Notification) {
@@ -221,7 +233,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
             
             // Set a pending message
             if serial.isReady{
-                serial.setPendingMessage(RobotCommander.asBluetoothCommand)
+                serial.sendMessage(RobotCommander.asBluetoothCommand)
             }
          
         }

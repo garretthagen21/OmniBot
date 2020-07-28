@@ -32,6 +32,7 @@
 		06516CF32485560400CFA05F /* BluetoothSerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF22485560400CFA05F /* BluetoothSerial.swift */; };
 		06516CF5248571F400CFA05F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF4248571F400CFA05F /* DashboardViewController.swift */; };
 		06516CF82485A42500CFA05F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF4248571F400CFA05F /* DashboardViewController.swift */; };
+		0667631724CB3F31008DFDD3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0667631624CB3F31008DFDD3 /* SettingsViewController.swift */; };
 		0686F65E24972A890032AA30 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0686F65D24972A890032AA30 /* Extensions.swift */; };
 		06B7D64024B6ACF800FF18C6 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D63F24B6ACF800FF18C6 /* Alerts.swift */; };
 		06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D64124B6CF2000FF18C6 /* Protocols.swift */; };
@@ -88,6 +89,7 @@
 		06516CEE2485544600CFA05F /* RobotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotState.swift; sourceTree = "<group>"; };
 		06516CF22485560400CFA05F /* BluetoothSerial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothSerial.swift; sourceTree = "<group>"; };
 		06516CF4248571F400CFA05F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		0667631624CB3F31008DFDD3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0686F65D24972A890032AA30 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		06B7D63F24B6ACF800FF18C6 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		06B7D64124B6CF2000FF18C6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				06516CF4248571F400CFA05F /* DashboardViewController.swift */,
 				06516CC1248552C500CFA05F /* GestureViewController.swift */,
 				060CCC4124B3ED6E00148C42 /* BluetoothScannerViewController.swift */,
+				0667631624CB3F31008DFDD3 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				06516CF32485560400CFA05F /* BluetoothSerial.swift in Sources */,
 				060CCC4624B3EEBA00148C42 /* MBProgressHUD.m in Sources */,
 				060CCC4C24B3F38100148C42 /* AppStoryboard.swift in Sources */,
+				0667631724CB3F31008DFDD3 /* SettingsViewController.swift in Sources */,
 				060CCC4824B3EF9800148C42 /* UserSettings.swift in Sources */,
 				06516CEF2485544600CFA05F /* RobotState.swift in Sources */,
 				06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */,

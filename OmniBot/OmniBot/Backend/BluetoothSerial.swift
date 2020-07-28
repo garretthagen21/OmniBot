@@ -73,8 +73,11 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     var connectedPeripheral: CBPeripheral?
     
     /// Timers for pending messages
-    private var pendingTimer:Timer?
+    private var sendTimer:Timer?
     private var pendingMessage:String?
+    private var sendMode:BluetoothMode = .delayedUpdate
+    private var sendTime:Double = 0.05
+
     
     
     /// The characteristic 0xFFE1 we need to write to, of the connectedPeripheral
@@ -173,18 +176,38 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         }
     }
     
-    /// Set the pending message to be sent if it is not adjusted after a timeout
-    func setPendingMessage(_ message: String,_ timeout: Double = 0.05)
+    func setTransmissionMode(_ mode:BluetoothMode,_ time: Double = 0.0)
     {
-        // Invalidate pending timer
-        pendingTimer?.invalidate()
-        
-        // Assign our pending message
-        pendingMessage = message
-        
-        // Reset the timer to trigger after 0.1 seconds (e.g. the user must not move the joystick for atleast 0.1 secs)
-        pendingTimer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(BluetoothSerial.releasePending), userInfo: nil, repeats: false)
+        self.sendMode = mode
+        self.sendTime = time
+        switch(sendMode)
+        {
+               case .instantUpdate,.delayedUpdate:
+                   sendTimer?.invalidate()
+               case .continuousUpdate:
+                    sendTimer?.invalidate()
+                    sendTimer = Timer.scheduledTimer(timeInterval: sendTime, target: self, selector: #selector(BluetoothSerial.releasePending), userInfo: nil, repeats: true)
+                   
+        }
     }
+    
+    func sendMessage(_ message:String)
+    {
+        switch(sendMode)
+        {
+            case .instantUpdate:
+                self.sendMessageToDevice(message)
+            case .delayedUpdate:
+                sendTimer?.invalidate()
+                pendingMessage = message
+                sendTimer = Timer.scheduledTimer(timeInterval: sendTime, target: self, selector: #selector(BluetoothSerial.releasePending), userInfo: nil, repeats: false)
+            case .continuousUpdate:
+                pendingMessage = message
+            
+        
+        }
+    }
+    
           
         
     /// Callback to send pending message

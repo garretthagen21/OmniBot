@@ -122,6 +122,8 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     /// Latest prediction
     var mostRecentPrediction:HandGesture = .noDetection
     
+    private var confirmGestureAlert:UIAlertController?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -265,8 +267,42 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                
              
             // Apply the prediction if it is new or a reset has been appplied
-            if foundPrediction != self.mostRecentPrediction || self.mostRecentPrediction == HandGesture.closedFist || self.mostRecentPrediction == HandGesture.noDetection{
-                foundPrediction.applyToRobot()
+            if foundPrediction != self.mostRecentPrediction ||
+                self.mostRecentPrediction == HandGesture.closedFist ||
+                self.mostRecentPrediction == HandGesture.noDetection{
+                
+            
+
+                // If confirmation for gestures is enabled do that
+                if UserSettings.confirmGesture{
+                    // Don't accept new value if the user hasnt responded yet
+                    if self.confirmGestureAlert != nil || foundPrediction == .noDetection || foundPrediction == .closedFist{
+                        return
+                    }
+                    
+                    // If we are not scanning display a two option alert to disconnect
+                    self.confirmGestureAlert = UIAlertController(title: "👋 Confirm Gesture", message: "Are you sure you want to apply \(foundPrediction.symbol) \(foundPrediction.description) to \(foundPrediction.action)?" ,preferredStyle: UIAlertController.Style.alert)
+                           
+                    self.confirmGestureAlert?.addAction(UIAlertAction(title: "\(foundPrediction.action)", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.confirmGestureAlert?.dismiss(animated: true, completion: {
+                            foundPrediction.applyToRobot()
+                            self.confirmGestureAlert = nil
+                        })
+                               
+
+                           }))
+                    self.confirmGestureAlert?.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.confirmGestureAlert?.dismiss(animated: true, completion: { self.confirmGestureAlert = nil })
+                       
+                               
+                           }))
+                    self.present(self.confirmGestureAlert!, animated: true, completion: nil)
+                             
+                }
+                else{
+                    self.confirmGestureAlert?.dismiss(animated: true, completion: { self.confirmGestureAlert = nil })
+                    foundPrediction.applyToRobot()
+                }
             }
             
             // Show the prediction and set our most recent to our found
@@ -276,6 +312,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
            }
        
        }
+    
     
     /// To hide/show the gesture options
     @IBAction func didTapGestureOptions(_ sender: Any) {
