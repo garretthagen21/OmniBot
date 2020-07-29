@@ -31,10 +31,10 @@ class OmniBLE{
     
     // Some defaults
     boolean printDebugToSerial = false;
-    boolean useSerialChannel = false;
     float turnThreshhold = 0.25f;
     String incomingCommandPrefix = "C";
     String outgoingProxPrefix = "P";
+    unsigned int maxInputStringLength = 100;
     
    
   private:
@@ -43,8 +43,11 @@ class OmniBLE{
     String currentCommand;
     String extractedData[3];
     SoftwareSerial *bluetoothLE;
+     boolean useSerialChannel = false;
 
     void parseCommand(String message,String expectedType);
+    String getSerialInput();
+    String getSoftwareInput();
 
 
   

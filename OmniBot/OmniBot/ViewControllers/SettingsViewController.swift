@@ -39,9 +39,8 @@ class SettingsViewController:UITableViewController, UIPickerViewDelegate, UIPick
          transModeTextField.text = UserSettings.bluetoothMode.rawValue
          autoconnectSwitch.isOn = UserSettings.autoConnect
          transTimeSlider.isEnabled = (UserSettings.bluetoothMode != .instantUpdate)
-         if !transTimeSlider.isEnabled { transTimeSlider.value = 0.0}
          transTimeSlider.value = Float(UserSettings.bluetoothTime)
-         transTimeLabel.text = String(format: "%.1f",transTimeSlider.value)
+         transTimeLabel.text = String(format: "%.2f",transTimeSlider.value)
          confirmGestureSwitch.isOn = UserSettings.confirmGesture
        
     }

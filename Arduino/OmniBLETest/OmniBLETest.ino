@@ -10,7 +10,7 @@ float sensorProximities[NUM_SONIC_SENSORS] = { 1.1, 2.2, 3.1,4.5 };
 void setup() {
   
   // For debugging: Note do not start Serial here if using it in OmniBLE
-  // Serial.begin(9600); 
+  Serial.begin(9600); 
 
   botBT.printDebugToSerial = true; // Note: This value does not matter if Serial implementation in OmniBLE is used
   botBT.begin(9600);
@@ -28,8 +28,8 @@ void loop() {
   // Print the stats: WARNING: Doing this while OmniBLE is also using serial will cause invalid commands to be sent to the iOS App
   //Serial.println("");
   //Serial.println("---------------------------------------");
-  //Serial.println("Recieved Command: "+botBT.mostRecentCommand());
-  // Serial.println("Turning: "+String(botBT.turnValue())+", Velocity: "+String(botBT.velocityValue())+" Autopilot: "+String(botBT.autopilotValue()));
+  // Serial.println("Recieved Command: "+botBT.mostRecentCommand());
+  //Serial.println("Turning: "+String(botBT.turnValue())+", Velocity: "+String(botBT.velocityValue())+" Autopilot: "+String(botBT.autopilotValue()));
  
   // Note: These are the new commands where cardinalDirection() returns either N,S,E,W and speedValue() is a value from 0.0 - 1.0
   // Serial.println("Cardinal Direction: "+String(botBT.cardinalDirection()));

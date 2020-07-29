@@ -128,6 +128,9 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure accessibility
+        confirmGestureAlert?.accessibilityLabel = "Gesture Confirmation Alert"
+        
         // Configure gesture options
         gestureOptionsButton.layer.borderWidth = 1.0
         gestureOptionsButton.layer.borderColor = .init(srgbRed: 175, green: 175, blue: 175, alpha: 1.0)
@@ -182,8 +185,10 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
 
             // Pause the view's session
             ARVideoSceneView.session.pause()
-            // Clear the text
+            
+            // Clear the text and potential gesture alert
             self.overlaySymbolLabel.text = ""
+            self.confirmGestureAlert?.dismiss(animated: true, completion: { self.confirmGestureAlert = nil })
         }
         
     }
@@ -271,7 +276,9 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                 self.mostRecentPrediction == HandGesture.closedFist ||
                 self.mostRecentPrediction == HandGesture.noDetection{
                 
-            
+                // Show the prediction and set our most recent to our found
+                 self.overlaySymbolLabel.text = foundPrediction.symbol+" "+foundPrediction.action
+                 self.mostRecentPrediction = foundPrediction
 
                 // If confirmation for gestures is enabled do that
                 if UserSettings.confirmGesture{
@@ -305,9 +312,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                 }
             }
             
-            // Show the prediction and set our most recent to our found
-            self.overlaySymbolLabel.text = foundPrediction.symbol+" "+foundPrediction.action
-            self.mostRecentPrediction = foundPrediction
+     
                
            }
        

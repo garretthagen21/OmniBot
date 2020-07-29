@@ -60,10 +60,10 @@ class UserSettings {
     static func resetToDefaults()
     {
         defaultBluetoothPeripheral = "OmniBot"
-        bluetoothMode = .delayedUpdate
-        bluetoothTime = 0.1
+        bluetoothMode = .continuousUpdate
+        bluetoothTime = 0.5
         autoConnect = true
-        confirmGesture = false
+        confirmGesture = true
     }
     
 

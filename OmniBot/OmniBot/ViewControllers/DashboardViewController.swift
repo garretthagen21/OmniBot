@@ -41,6 +41,12 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
         // TODO: This is being called every time the tab view changes
         print("Dashboard viewDidLoad() Triggered")
         
+        // Set up accessibility for UIViews
+        bluetoothStack.accessibilityLabel = "Bluetooth Stack Button"
+        bluetoothStack.accessibilityIdentifier = "BluetoothStack"
+        speedStack.accessibilityLabel = "Speed Stack Button"
+        speedStack.accessibilityIdentifier = "SpeedStack"
+        
         // Setup gesture recognizer for bluetooth
         let bluetoothTap = UITapGestureRecognizer(target: self, action: #selector(self.handleBluetoothTap(_:)))
         bluetoothStack.addGestureRecognizer(bluetoothTap)
