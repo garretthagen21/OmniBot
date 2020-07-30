@@ -30,11 +30,11 @@
 		06516CF5248571F400CFA05F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06516CF4248571F400CFA05F /* DashboardViewController.swift */; };
 		0667631724CB3F31008DFDD3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0667631624CB3F31008DFDD3 /* SettingsViewController.swift */; };
 		0686F65E24972A890032AA30 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0686F65D24972A890032AA30 /* Extensions.swift */; };
+		06A1779F24D259F0006E4DF6 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06A1779C24D259EF006E4DF6 /* labels.txt */; };
+		06A177A024D259F0006E4DF6 /* cvexport.manifest in Resources */ = {isa = PBXBuildFile; fileRef = 06A1779D24D259F0006E4DF6 /* cvexport.manifest */; };
+		06A177A324D25A16006E4DF6 /* handgestures.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06A177A224D25A16006E4DF6 /* handgestures.mlmodel */; };
 		06B7D64024B6ACF800FF18C6 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D63F24B6ACF800FF18C6 /* Alerts.swift */; };
 		06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D64124B6CF2000FF18C6 /* Protocols.swift */; };
-		06BE849624CFD2B300002E13 /* cvexport.manifest in Resources */ = {isa = PBXBuildFile; fileRef = 06BE849324CFD2B200002E13 /* cvexport.manifest */; };
-		06BE849724CFD2B300002E13 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06BE849424CFD2B200002E13 /* labels.txt */; };
-		06BE849824CFD2B300002E13 /* handgestures.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06BE849524CFD2B300002E13 /* handgestures.mlmodel */; };
 		769382D29D9183AF9A80EEAC /* Pods_OmniBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */; };
 		9D172351F853D6FC081A1B96 /* Pods_OmniBot_OmniBotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BFE5250160E4845F2EB1C5 /* Pods_OmniBot_OmniBotUITests.framework */; };
 		C34B2E0CE8F1158BB1BBB69E /* Pods_OmniBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */; };
@@ -87,11 +87,11 @@
 		06516CF4248571F400CFA05F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0667631624CB3F31008DFDD3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0686F65D24972A890032AA30 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		06A1779C24D259EF006E4DF6 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
+		06A1779D24D259F0006E4DF6 /* cvexport.manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cvexport.manifest; sourceTree = "<group>"; };
+		06A177A224D25A16006E4DF6 /* handgestures.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = handgestures.mlmodel; sourceTree = "<group>"; };
 		06B7D63F24B6ACF800FF18C6 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		06B7D64124B6CF2000FF18C6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		06BE849324CFD2B200002E13 /* cvexport.manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cvexport.manifest; sourceTree = "<group>"; };
-		06BE849424CFD2B200002E13 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
-		06BE849524CFD2B300002E13 /* handgestures.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = handgestures.mlmodel; sourceTree = "<group>"; };
 		1AB465AE2D950222A09739F6 /* Pods-OmniBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBotTests.debug.xcconfig"; path = "Target Support Files/Pods-OmniBotTests/Pods-OmniBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,9 +134,9 @@
 		060CCC3424AE9C0B00148C42 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				06BE849324CFD2B200002E13 /* cvexport.manifest */,
-				06BE849424CFD2B200002E13 /* labels.txt */,
-				06BE849524CFD2B300002E13 /* handgestures.mlmodel */,
+				06A1779D24D259F0006E4DF6 /* cvexport.manifest */,
+				06A1779C24D259EF006E4DF6 /* labels.txt */,
+				06A177A224D25A16006E4DF6 /* handgestures.mlmodel */,
 			);
 			path = MLModels;
 			sourceTree = "<group>";
@@ -379,12 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				06516CCA248552C700CFA05F /* LaunchScreen.storyboard in Resources */,
-				06BE849624CFD2B300002E13 /* cvexport.manifest in Resources */,
+				06A1779F24D259F0006E4DF6 /* labels.txt in Resources */,
 				060CCC4F24B405AB00148C42 /* BluetoothScanner.storyboard in Resources */,
 				06516CC7248552C700CFA05F /* Assets.xcassets in Resources */,
 				06516CC5248552C500CFA05F /* Main.storyboard in Resources */,
-				06BE849724CFD2B300002E13 /* labels.txt in Resources */,
 				060CCC3E24AEAD6C00148C42 /* GestureOptionView.xib in Resources */,
+				06A177A024D259F0006E4DF6 /* cvexport.manifest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +527,7 @@
 				060CCC4C24B3F38100148C42 /* AppStoryboard.swift in Sources */,
 				0667631724CB3F31008DFDD3 /* SettingsViewController.swift in Sources */,
 				060CCC4824B3EF9800148C42 /* UserSettings.swift in Sources */,
-				06BE849824CFD2B300002E13 /* handgestures.mlmodel in Sources */,
+				06A177A324D25A16006E4DF6 /* handgestures.mlmodel in Sources */,
 				06516CEF2485544600CFA05F /* RobotState.swift in Sources */,
 				06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */,
 				06516CF5248571F400CFA05F /* DashboardViewController.swift in Sources */,
@@ -721,7 +721,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pitt.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";
@@ -745,7 +745,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pitt.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";

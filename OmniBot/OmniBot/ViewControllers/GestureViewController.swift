@@ -21,7 +21,8 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
         case flatHand = "flat-hand"
         case peace = "peace-sign"
         case tuckedThumb = "tucked-thumb"
-        case rockOn = "rock-on"
+        //case rockOn = "rock-on"
+        case fingerCross = "finger-cross"
         case noDetection = "Negative"
         
         var symbol:String{
@@ -32,8 +33,10 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                 case .flatHand: return "✋"
                 case .peace: return "✌️"
                 case .tuckedThumb: return "✊"
-                case .rockOn: return "🤘"
+                //case .rockOn: return "🤘"
+                case .fingerCross: return "🤞"
                 case .noDetection: return "⛔️"
+                
             }
         }
         
@@ -45,18 +48,20 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                    case .flatHand: return "Open Hand"
                    case .peace: return "Peace"
                    case .tuckedThumb: return "Tucked Thumb"
-                   case .rockOn: return "Rock On"
+                   // case .rockOn: return "Rock On"
+                   case .fingerCross: return "Finger Cross"
                    case .noDetection: return "No Detection"
                }
         }
         
         var action:String{
               switch(self){
-                     case .closedFist: return "Reset"
+                     case .fingerCross: return "Reset"
+                     case .closedFist: return "Slow Down"
                      case .okSign: return "Turn Right"
                      case .aloha: return "Turn Left"
                      case .flatHand: return "Speed Up"
-                     case .rockOn: return "Slow Down"
+                     // case .rockOn: return "Slow Down"
                      case .peace: return "Toggle Autopilot"
                      case .tuckedThumb: return "Stop"
                      case .noDetection: return "No Detection"
@@ -90,7 +95,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                         RobotCommander.velocityValue += 0.1
                     }
                     
-                   case .rockOn:
+                   case .closedFist:
                     
                       if RobotCommander.velocityValue <= -RobotCommander.SPEED_LIMIT_Y{
                         Alerts.createHUD(textValue: "🔴 Reverse Limit Reached!", delayLength: 1.0)
@@ -102,7 +107,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                      RobotCommander.autopilot = !RobotCommander.autopilot
                    case .tuckedThumb:
                      RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
-                   case .closedFist, .noDetection:
+                   case .fingerCross, .noDetection:
                      print("No Command")
             }
         }
