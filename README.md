@@ -13,6 +13,7 @@ Requirements:
 8. Stay within a $300 budget 
 
 Contents of this Repository:
-1. Embedded Software (Sensor Processing and Control Logic)
-2. iOS Application Software
-3. PCB Schematics
+1. Arduino: Embedded Software (Sensor Processing, Bluetooth Wrapper, Motor Control Logic)
+2. OmniBot: iOS Application Software
+3. Hardware: PCB Schematics & Board Designs
+4. images: jpeg images of Pitt and OmniBot logos
