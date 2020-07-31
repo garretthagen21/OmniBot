@@ -2,7 +2,7 @@ OmniRobot/Arduino/OmniControl
 
 Program to upload to PCB during normal operation
 
-Contents:
+Contents of OmniControl.ino: 
 
 Motor Control:
 go_Advance()
@@ -26,3 +26,6 @@ joystick_gesture_mode()
 General:
 setup()
 loop()
+
+Contents of configuration.h:
+constant declarations variable declarations pin numbers
