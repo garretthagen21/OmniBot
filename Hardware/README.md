@@ -28,3 +28,8 @@ Excel document with three sheets, each with data from various tests.
 Sheet 1: Stopping distance evaluation
 Sheet 2: Power consumption and battery longevity
 Sheet 3: Speed analysis
+
+## CAD
+CAD drawings in the form of .stl and .ipt Inventor files
+Contains both single mount version and tri-mount version of
+ultrasonic sensor mounts
