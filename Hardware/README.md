@@ -2,8 +2,8 @@
 Senior Design Mobile Robot Project
 
 ## BOM for Omnirobot.pdf
-Includes all electrical and hardware components used in final construction of the robot
-Has pricing per unit, quatity, part number, and description of component use
+Includes all electrical and hardware components used in final construction of the robot. 
+Has pricing per unit, quatity, part number, and description of component use.
   
 ## Breadboard Circuit.pdf
 Original pin connections used on breadboard version of circuit. This was later changed as all ultrasonic sensors and the Bluetooth module was added.
@@ -18,10 +18,10 @@ Altium Designer PCB. Three viewing options:
 3. 3D View
 
 ## Senior Design.PrjPcb
-Altium Design project file
+Altium Design project file.
 
 ## SeniorDesignPCB.SchDoc
-Altium Designer schematic for power connections and ATmega328PU and L293NE (motor driver ICs)
+Altium Designer schematic for power connections and ATmega328PU and L293NE (motor driver ICs).
 
 ## Verification Testing.xlsx
 Excel document with three sheets, each with data from various tests.
