@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="An4-je-YZ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="An4-je-YZ9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -31,6 +31,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfy-Wt-As6">
                                             <rect key="frame" x="314" y="10" width="80" height="28"/>
                                             <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="PeripheralConnectLabel" label="Peripheral Connect"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="QXv-ax-sUn"/>
                                             </constraints>
@@ -54,6 +55,7 @@
                                         <constraint firstItem="xfy-Wt-As6" firstAttribute="leading" secondItem="HVJ-5j-CYC" secondAttribute="trailing" constant="80" id="zVj-9v-LND"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="BluetoothPeripheralCell" label="Bluetooth Peripheral"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -85,7 +87,6 @@
         <!--Navigation Controller-->
         <scene sceneID="NOq-NG-ffg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xIz-Bd-Q42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="BluetoothScannerNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="An4-je-YZ9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Oba-HC-ajw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -95,6 +96,7 @@
                         <segue destination="YYP-x2-xVg" kind="relationship" relationship="rootViewController" id="uU2-2E-a8R"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIz-Bd-Q42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-486" y="196"/>
         </scene>

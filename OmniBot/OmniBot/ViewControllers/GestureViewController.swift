@@ -21,7 +21,8 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
         case flatHand = "flat-hand"
         case peace = "peace-sign"
         case tuckedThumb = "tucked-thumb"
-        case rockOn = "rock-on"
+        //case rockOn = "rock-on"
+        case fingerCross = "finger-cross"
         case noDetection = "Negative"
         
         var symbol:String{
@@ -32,8 +33,10 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                 case .flatHand: return "✋"
                 case .peace: return "✌️"
                 case .tuckedThumb: return "✊"
-                case .rockOn: return "🤘"
+                //case .rockOn: return "🤘"
+                case .fingerCross: return "🤞"
                 case .noDetection: return "⛔️"
+                
             }
         }
         
@@ -45,18 +48,20 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                    case .flatHand: return "Open Hand"
                    case .peace: return "Peace"
                    case .tuckedThumb: return "Tucked Thumb"
-                   case .rockOn: return "Rock On"
+                   // case .rockOn: return "Rock On"
+                   case .fingerCross: return "Finger Cross"
                    case .noDetection: return "No Detection"
                }
         }
         
         var action:String{
               switch(self){
-                     case .closedFist: return "Reset"
+                     case .fingerCross: return "Reset"
+                     case .closedFist: return "Slow Down"
                      case .okSign: return "Turn Right"
                      case .aloha: return "Turn Left"
                      case .flatHand: return "Speed Up"
-                     case .rockOn: return "Slow Down"
+                     // case .rockOn: return "Slow Down"
                      case .peace: return "Toggle Autopilot"
                      case .tuckedThumb: return "Stop"
                      case .noDetection: return "No Detection"
@@ -90,7 +95,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                         RobotCommander.velocityValue += 0.1
                     }
                     
-                   case .rockOn:
+                   case .closedFist:
                     
                       if RobotCommander.velocityValue <= -RobotCommander.SPEED_LIMIT_Y{
                         Alerts.createHUD(textValue: "🔴 Reverse Limit Reached!", delayLength: 1.0)
@@ -102,7 +107,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                      RobotCommander.autopilot = !RobotCommander.autopilot
                    case .tuckedThumb:
                      RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
-                   case .closedFist, .noDetection:
+                   case .fingerCross, .noDetection:
                      print("No Command")
             }
         }
@@ -122,9 +127,14 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     /// Latest prediction
     var mostRecentPrediction:HandGesture = .noDetection
     
+    private var confirmGestureAlert:UIAlertController?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configure accessibility
+        confirmGestureAlert?.accessibilityLabel = "Gesture Confirmation Alert"
         
         // Configure gesture options
         gestureOptionsButton.layer.borderWidth = 1.0
@@ -180,8 +190,10 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
 
             // Pause the view's session
             ARVideoSceneView.session.pause()
-            // Clear the text
+            
+            // Clear the text and potential gesture alert
             self.overlaySymbolLabel.text = ""
+            self.confirmGestureAlert?.dismiss(animated: true, completion: { self.confirmGestureAlert = nil })
         }
         
     }
@@ -265,17 +277,52 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                
              
             // Apply the prediction if it is new or a reset has been appplied
-            if foundPrediction != self.mostRecentPrediction || self.mostRecentPrediction == HandGesture.closedFist || self.mostRecentPrediction == HandGesture.noDetection{
-                foundPrediction.applyToRobot()
+            if foundPrediction != self.mostRecentPrediction ||
+                self.mostRecentPrediction == HandGesture.closedFist ||
+                self.mostRecentPrediction == HandGesture.noDetection{
+                
+                // Show the prediction and set our most recent to our found
+                 self.overlaySymbolLabel.text = foundPrediction.symbol+" "+foundPrediction.action
+                 self.mostRecentPrediction = foundPrediction
+
+                // If confirmation for gestures is enabled do that
+                if UserSettings.confirmGesture{
+                    // Don't accept new value if the user hasnt responded yet
+                    if self.confirmGestureAlert != nil || foundPrediction == .noDetection || foundPrediction == .closedFist{
+                        return
+                    }
+                    
+                    // If we are not scanning display a two option alert to disconnect
+                    self.confirmGestureAlert = UIAlertController(title: "👋 Confirm Gesture", message: "Are you sure you want to apply \(foundPrediction.symbol) \(foundPrediction.description) to \(foundPrediction.action)?" ,preferredStyle: UIAlertController.Style.alert)
+                           
+                    self.confirmGestureAlert?.addAction(UIAlertAction(title: "\(foundPrediction.action)", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.confirmGestureAlert?.dismiss(animated: true, completion: {
+                            foundPrediction.applyToRobot()
+                            self.confirmGestureAlert = nil
+                        })
+                               
+
+                           }))
+                    self.confirmGestureAlert?.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action) in
+                        self.confirmGestureAlert?.dismiss(animated: true, completion: { self.confirmGestureAlert = nil })
+                       
+                               
+                           }))
+                    self.present(self.confirmGestureAlert!, animated: true, completion: nil)
+                             
+                }
+                else{
+                    self.confirmGestureAlert?.dismiss(animated: true, completion: { self.confirmGestureAlert = nil })
+                    foundPrediction.applyToRobot()
+                }
             }
             
-            // Show the prediction and set our most recent to our found
-            self.overlaySymbolLabel.text = foundPrediction.symbol+" "+foundPrediction.action
-            self.mostRecentPrediction = foundPrediction
+     
                
            }
        
        }
+    
     
     /// To hide/show the gesture options
     @IBAction func didTapGestureOptions(_ sender: Any) {

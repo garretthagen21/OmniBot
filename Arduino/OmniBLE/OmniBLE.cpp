@@ -5,14 +5,19 @@ OmniBLE::OmniBLE(int rx,int tx){
   rxPin = rx;
   txPin = tx;
   bluetoothLE = new SoftwareSerial(rxPin,txPin);
+  useSerialChannel = false;
+
 }
 
 OmniBLE::OmniBLE(){
     useSerialChannel = true;
 }
 OmniBLE::~OmniBLE(){
-    if (bluetoothLE)
+    if (bluetoothLE){
         free(bluetoothLE);
+        if(printDebugToSerial && !useSerialChannel)
+            Serial.println("[OmniBLE::~OmniBLE()] Freeing bluetoothLE pointer");
+    }
 }
 
 void OmniBLE::begin(long baudRate){
@@ -23,15 +28,11 @@ void OmniBLE::begin(long baudRate){
 
 void OmniBLE::sync(){
     String inputCommand = "";
-    int inputAvailable = useSerialChannel ? Serial.available() : bluetoothLE->available();
-    while(inputAvailable > 0){
-        char streamChar = useSerialChannel ? Serial.read() : bluetoothLE->read();
-        inputCommand += streamChar;
-
-        if (streamChar == '\n'){
-            break;
-        }
-    }
+    if (useSerialChannel)
+       inputCommand = getSerialInput();
+    else
+       inputCommand = getSoftwareInput();
+    
     // Assign the current command
     if(!inputCommand.equals("")){
         currentCommand = inputCommand;
@@ -40,6 +41,42 @@ void OmniBLE::sync(){
         if(printDebugToSerial && !useSerialChannel)
             Serial.println("[OmniBLE::sync()] Recieved Commmand: "+currentCommand);
     }
+}
+
+String OmniBLE::getSerialInput()
+{
+    String inputCommand = "";
+    unsigned int charsRead = 0;
+    while(Serial.available() > 0){
+        char streamChar = Serial.read();
+        inputCommand += streamChar;
+        charsRead++;
+        
+        // Protect against infinite loop
+        if (streamChar == '\n' || charsRead > maxInputStringLength){
+            break;
+        }
+    }
+    return inputCommand;
+}
+String OmniBLE::getSoftwareInput()
+{
+    String inputCommand = "";
+    unsigned int charsRead = 0;
+    while(bluetoothLE->available() > 0){
+        char streamChar = bluetoothLE->read();
+        inputCommand += streamChar;
+        charsRead++;
+        
+        // Protect against infinite loop
+        if (streamChar == '\n' || charsRead > maxInputStringLength){
+            break;
+        }
+    }
+    
+    return inputCommand;
+
+
 }
 
 float OmniBLE::turnValue(){

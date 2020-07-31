@@ -3,10 +3,10 @@
   "Platform": "CoreML",
   "Flavor": null,
   "ExporterVersion": "2.0",
-  "ExportedDate": "2020-07-02T22:50:17.2061888Z",
-  "IterationId": "f62548b2-cce0-4db2-9b25-b570129c6b21",
+  "ExportedDate": "2020-07-30T01:28:27.1978739Z",
+  "IterationId": "cf9523f7-4dec-4272-aa04-06555c01ea5e",
   "ModelFileName": "model.mlmodel",
   "LabelFileName": "labels.txt",
-  "ModelFileSHA1": "9e38b72a7849434ede9acc656b2dfc643bc975ab",
+  "ModelFileSHA1": "5c173628fbbba405d2df4889f6536c563912ff97",
   "SchemaVersion": "1.0"
 }
