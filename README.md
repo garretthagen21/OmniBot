@@ -15,5 +15,5 @@ Requirements:
 Contents of this Repository:
 1. Arduino: Embedded Software (Sensor Processing, Bluetooth Wrapper, Motor Control Logic)
 2. OmniBot: iOS Application Software
-3. Hardware: PCB Schematics & Board Designs
+3. Hardware: PCB Schematics, Board Designs, and 3D Printed Parts
 4. images: jpeg images of Pitt and OmniBot logos
