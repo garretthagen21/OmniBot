@@ -1,6 +1,6 @@
 OmniRobot/Arduino/OmniControl
 
-Program to upload to PCB
+Program to upload to PCB during normal operation
 
 Contents:
 
