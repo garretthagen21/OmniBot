@@ -112,31 +112,9 @@ int watch_R(){
   return round(echo_distance);
 }
 
-/*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode(int dis_FL, int dis_FR, int dis_L, int dis_R){  
-  if ( (dis_FL <= up_bound && dis_FL >= lo_bound) || (dis_FR <= up_bound && dis_FR >= lo_bound) ){
-    go_Back();
-    delay(back_time);
-    stop_Stop();
-    if (dis_L < dis_R && dis_L >= lo_bound){
-      go_Right();
-      delay(turn_time);
-      stop_Stop();
-    }
-    else if (dis_R < dis_L && dis_R >= lo_bound){
-      go_Left();
-      delay(turn_time);
-      stop_Stop();      
-    }
-  }
-  else {
-    go_Advance();
-  }
-}
-
 
 /*Obstacle Avoidance Mode*/
-void obstacle_avoidance_mode_2(){  
+void obstacle_avoidance_mode(){  
   dis_FL = watch_FL();
   dis_FR = watch_FR();
   dis_L = watch_L();
@@ -172,15 +150,10 @@ void obstacle_avoidance_mode_2(){
   }
 }
 
-/*Obstacle Avoidance Mode*/
-void testObstacleAvoidanceMode(){  
-  obstacle_avoidance_mode(dis_FL, dis_FR, dis_L, dis_R);
-}
-
 
 /*Obstacle Avoidance Mode*/
-void testObstacleAvoidanceMode2(){
-  obstacle_avoidance_mode_2();
+void testObstacleAvoidanceMode(){
+  obstacle_avoidance_mode();
 }
 
 void testStop(){
@@ -313,7 +286,7 @@ void loop() {
 //  testLUS();
 //  testRUS();
 
-//  testObstacleAvoidanceMode();
-  testObstacleAvoidanceMode2();
+  testObstacleAvoidanceMode();
+
 
 }
