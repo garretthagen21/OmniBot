@@ -25,6 +25,7 @@ Omnidirectional Mobile Robot (OmniRobot / OmniBot)
 #### Contents of this Repository:
 1. Arduino: Embedded Software (Sensor Processing, Bluetooth Wrapper, Motor Control Logic)
 2. OmniBot: iOS Application Software
-3. Hardware: PCB Schematics & Board Designs
-4. CAD: CAD files sensor mounts
-5. Images: jpeg images of Pitt and OmniBot logos
+3. Hardware: PCB Schematics, Board Designs, and 3D Printed Parts
+4. Images: jpeg images of Pitt and OmniBot logos
+
+
