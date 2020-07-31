@@ -1,4 +1,4 @@
-OmniRobot/Arduino/OmniControl
+# OmniRobot/Arduino/OmniControl
 
 Program to upload to PCB during normal operation
 
@@ -29,3 +29,6 @@ loop()
 
 Contents of configuration.h:
 constant declarations variable declarations pin numbers
+
+Contents of OmniBLE.h
+Bluetooth wrapper functionality
