@@ -1,0 +1,311 @@
+Trans Stamp 0 15:19:13.963
+Trans Stamp 1 15:19:14.463
+Trans Stamp 2 15:19:14.963
+Trans Stamp 3 15:19:15.463
+Trans Stamp 4 15:19:15.963
+Trans Stamp 5 15:19:16.463
+Trans Stamp 6 15:19:16.963
+Trans Stamp 7 15:19:17.463
+Trans Stamp 8 15:19:17.963
+Trans Stamp 9 15:19:18.463
+Trans Stamp 10 15:19:18.963
+Trans Stamp 11 15:19:19.463
+Trans Stamp 12 15:19:19.963
+Trans Stamp 13 15:19:20.463
+Trans Stamp 14 15:19:20.963
+Trans Stamp 15 15:19:21.463
+Trans Stamp 16 15:19:21.963
+Trans Stamp 17 15:19:22.463
+Trans Stamp 18 15:19:22.963
+Trans Stamp 19 15:19:23.463
+Trans Stamp 20 15:19:23.962
+Trans Stamp 21 15:19:24.463
+Trans Stamp 22 15:19:24.963
+Trans Stamp 23 15:19:25.463
+Trans Stamp 24 15:19:25.963
+Trans Stamp 25 15:19:26.463
+Trans Stamp 26 15:19:26.963
+Trans Stamp 27 15:19:27.463
+Trans Stamp 28 15:19:27.963
+Trans Stamp 29 15:19:28.463
+Trans Stamp 30 15:19:28.963
+Trans Stamp 31 15:19:29.463
+Trans Stamp 32 15:19:29.963
+Trans Stamp 33 15:19:30.463
+Trans Stamp 34 15:19:30.963
+Trans Stamp 35 15:19:31.463
+Trans Stamp 36 15:19:31.963
+Trans Stamp 37 15:19:32.463
+Trans Stamp 38 15:19:32.963
+Trans Stamp 39 15:19:33.463
+Trans Stamp 40 15:19:33.963
+Trans Stamp 41 15:19:34.463
+Trans Stamp 42 15:19:34.963
+Trans Stamp 43 15:19:35.463
+Trans Stamp 44 15:19:35.963
+Trans Stamp 45 15:19:36.463
+Trans Stamp 46 15:19:36.963
+Trans Stamp 47 15:19:37.463
+Trans Stamp 48 15:19:37.963
+Trans Stamp 49 15:19:38.463
+Trans Stamp 50 15:19:38.963
+Trans Stamp 51 15:19:39.463
+Trans Stamp 52 15:19:39.963
+Trans Stamp 53 15:19:40.463
+Trans Stamp 54 15:19:40.963
+Trans Stamp 55 15:19:41.463
+Trans Stamp 56 15:19:41.963
+Trans Stamp 57 15:19:42.463
+Trans Stamp 58 15:19:42.963
+Trans Stamp 59 15:19:43.463
+Trans Stamp 60 15:19:43.963
+Trans Stamp 61 15:19:44.463
+Trans Stamp 62 15:19:44.963
+Trans Stamp 63 15:19:45.463
+Trans Stamp 64 15:19:45.963
+Trans Stamp 65 15:19:46.463
+Trans Stamp 66 15:19:46.963
+Trans Stamp 67 15:19:47.463
+Trans Stamp 68 15:19:47.963
+Trans Stamp 69 15:19:48.463
+Trans Stamp 70 15:19:48.963
+Trans Stamp 71 15:19:49.463
+Trans Stamp 72 15:19:49.963
+Trans Stamp 73 15:19:50.463
+Trans Stamp 74 15:19:50.963
+Trans Stamp 75 15:19:51.463
+Trans Stamp 76 15:19:51.963
+Trans Stamp 77 15:19:52.462
+Trans Stamp 78 15:19:52.963
+Trans Stamp 79 15:19:53.463
+Trans Stamp 80 15:19:53.963
+Trans Stamp 81 15:19:54.462
+Trans Stamp 82 15:19:54.963
+Trans Stamp 83 15:19:55.463
+Trans Stamp 84 15:19:55.963
+Trans Stamp 85 15:19:56.463
+Trans Stamp 86 15:19:56.963
+Trans Stamp 87 15:19:57.463
+Trans Stamp 88 15:19:57.962
+Trans Stamp 89 15:19:58.463
+Trans Stamp 90 15:19:58.963
+Trans Stamp 91 15:19:59.463
+Trans Stamp 92 15:19:59.963
+Trans Stamp 93 15:20:00.463
+Trans Stamp 94 15:20:00.963
+Trans Stamp 95 15:20:01.463
+Trans Stamp 96 15:20:01.963
+Trans Stamp 97 15:20:02.463
+Trans Stamp 98 15:20:02.962
+Trans Stamp 99 15:20:03.463
+Recv Stamp 0 15:19:14.021
+Recv Stamp 1 15:19:14.525
+Recv Stamp 2 15:19:15.041
+Recv Stamp 3 15:19:15.525
+Recv Stamp 4 15:19:16.042
+Recv Stamp 5 15:19:16.562
+Recv Stamp 6 15:19:17.040
+Recv Stamp 7 15:19:17.553
+Recv Stamp 8 15:19:18.032
+Recv Stamp 9 15:19:18.549
+Recv Stamp 10 15:19:19.057
+Recv Stamp 11 15:19:19.541
+Recv Stamp 12 15:19:20.061
+Recv Stamp 13 15:19:20.544
+Recv Stamp 14 15:19:21.072
+Recv Stamp 15 15:19:21.547
+Recv Stamp 16 15:19:22.070
+Recv Stamp 17 15:19:22.550
+Recv Stamp 18 15:19:23.072
+Recv Stamp 19 15:19:23.550
+Recv Stamp 20 15:19:24.073
+Recv Stamp 21 15:19:24.555
+Recv Stamp 22 15:19:25.067
+Recv Stamp 23 15:19:25.553
+Recv Stamp 24 15:19:26.063
+Recv Stamp 25 15:19:26.586
+Recv Stamp 26 15:19:27.072
+Recv Stamp 27 15:19:27.589
+Recv Stamp 28 15:19:28.070
+Recv Stamp 29 15:19:28.592
+Recv Stamp 30 15:19:29.078
+Recv Stamp 31 15:19:29.595
+Recv Stamp 32 15:19:30.074
+Recv Stamp 33 15:19:30.597
+Recv Stamp 34 15:19:31.080
+Recv Stamp 35 15:19:31.595
+Recv Stamp 36 15:19:32.075
+Recv Stamp 37 15:19:32.597
+Recv Stamp 38 15:19:33.077
+Recv Stamp 39 15:19:33.600
+Recv Stamp 40 15:19:34.085
+Recv Stamp 41 15:19:34.608
+Recv Stamp 42 15:19:35.093
+Recv Stamp 43 15:19:35.612
+Recv Stamp 44 15:19:36.087
+Recv Stamp 45 15:19:36.602
+Recv Stamp 46 15:19:37.120
+Recv Stamp 47 15:19:37.605
+Recv Stamp 48 15:19:38.118
+Recv Stamp 49 15:19:38.603
+Recv Stamp 50 15:19:39.125
+Recv Stamp 51 15:19:39.611
+Recv Stamp 52 15:19:40.014
+Recv Stamp 53 15:19:40.602
+Recv Stamp 54 15:19:41.126
+Recv Stamp 55 15:19:41.537
+Recv Stamp 56 15:19:42.021
+Recv Stamp 57 15:19:42.642
+Recv Stamp 58 15:19:43.045
+Recv Stamp 59 15:19:43.523
+Recv Stamp 60 15:19:44.043
+Recv Stamp 61 15:19:44.561
+Recv Stamp 62 15:19:45.046
+Recv Stamp 63 15:19:45.557
+Recv Stamp 64 15:19:46.043
+Recv Stamp 65 15:19:46.560
+Recv Stamp 66 15:19:47.040
+Recv Stamp 67 15:19:47.554
+Recv Stamp 68 15:19:48.037
+Recv Stamp 69 15:19:48.551
+Recv Stamp 70 15:19:49.071
+Recv Stamp 71 15:19:49.560
+Recv Stamp 72 15:19:50.074
+Recv Stamp 73 15:19:50.549
+Recv Stamp 74 15:19:51.080
+Recv Stamp 75 15:19:51.558
+Recv Stamp 76 15:19:52.048
+Recv Stamp 77 15:19:52.566
+Recv Stamp 78 15:19:53.083
+Recv Stamp 79 15:19:53.569
+Recv Stamp 80 15:19:54.054
+Recv Stamp 81 15:19:54.573
+Recv Stamp 82 15:19:55.058
+Recv Stamp 83 15:19:55.574
+Recv Stamp 84 15:19:56.059
+Recv Stamp 85 15:19:56.578
+Recv Stamp 86 15:19:57.094
+Recv Stamp 87 15:19:57.586
+Recv Stamp 88 15:19:58.096
+Recv Stamp 89 15:19:58.572
+Recv Stamp 90 15:19:59.089
+Recv Stamp 91 15:19:59.571
+Recv Stamp 92 15:20:00.088
+Recv Stamp 93 15:20:00.604
+Recv Stamp 94 15:20:01.084
+Recv Stamp 95 15:20:01.601
+Recv Stamp 96 15:20:02.081
+Recv Stamp 97 15:20:02.598
+Recv Stamp 98 15:20:03.083
+Recv Stamp 99 15:20:03.601
+
+
+=== Command Latencies ===
+Command: 0 -> Latency: 0.058s
+Command: 1 -> Latency: 0.062s
+Command: 2 -> Latency: 0.078s
+Command: 3 -> Latency: 0.062s
+Command: 4 -> Latency: 0.079s
+Command: 5 -> Latency: 0.099s
+Command: 6 -> Latency: 0.077s
+Command: 7 -> Latency: 0.09s
+Command: 8 -> Latency: 0.069s
+Command: 9 -> Latency: 0.086s
+Command: 10 -> Latency: 0.094s
+Command: 11 -> Latency: 0.078s
+Command: 12 -> Latency: 0.098s
+Command: 13 -> Latency: 0.081s
+Command: 14 -> Latency: 0.109s
+Command: 15 -> Latency: 0.084s
+Command: 16 -> Latency: 0.107s
+Command: 17 -> Latency: 0.087s
+Command: 18 -> Latency: 0.109s
+Command: 19 -> Latency: 0.087s
+Command: 20 -> Latency: 0.111s
+Command: 21 -> Latency: 0.092s
+Command: 22 -> Latency: 0.104s
+Command: 23 -> Latency: 0.09s
+Command: 24 -> Latency: 0.1s
+Command: 25 -> Latency: 0.123s
+Command: 26 -> Latency: 0.109s
+Command: 27 -> Latency: 0.126s
+Command: 28 -> Latency: 0.107s
+Command: 29 -> Latency: 0.129s
+Command: 30 -> Latency: 0.115s
+Command: 31 -> Latency: 0.132s
+Command: 32 -> Latency: 0.111s
+Command: 33 -> Latency: 0.134s
+Command: 34 -> Latency: 0.117s
+Command: 35 -> Latency: 0.132s
+Command: 36 -> Latency: 0.112s
+Command: 37 -> Latency: 0.134s
+Command: 38 -> Latency: 0.114s
+Command: 39 -> Latency: 0.137s
+Command: 40 -> Latency: 0.122s
+Command: 41 -> Latency: 0.145s
+Command: 42 -> Latency: 0.13s
+Command: 43 -> Latency: 0.149s
+Command: 44 -> Latency: 0.124s
+Command: 45 -> Latency: 0.139s
+Command: 46 -> Latency: 0.157s
+Command: 47 -> Latency: 0.142s
+Command: 48 -> Latency: 0.155s
+Command: 49 -> Latency: 0.14s
+Command: 50 -> Latency: 0.162s
+Command: 51 -> Latency: 0.148s
+Command: 52 -> Latency: 0.051s
+Command: 53 -> Latency: 0.139s
+Command: 54 -> Latency: 0.163s
+Command: 55 -> Latency: 0.074s
+Command: 56 -> Latency: 0.058s
+Command: 57 -> Latency: 0.179s
+Command: 58 -> Latency: 0.082s
+Command: 59 -> Latency: 0.06s
+Command: 60 -> Latency: 0.08s
+Command: 61 -> Latency: 0.098s
+Command: 62 -> Latency: 0.083s
+Command: 63 -> Latency: 0.094s
+Command: 64 -> Latency: 0.08s
+Command: 65 -> Latency: 0.097s
+Command: 66 -> Latency: 0.077s
+Command: 67 -> Latency: 0.091s
+Command: 68 -> Latency: 0.074s
+Command: 69 -> Latency: 0.088s
+Command: 70 -> Latency: 0.108s
+Command: 71 -> Latency: 0.097s
+Command: 72 -> Latency: 0.111s
+Command: 73 -> Latency: 0.086s
+Command: 74 -> Latency: 0.117s
+Command: 75 -> Latency: 0.095s
+Command: 76 -> Latency: 0.085s
+Command: 77 -> Latency: 0.104s
+Command: 78 -> Latency: 0.12s
+Command: 79 -> Latency: 0.106s
+Command: 80 -> Latency: 0.091s
+Command: 81 -> Latency: 0.111s
+Command: 82 -> Latency: 0.095s
+Command: 83 -> Latency: 0.111s
+Command: 84 -> Latency: 0.096s
+Command: 85 -> Latency: 0.115s
+Command: 86 -> Latency: 0.131s
+Command: 87 -> Latency: 0.123s
+Command: 88 -> Latency: 0.134s
+Command: 89 -> Latency: 0.109s
+Command: 90 -> Latency: 0.126s
+Command: 91 -> Latency: 0.108s
+Command: 92 -> Latency: 0.125s
+Command: 93 -> Latency: 0.141s
+Command: 94 -> Latency: 0.121s
+Command: 95 -> Latency: 0.138s
+Command: 96 -> Latency: 0.118s
+Command: 97 -> Latency: 0.135s
+Command: 98 -> Latency: 0.121s
+Command: 99 -> Latency: 0.138s
+
+
+=== Latency Stats ===
+Mean: 0.1082
+Median: 0.109
+Stdev: 0.0264632392254431
+
+
