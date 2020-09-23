@@ -53,6 +53,7 @@ if __name__ == "__main__":
     print("\n\n=== Command Latencies ===")
     for cmd, latency in lat_dict.items():
         print("Command: " + cmd + " -> Latency: " + str(latency) + "s")
+        #print(str(latency))
 
     latencies = lat_dict.values()
     print("\n\n=== Latency Stats ===")
