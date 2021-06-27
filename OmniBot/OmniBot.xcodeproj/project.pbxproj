@@ -35,9 +35,9 @@
 		06A177A324D25A16006E4DF6 /* handgestures.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06A177A224D25A16006E4DF6 /* handgestures.mlmodel */; };
 		06B7D64024B6ACF800FF18C6 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D63F24B6ACF800FF18C6 /* Alerts.swift */; };
 		06B7D64224B6CF2000FF18C6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7D64124B6CF2000FF18C6 /* Protocols.swift */; };
-		769382D29D9183AF9A80EEAC /* Pods_OmniBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */; };
-		9D172351F853D6FC081A1B96 /* Pods_OmniBot_OmniBotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BFE5250160E4845F2EB1C5 /* Pods_OmniBot_OmniBotUITests.framework */; };
+		724A25FC6D88F5994D3C76B7 /* Pods_OmniBotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7C84149D1E3E30A4655BFE /* Pods_OmniBotUITests.framework */; };
 		C34B2E0CE8F1158BB1BBB69E /* Pods_OmniBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */; };
+		D0614F84E8C1C8FD4A06DA43 /* Pods_OmniBotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93DA00A40FCF4773E53ADF5 /* Pods_OmniBotTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,15 +92,17 @@
 		06A177A224D25A16006E4DF6 /* handgestures.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = handgestures.mlmodel; sourceTree = "<group>"; };
 		06B7D63F24B6ACF800FF18C6 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		06B7D64124B6CF2000FF18C6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		0F7C84149D1E3E30A4655BFE /* Pods_OmniBotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB465AE2D950222A09739F6 /* Pods-OmniBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBotTests.debug.xcconfig"; path = "Target Support Files/Pods-OmniBotTests/Pods-OmniBotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		634F3F4E075D00AE354D729E /* Pods-OmniBotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBotUITests.debug.xcconfig"; path = "Target Support Files/Pods-OmniBotUITests/Pods-OmniBotUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		97B4051093FF0A2415284E4A /* Pods-OmniBot-OmniBotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBot-OmniBotUITests.release.xcconfig"; path = "Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A0EFD5BF267702DFA75D2B5C /* Pods-OmniBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBotTests.release.xcconfig"; path = "Target Support Files/Pods-OmniBotTests/Pods-OmniBotTests.release.xcconfig"; sourceTree = "<group>"; };
 		A102C42765C83C095BC6CE2E /* Pods-OmniBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBot.release.xcconfig"; path = "Target Support Files/Pods-OmniBot/Pods-OmniBot.release.xcconfig"; sourceTree = "<group>"; };
 		C29A4F19ED7E3EB9DF35FA81 /* Pods-OmniBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBot.debug.xcconfig"; path = "Target Support Files/Pods-OmniBot/Pods-OmniBot.debug.xcconfig"; sourceTree = "<group>"; };
+		D0D14B61D479841EB0309A91 /* Pods-OmniBotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBotUITests.release.xcconfig"; path = "Target Support Files/Pods-OmniBotUITests/Pods-OmniBotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D4AADCE8429F32FB42E18319 /* Pods-OmniBot-OmniBotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniBot-OmniBotUITests.debug.xcconfig"; path = "Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E4BFE5250160E4845F2EB1C5 /* Pods_OmniBot_OmniBotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBot_OmniBotUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D93DA00A40FCF4773E53ADF5 /* Pods_OmniBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniBotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769382D29D9183AF9A80EEAC /* Pods_OmniBotTests.framework in Frameworks */,
+				D0614F84E8C1C8FD4A06DA43 /* Pods_OmniBotTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D172351F853D6FC081A1B96 /* Pods_OmniBot_OmniBotUITests.framework in Frameworks */,
+				724A25FC6D88F5994D3C76B7 /* Pods_OmniBotUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				2EA7629BDE6C9B5E271AE6AC /* Pods_OmniBot.framework */,
-				E4BFE5250160E4845F2EB1C5 /* Pods_OmniBot_OmniBotUITests.framework */,
-				37F21EE22B6769215D95C6B9 /* Pods_OmniBotTests.framework */,
+				D93DA00A40FCF4773E53ADF5 /* Pods_OmniBotTests.framework */,
+				0F7C84149D1E3E30A4655BFE /* Pods_OmniBotUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,6 +266,8 @@
 				97B4051093FF0A2415284E4A /* Pods-OmniBot-OmniBotUITests.release.xcconfig */,
 				1AB465AE2D950222A09739F6 /* Pods-OmniBotTests.debug.xcconfig */,
 				A0EFD5BF267702DFA75D2B5C /* Pods-OmniBotTests.release.xcconfig */,
+				634F3F4E075D00AE354D729E /* Pods-OmniBotUITests.debug.xcconfig */,
+				D0D14B61D479841EB0309A91 /* Pods-OmniBotUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -317,7 +321,6 @@
 				06516CD7248552C700CFA05F /* Sources */,
 				06516CD8248552C700CFA05F /* Frameworks */,
 				06516CD9248552C700CFA05F /* Resources */,
-				D8CDF3EAAC31CC6AA86A5182 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -422,7 +425,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OmniBot-OmniBotUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-OmniBotUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -488,23 +491,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OmniBot/Pods-OmniBot-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D8CDF3EAAC31CC6AA86A5182 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -721,7 +707,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pitt.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";
@@ -745,7 +731,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pitt.OmniBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniBot/Backend/OmniBot-Bridging-Header.h";
@@ -802,7 +788,7 @@
 		};
 		06516CEB248552C700CFA05F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4AADCE8429F32FB42E18319 /* Pods-OmniBot-OmniBotUITests.debug.xcconfig */;
+			baseConfigurationReference = 634F3F4E075D00AE354D729E /* Pods-OmniBotUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -823,7 +809,7 @@
 		};
 		06516CEC248552C700CFA05F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97B4051093FF0A2415284E4A /* Pods-OmniBot-OmniBotUITests.release.xcconfig */;
+			baseConfigurationReference = D0D14B61D479841EB0309A91 /* Pods-OmniBotUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -8,6 +8,7 @@
 
 import UIKit
 import BRHJoyStickView
+import CocoaLumberjack
 
 class RemoteViewController: UIViewController {
     
@@ -50,7 +51,7 @@ class RemoteViewController: UIViewController {
         let joyXNormalized = joystickReport.x / joyXRange
         let joyYNormalized = joystickReport.y / joyYRange
         
-        // print("Joystick XY: (\(joystickReport.x),\(joystickReport.y)) -> (\(joyXNormalized),\(joyYNormalized))")
+        DDLogDebug("Joystick Changed - XY: (\(joystickReport.x),\(joystickReport.y)) -> (\(joyXNormalized),\(joyYNormalized))")
         
         // Automatically disable autopilot
         autopilotSwitch.isOn = false
@@ -66,6 +67,8 @@ class RemoteViewController: UIViewController {
         let autopilotVal = autopilotSwitch.isOn
         let autoVeloVal = autopilotVal ? Double(autopilotSpeed.value) : 0.0
         
+        DDLogDebug("Autopilot Switch Changed - Enabled = \(autopilotVal) Velocity = \(autoVeloVal)")
+        
         // Update in one go to avoid multiple notifications
         RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: autoVeloVal, autopilotVal: autopilotVal)
         
@@ -75,7 +78,10 @@ class RemoteViewController: UIViewController {
     @IBAction func autopilotSpeedDidChange(_ sender: Any) {
         // Set our speed if the value did change
         if RobotCommander.autopilot{
+            DDLogDebug("Autopilot Velocity Changed While Autopilot is Enabled.")
             RobotCommander.velocityValue = Double(autopilotSpeed.value)
+        }else{
+            DDLogDebug("Autopilot Velocity Changed While Autopilot is Disabled.")
         }
     }
     

@@ -10,108 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 import Vision
+import CocoaLumberjack
 
 class GestureViewController: UIViewController, ARSCNViewDelegate {
-    
-    /// An enumeration representing our possible outcomes
-    enum HandGesture:String, CaseIterable{
-        case closedFist = "closed-fist" // TODO: maybe make closed fist a reset?
-        case okSign = "ok-sign"
-        case aloha = "aloha-sign"
-        case flatHand = "flat-hand"
-        case peace = "peace-sign"
-        case tuckedThumb = "tucked-thumb"
-        //case rockOn = "rock-on"
-        case fingerCross = "finger-cross"
-        case noDetection = "Negative"
-        
-        var symbol:String{
-            switch(self){
-                case .closedFist: return "👊"
-                case .okSign: return "👌"
-                case .aloha: return "🤙"
-                case .flatHand: return "✋"
-                case .peace: return "✌️"
-                case .tuckedThumb: return "✊"
-                //case .rockOn: return "🤘"
-                case .fingerCross: return "🤞"
-                case .noDetection: return "⛔️"
-                
-            }
-        }
-        
-        var description:String{
-                switch(self){
-                   case .closedFist: return "Closed Fist"
-                   case .okSign: return "Ok"
-                   case .aloha: return "Aloha"
-                   case .flatHand: return "Open Hand"
-                   case .peace: return "Peace"
-                   case .tuckedThumb: return "Tucked Thumb"
-                   // case .rockOn: return "Rock On"
-                   case .fingerCross: return "Finger Cross"
-                   case .noDetection: return "No Detection"
-               }
-        }
-        
-        var action:String{
-              switch(self){
-                     case .fingerCross: return "Reset"
-                     case .closedFist: return "Slow Down"
-                     case .okSign: return "Turn Right"
-                     case .aloha: return "Turn Left"
-                     case .flatHand: return "Speed Up"
-                     // case .rockOn: return "Slow Down"
-                     case .peace: return "Toggle Autopilot"
-                     case .tuckedThumb: return "Stop"
-                     case .noDetection: return "No Detection"
-                 }
-        }
-        
-        func applyToRobot(){
-              switch(self){
-            
-                   case .okSign:
-                    if RobotCommander.turnValue >= RobotCommander.TURNING_LIMIT_X{
-                        Alerts.createHUD(textValue: "🔴 Right Turn Limit Reached!", delayLength: 1.0)
-                    }
-                    else{
-                         RobotCommander.turnValue += 0.1
-                    }
-                    
-                   case .aloha:
-                    if RobotCommander.turnValue <= -RobotCommander.TURNING_LIMIT_X{
-                        Alerts.createHUD(textValue: "🔴 Left Turn Limit Reached!", delayLength: 1.0)
-                    }
-                    else{
-                        RobotCommander.turnValue -= 0.1
-                    }
-                     
-                   case .flatHand:
-                    if RobotCommander.velocityValue >= RobotCommander.SPEED_LIMIT_Y{
-                        Alerts.createHUD(textValue: "🔴 Forward Limit Reached!", delayLength: 1.0)
-                    }
-                    else{
-                        RobotCommander.velocityValue += 0.1
-                    }
-                    
-                   case .closedFist:
-                    
-                      if RobotCommander.velocityValue <= -RobotCommander.SPEED_LIMIT_Y{
-                        Alerts.createHUD(textValue: "🔴 Reverse Limit Reached!", delayLength: 1.0)
-                      }
-                      else{
-                            RobotCommander.velocityValue -= 0.1
-                      }
-                   case .peace:
-                     RobotCommander.autopilot = !RobotCommander.autopilot
-                   case .tuckedThumb:
-                     RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
-                   case .fingerCross, .noDetection:
-                     print("No Command")
-            }
-        }
-    }
     
     @IBOutlet weak var overlaySymbolLabel: UILabel!
     @IBOutlet weak var gestureOptionView: GestureOptionView!
@@ -127,6 +28,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     /// Latest prediction
     var mostRecentPrediction:HandGesture = .noDetection
     
+    /// Optional alert prompt to ask the user to confirm gesture before sending
     private var confirmGestureAlert:UIAlertController?
     
     
@@ -178,7 +80,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     func setARSessionRunStatus(isOn:Bool)
     {
         if isOn{
-              print("Gesture Video Started")
+              DDLogDebug("Gesture Video Started")
               // Create a session configuration
               let configuration = ARWorldTrackingConfiguration()
 
@@ -186,7 +88,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
               ARVideoSceneView.session.run(configuration)
         }
         else{
-            print("Gesture Video Paused")
+            DDLogDebug("Gesture Video Paused")
 
             // Pause the view's session
             ARVideoSceneView.session.pause()
@@ -233,7 +135,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                 do {
                     try imageRequestHandler.perform(self.visionRequests)
                 } catch {
-                    print(error)
+                    DDLogError("Image Request Handler Error: \(error)")
                 }
           
         }
@@ -244,11 +146,11 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
        func classificationCompleteHandler(request: VNRequest, error: Error?) {
            // Catch Errors
            if error != nil {
-               print("Error: " + (error?.localizedDescription)!)
+               DDLogError("Error: " + (error?.localizedDescription)!)
                return
            }
            guard let observations = request.results else {
-               print("No results")
+               DDLogWarn("No results")
                return
            }
            
@@ -269,8 +171,7 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
                // Only display a prediction if confidence is above 1%
                let topPredictionScore:Float? = Float(topPrediction.components(separatedBy: ":")[1].trimmingCharacters(in: .whitespaces))
                if (topPredictionScore != nil && topPredictionScore! > 0.01) {
-                  // TODO: Convert to enum and display
-                  print("Prediction: \(topPredictionName)")
+                  DDLogDebug("Prediction: \(topPredictionName)")
                   foundPrediction = HandGesture(rawValue: topPredictionName) ?? .noDetection
                  
                }
@@ -339,5 +240,105 @@ class GestureViewController: UIViewController, ARSCNViewDelegate {
     }
     
 
+}
+
+/// Extension to hold enum for handgestures used by this view controller
+extension GestureViewController{
+    /// An enumeration representing our possible outcomes
+    enum HandGesture:String, CaseIterable{
+        case closedFist = "closed-fist" // TODO: maybe make closed fist a reset?
+        case okSign = "ok-sign"
+        case aloha = "aloha-sign"
+        case flatHand = "flat-hand"
+        case peace = "peace-sign"
+        case tuckedThumb = "tucked-thumb"
+        case fingerCross = "finger-cross"
+        case noDetection = "Negative"
+        
+        var symbol:String{
+            switch(self){
+                case .closedFist: return "👊"
+                case .okSign: return "👌"
+                case .aloha: return "🤙"
+                case .flatHand: return "✋"
+                case .peace: return "✌️"
+                case .tuckedThumb: return "✊"
+                case .fingerCross: return "🤞"
+                case .noDetection: return "⛔️"
+                
+            }
+        }
+        
+        var description:String{
+                switch(self){
+                   case .closedFist: return "Closed Fist"
+                   case .okSign: return "Ok"
+                   case .aloha: return "Aloha"
+                   case .flatHand: return "Open Hand"
+                   case .peace: return "Peace"
+                   case .tuckedThumb: return "Tucked Thumb"
+                   case .fingerCross: return "Finger Cross"
+                   case .noDetection: return "No Detection"
+               }
+        }
+        
+        var action:String{
+              switch(self){
+                     case .fingerCross: return "Reset"
+                     case .closedFist: return "Slow Down"
+                     case .okSign: return "Turn Right"
+                     case .aloha: return "Turn Left"
+                     case .flatHand: return "Speed Up"
+                     case .peace: return "Toggle Autopilot"
+                     case .tuckedThumb: return "Stop"
+                     case .noDetection: return "No Detection"
+                 }
+        }
+        
+        func applyToRobot(){
+              switch(self){
+            
+                   case .okSign:
+                    if RobotCommander.turnValue >= RobotCommander.TURNING_LIMIT_X{
+                        Alerts.createHUD(textValue: "🔴 Right Turn Limit Reached!", delayLength: 1.0)
+                    }
+                    else{
+                         RobotCommander.turnValue += 0.1
+                    }
+                    
+                   case .aloha:
+                    if RobotCommander.turnValue <= -RobotCommander.TURNING_LIMIT_X{
+                        Alerts.createHUD(textValue: "🔴 Left Turn Limit Reached!", delayLength: 1.0)
+                    }
+                    else{
+                        RobotCommander.turnValue -= 0.1
+                    }
+                     
+                   case .flatHand:
+                    if RobotCommander.velocityValue >= RobotCommander.SPEED_LIMIT_Y{
+                        Alerts.createHUD(textValue: "🔴 Forward Limit Reached!", delayLength: 1.0)
+                    }
+                    else{
+                        RobotCommander.velocityValue += 0.1
+                    }
+                    
+                   case .closedFist:
+                    
+                      if RobotCommander.velocityValue <= -RobotCommander.SPEED_LIMIT_Y{
+                        Alerts.createHUD(textValue: "🔴 Reverse Limit Reached!", delayLength: 1.0)
+                      }
+                      else{
+                            RobotCommander.velocityValue -= 0.1
+                      }
+                   case .peace:
+                     RobotCommander.autopilot = !RobotCommander.autopilot
+                   case .tuckedThumb:
+                     RobotCommander.groupValueUpdate(turnVal: 0.0, velocityVal: 0.0, autopilotVal: false)
+                   case .fingerCross, .noDetection:
+                     DDLogInfo("No Command for Gesture Recognition")
+            }
+        }
+    }
+    
 }
 

@@ -28,4 +28,6 @@ Omnidirectional Mobile Robot (OmniRobot / OmniBot)
 3. Hardware: PCB Schematics, Board Designs, and 3D Printed Parts
 4. Images: jpeg images of Pitt and OmniBot logos
 
+####  Videos:
+[Usage Walkthrough](https://www.youtube.com/watch?v=svYyvUltygQ&ab_channel=GarrettHagen)
 

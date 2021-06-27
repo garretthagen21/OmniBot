@@ -10,7 +10,6 @@ import Foundation
 
 
 
-
 class RobotCommander
 {
     /// Constants for our mechanical limits
@@ -52,7 +51,7 @@ class RobotCommander
     /// Set multiple values, but only send one notification for the update
     @objc static func groupValueUpdate(turnVal:Double,velocityVal:Double,autopilotVal:Bool)
     {
-        // Temporarily disable sending notifications
+        // Temporarily disable sending notifications for get/set updates
         notificationsEnabled = false
         
         // Set our values
@@ -74,13 +73,15 @@ class RobotCommander
 /// Extension for convenience vars
 extension RobotCommander{
      
-    /// Convenience attributes for accessing values of the class
+     /// Convenience attributes for accessing values of the class
      static var speedValue:Double{ return abs(velocityValue) }
      static var speedMetersSec:Double{ return speedValue * SPEED_LIMIT_METERS_SEC }
      static var speedMilesHour:Double { return speedMetersSec * 2.23694 }
      static var turnMagnitude:Double{ return abs(turnValue) }
      static var turnAngle:Double{ return turnValue * 90.0 }
-     static var cardinalDirection:String{
+     
+    /// The NESW value for steering
+    static var cardinalDirection:String{
         // Where left/right always overrides north/south
         switch steeringDirection{
             case .center:
@@ -89,6 +90,8 @@ extension RobotCommander{
                 return steeringDirection.cardinal
         }
      }
+    
+    /// The 180 degree turning orientation for the driving HUD
      static var compassOrientation:Double{
         switch driveDirection {
             case .drive:
@@ -98,12 +101,15 @@ extension RobotCommander{
             default:
                 return 0.0
             }
-        }
+     }
+    /// The steering enumeration the robot should turn based on the raw turn value
      static var steeringDirection:SteeringDirection{
          if turnValue < -0.0 { return .left }
          else if turnValue > 0.0 { return .right }
          else{ return .center }
      }
+     
+    /// The drive enumertion the robot should drive based on the velocity value
      static var driveDirection:DriveDirection
      {
          if velocityValue < 0.0 { return .reverse }

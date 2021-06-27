@@ -2,6 +2,7 @@
 
 import UIKit
 import CoreBluetooth
+import CocoaLumberjack
 
 /// Global serial handler, don't forget to initialize it with init(delgate:)
 var serial: BluetoothSerial!
@@ -170,7 +171,7 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     func sendMessageToDevice(_ message: String) {
         guard isReady else { return }
         
-        print("[BluetoothSerial.sendMessage()] \(message)")
+        DDLogDebug("[BluetoothSerial.sendMessage()] \(message)")
         if let data = message.data(using: String.Encoding.utf8) {
             connectedPeripheral!.writeValue(data, for: writeCharacteristic!, type: writeType)
         }
@@ -235,14 +236,13 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
     
     
     // MARK: CBCentralManagerDelegate functions
-    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         // just send it to the delegate
         delegate.serialDidDiscoverPeripheral(peripheral, RSSI: RSSI)
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        // set some stuff right
+       
         peripheral.delegate = self
         pendingPeripheral = nil
         connectedPeripheral = peripheral
@@ -326,7 +326,7 @@ final class BluetoothSerial: NSObject, CBCentralManagerDelegate, CBPeripheralDel
         if let str = String(data: data!, encoding: String.Encoding.utf8) {
             delegate.serialDidReceiveString(str)
         } else {
-            //print("Received an invalid string!") uncomment for debugging
+            DDLogDebug("Received an invalid string!")
         }
         
         // now the bytes array

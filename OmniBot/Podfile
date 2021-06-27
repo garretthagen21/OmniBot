@@ -5,16 +5,19 @@ target 'OmniBot' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for OmniBot
-  pod 'BRHJoyStickView'
 
-  target 'OmniBotTests' do
+ target 'OmniBotTests' do
     inherit! :search_paths
     # Pods for testing
-  end
+ end
 
-  target 'OmniBotUITests' do
+ target 'OmniBotUITests' do
+    inherit! :search_paths
     # Pods for testing
-  end
+ end
 
 end
+
+ # Pods for OmniBot
+pod 'BRHJoyStickView'
+pod 'CocoaLumberjack/Swift'

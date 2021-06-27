@@ -9,12 +9,13 @@
 import Foundation
 import CoreBluetooth
 import UIKit
+import CocoaLumberjack
 
 class DashboardViewController : UIViewController,BluetoothSerialDelegate,BluetoothScannerViewControllerDelegate
 {
     
     
-    
+    /// Global variable that should be set from one of the intializing parent VCs
     static var commonViewLoaded = false
     
     
@@ -38,8 +39,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
         
         super.viewDidLoad()
         
-        // TODO: This is being called every time the tab view changes
-        print("Dashboard viewDidLoad() Triggered")
+        DDLogDebug("Dashboard viewDidLoad() Triggered")
         
         // Set up accessibility for UIViews
         bluetoothStack.accessibilityLabel = "Bluetooth Stack Button"
@@ -52,8 +52,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
         bluetoothStack.addGestureRecognizer(bluetoothTap)
         
         // Setup gesture recognizer for bluetooth
-         let bluetoothHold = UILongPressGestureRecognizer(target: self, action: #selector(self.handleBluetoothHold(_:)))
-         bluetoothStack.addGestureRecognizer(bluetoothHold)
+        let bluetoothHold = UILongPressGestureRecognizer(target: self, action: #selector(self.handleBluetoothHold(_:)))
+        bluetoothStack.addGestureRecognizer(bluetoothHold)
         bluetoothStack.isUserInteractionEnabled = true
         
         // Setup gesture recognizer for speed units
@@ -82,10 +82,12 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
             name: .bluetoothModeChanged,
             object: nil
         )
-        // Init the bluetooth delegate to us. Note this is a hack to avoid duplicate calls
+        
+        // Init the bluetooth delegate to us. Note this is avoid duplicate calls from multiple parent view controllers
         if(!DashboardViewController.commonViewLoaded){
             serial = BluetoothSerial(delegate: self)
             serial.setTransmissionMode(UserSettings.bluetoothMode,UserSettings.bluetoothTime)
+            DDLogInfo("BLE Serial Initialized in DashboardViewController")
         }
         
         // We have loaded the common view to avoid BT interrupts (this is a a hack)
@@ -96,15 +98,14 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
     
     override func viewDidAppear(_ animated: Bool) {
          super.viewDidAppear(animated)
-         print("Dashboard viewDidAppear() Triggered")
+         DDLogDebug("Dashboard viewDidAppear() Triggered")
         
         // Set the delegate to ourselves since we are in visible view
         serial.delegate = self
         
         // Auto connect on startup
-        if !serial.isReady && !serial.isScanning && UserSettings.autoConnect
-        {
-           startScanning()
+        if !serial.isReady && !serial.isScanning && UserSettings.autoConnect{
+            startScanning()
         }
         
         // Show BT Status
@@ -113,17 +114,16 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
     
     /// Delegate function for when we return from scanner
     func bluetoothScannerViewControllerDidFinish(_ bluetoothScannerVC: BluetoothScannerViewController) {
-        print("bluetoothScannerViewControllerDidFinish called")
+        DDLogDebug("bluetoothScannerViewControllerDidFinish called")
         viewDidAppear(true)
     }
     
     
     
     func serialDidReceiveString(_ message: String) {
+        // Note: This function should never be called. Possible implementation for bidrectional messaging in the future.
+        DDLogWarn("[serialDidReceiveString] Recieved Bluetooth String: \(message)")
         
-        print("[serialDidReceiveString] Recieved Bluetooth String: \(message)")
-        
-        // TODO: Add UI elements to display proximities
         let incomingString = message.components(separatedBy: ":")
      
         
@@ -137,13 +137,8 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
     {
         // Only segue at beginning of gesture
         if sender.state == UIGestureRecognizer.State.began{
-            print("Bluetooth Held")
-           
-            
-            // Assign us as the delegate
-            let scannerVC = BluetoothScannerViewController.instantiateFromAppStoryboard(appStoryboard: .BluetoothScanner)
-            scannerVC.delegate = self
-            
+            DDLogDebug("Bluetooth Held. Launching Scanner View")
+
             // Move to scanner view
             self.performSegue(withIdentifier: Segues.BluetoothScannerSegue.rawValue, sender: self)
         }
@@ -155,7 +150,7 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
             // Stop scanning
             self.scanTimeOut()
             
-            // Set the scanner delegate to us
+            // Set the scanner delegate to the scanner view controller we are moving to
             if let scannerVC = scannerNC.viewControllers.first as? BluetoothScannerViewController{
                  scannerVC.delegate = self
             }
@@ -165,14 +160,16 @@ class DashboardViewController : UIViewController,BluetoothSerialDelegate,Bluetoo
 
     /// Triggered when user taps bluetooth
     @objc private func handleBluetoothTap(_ sender: UITapGestureRecognizer) {
-        print("Bluetooth Tapped")
+        DDLogDebug("Bluetooth Tapped")
         
         // Start scan if we are not connected
         if !serial.isReady && !serial.isScanning
         {
+            DDLogInfo("Starting BLE Autoscan")
             startScanning()
         }
         else if !serial.isScanning{
+            DDLogInfo("Prompting Disconnect Message")
             // If we are not scanning display a two option alert to disconnect
             let twoOptionAlert = UIAlertController(title: "😨 Disconnect", message: "Are you sure you want to disconnect from  \(serial.connectedPeripheral?.name ?? "Unknown Device")?" ,preferredStyle: UIAlertController.Style.alert)
                   
@@ -306,33 +303,33 @@ extension DashboardViewController
     
     // Called 10s after we have begun scanning
     @objc func scanTimeOut(){
-        print("[scanTimeOut] Function Called")
+        DDLogDebug("[scanTimeOut] Function Called")
         serial.stopScan()
         updateBluetoothStatus()
 
     }
     // Should be called 10s after we've begun connecting
     @objc func connectTimeOut() {
-        print("[connectTimeOut] Function Called")
+        DDLogDebug("[connectTimeOut] Function Called")
         updateBluetoothStatus()
     }
     
     // For UI updating purposes
     func serialDidDisconnect(_ peripheral: CBPeripheral, error: NSError?) {
-        print("[serialDidDisconnect] Function Called")
+        DDLogDebug("[serialDidDisconnect] Function Called")
         updateBluetoothStatus()
         
     }
     func serialDidConnect(_peripheral: CBPeripheral){
-        print("[serialDidConnect] Function Called for \(serial.connectedPeripheral?.name ?? "")")
+        DDLogDebug("[serialDidConnect] Function Called for \(serial.connectedPeripheral?.name ?? "")")
         updateBluetoothStatus()
     }
     func serialIsReady(_ peripheral: CBPeripheral) {
-        print("[serialIsReady] Function Called for \(serial.connectedPeripheral?.name ?? "")")
+        DDLogDebug("[serialIsReady] Function Called for \(serial.connectedPeripheral?.name ?? "")")
         updateBluetoothStatus()
     }
     func serialDidChangeState() {
-        print("[serialDidChangeState] Function Called")
+        DDLogDebug("[serialDidChangeState] Function Called")
         updateBluetoothStatus()
     }
     
@@ -380,8 +377,8 @@ extension DashboardViewController
     
     func serialDidDiscoverPeripheral(_ peripheral: CBPeripheral, RSSI: NSNumber?) {
         
-        // Print debugging message
-        print("[serialDidDiscoverPeripheral] Discovered Peripheral --> Name: \(peripheral.name ?? ""), Services: \(peripheral.services ?? [])")
+        // DDLogDebug debugging message
+        DDLogDebug("[serialDidDiscoverPeripheral] Discovered Peripheral --> Name: \(peripheral.name ?? ""), Services: \(peripheral.services ?? [])")
         
         // TODO: Remove this once we add peripheral options
         let isDSDTECH = peripheral.name == "DSD TECH";

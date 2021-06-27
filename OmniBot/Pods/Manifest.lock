@@ -1,16 +1,22 @@
 PODS:
   - BRHJoyStickView (2.1.2)
+  - CocoaLumberjack/Core (3.7.2)
+  - CocoaLumberjack/Swift (3.7.2):
+    - CocoaLumberjack/Core
 
 DEPENDENCIES:
   - BRHJoyStickView
+  - CocoaLumberjack/Swift
 
 SPEC REPOS:
   trunk:
     - BRHJoyStickView
+    - CocoaLumberjack
 
 SPEC CHECKSUMS:
   BRHJoyStickView: b332a149579ca5daa878b6bc2322c44bf47d411b
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
 
-PODFILE CHECKSUM: abd1ea29031b59b8e4e944f904b53698b51c9fbe
+PODFILE CHECKSUM: c831eb21ed41356df971a25ddb8d1cf44b6afc61
 
 COCOAPODS: 1.9.3

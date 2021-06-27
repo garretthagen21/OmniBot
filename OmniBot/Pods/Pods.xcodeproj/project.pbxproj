@@ -3,37 +3,85 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		008C8D272AA9C136653773904D58345E /* BRHJoyStickView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 80E3D83A365804D18B88E5B5701631A4 /* BRHJoyStickView-dummy.m */; };
-		1F5354030188D1AEAD8D7EE69B4ECDA8 /* Pods-OmniBotTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C39B8C2C92A452BE8D82D9A8F9D407C /* Pods-OmniBotTests-dummy.m */; };
+		008C8D272AA9C136653773904D58345E /* BRHJoyStickView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA2EE3656377D10BD0748B0CD0C9C32 /* BRHJoyStickView-dummy.m */; };
+		016F6B908BB437FF7F0AE11A18067FD5 /* SwiftLogLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = DE684CD63FF4870717DB56A036BC2BD5 /* SwiftLogLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01CE51FB76D0147E1872C7CD10F7C761 /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C4B6CD1A350D0153ED61B011F151374 /* DDTTYLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D58446DEC8D6C2AD6985FBE1D84CE85 /* CocoaLumberjack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FF01B43B644D97515D4BA029A44B5319 /* CocoaLumberjack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F5354030188D1AEAD8D7EE69B4ECDA8 /* Pods-OmniBotTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F028D871F6EE00A476A059554C9E1DCD /* Pods-OmniBotTests-dummy.m */; };
+		227DBC24F49B733022CB34D18901F0A8 /* DDContextFilterLogFormatter+Deprecated.h in Headers */ = {isa = PBXBuildFile; fileRef = E7EAEA30E20A12288C4F2E91BF86C530 /* DDContextFilterLogFormatter+Deprecated.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		243897837AF23E4F4D6487B35322EDB1 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DF986B157DA72DAF7B5C4C31BD19C934 /* DDTTYLogger.m */; };
+		25D9809C1E586D17A843173436D45952 /* Pods-OmniBotUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DEF23A6B77B3A2867919B987E4567AD /* Pods-OmniBotUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26CF55B50EFD96F686F1034DC77FC1B1 /* DDLoggerNames.h in Headers */ = {isa = PBXBuildFile; fileRef = C61E174EA725ACE77786041AAEB9EB27 /* DDLoggerNames.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		275006D423BADF47527E436D22F11FAF /* DDContextFilterLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 93140C404C3412FBF4963B96A8F0B1FD /* DDContextFilterLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C765699AF1CF1A778E416159FA66908 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2019DDFCA2B7EE704BFF12627DFC5773 /* DDFileLogger.m */; };
+		30188DA09667D4A5C2DD5709211EB8E9 /* DDAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ED6BC1399B3E56E5AB0F9BB782B69 /* DDAssert.swift */; };
 		348B0FA575F66C57E9E2085AEEF27E81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		3FF0DBFF78C7FD67E5FEF6AA59367081 /* Pods-OmniBot-OmniBotUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C139D05EBBB6531E64DC6B54E2059B /* Pods-OmniBot-OmniBotUITests-dummy.m */; };
-		4C6AE671150B9A20946D0485E20244EA /* Pods-OmniBotTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F286C430912B115E632A067AC8D7FB28 /* Pods-OmniBotTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50E76D8189538516CC18AAB06A7CC1C1 /* CoreGraphics+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8A4D2657E11B362B4DB7AF68CF5313 /* CoreGraphics+Additions.swift */; };
-		516A308112B63942274C9FAA0007DC59 /* JoyStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B70F5D269593903EA31C6B6ADA784 /* JoyStickView.swift */; };
-		6091D1E2A209343654DE9CBB8564ED01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		668620DA054C30442DE4AF117D8FECDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F073757DF4C4A14C5D4A2A2A38241A9A /* Assets.xcassets */; };
-		701EFC638C5EEF415AFB97DD6888E839 /* BRHJoyStickView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DCC9DADC9E5AF6BE9D8C8D92B61672D /* BRHJoyStickView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		368E5CD921977496020D007D58E4FA2E /* Pods-OmniBot-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F9010EF7FA4F079819CE7A93F8DF360 /* Pods-OmniBot-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36F22BDE5B481248C3536BEFFE61293E /* Pods-OmniBot-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 359588A1BF013D6A5FE5A7717D6EE3DA /* Pods-OmniBot-dummy.m */; };
+		37F5190466279B220EBEC62B21BE6299 /* DDASLLogCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 0849956EA922008D0E56506DF0A5198E /* DDASLLogCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BA60EBE9FFE3290F3EC3B340C455B28 /* Pods-OmniBotUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C139BFA633D005117025B9B2124638B /* Pods-OmniBotUITests-dummy.m */; };
+		3CBDB5E8280997A4585BD11BA3D28439 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		42488D973FD3B653FC0D6E950E13AAF9 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = A319784C3919930882C88D779DA25D5B /* DDLog.m */; };
+		4536834B0F6D3F4ED48748D8D7DFCFE5 /* CLIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F6818001AE24BAF4E2BD048107D96022 /* CLIColor.m */; };
+		472DB6DBAE1A77BC90155D079EFDB532 /* DDFileLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EE72907A5B3B2158E80FA3E60CEA0C1 /* DDFileLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49EE80ACE832DFB751960D04383848F6 /* DDAbstractDatabaseLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 74D745CCD9445E79658B6EF6971AF304 /* DDAbstractDatabaseLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C6AE671150B9A20946D0485E20244EA /* Pods-OmniBotTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DA7A73E4055431BBA78ECA2AC196BE4 /* Pods-OmniBotTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50E76D8189538516CC18AAB06A7CC1C1 /* CoreGraphics+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DD92490F6962D1E89D133E87584CC8 /* CoreGraphics+Additions.swift */; };
+		516A308112B63942274C9FAA0007DC59 /* JoyStickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC69D5311CCE37EA47CF3A7DA6A71C05 /* JoyStickView.swift */; };
+		5428B95B1A635363D142E862BFA62880 /* DDLoggerNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF505C132FF036C34AF426F99A4CA9B /* DDLoggerNames.m */; };
+		56F91FA81942575207E08BC8A4282F1A /* DDLog+LOGV.h in Headers */ = {isa = PBXBuildFile; fileRef = 421377E4795582FA9675229343B24C81 /* DDLog+LOGV.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5AAAE8F6550BABD77821CF4997DC762F /* DDOSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 411CB3B057AE3819F05EE760CE62C003 /* DDOSLogger.m */; };
+		668620DA054C30442DE4AF117D8FECDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 974480E99A74A32A6674E8475C03AC14 /* Assets.xcassets */; };
+		67EBC918B2AC3A624FA3D28BBDF03559 /* DDFileLogger+Buffering.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E1ED9215483CF8E1E0A0A51BBD6FFC /* DDFileLogger+Buffering.m */; };
+		6F000658E97C8980D2EE8094E8AB79A2 /* CocoaLumberjack.h in Headers */ = {isa = PBXBuildFile; fileRef = F38C915D15AB1BC15CCCCC1FA11A9CF8 /* CocoaLumberjack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		701EFC638C5EEF415AFB97DD6888E839 /* BRHJoyStickView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 54CFBBA0F24BF7FD0A78D99C26096C03 /* BRHJoyStickView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B185D5D43D37E3A35B559B23460587D /* DDFileLogger+Buffering.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1586F78A9CE72EB64D093D69C9EBAC /* DDFileLogger+Buffering.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		83AA1BA7CB29BA51D0A1011569BAE3AA /* BRHJoyStickView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5F1F40A6F099E0D63E8F2902D8A4E321 /* BRHJoyStickView.bundle */; };
-		992741BC67C3763C10E247092817F5AF /* Pods-OmniBot-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F50D2225FB7F46B2058A575F4706D1 /* Pods-OmniBot-dummy.m */; };
-		A09729B1806417EAEF0123F3EA964BB9 /* Bundle+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BCE3012CE3C62FC5014510F35F3A1 /* Bundle+Additions.swift */; };
-		BD757F63E5FF4F8FFC28CC35F9F9B119 /* JoyStickViewMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A9A4DCCEDC308004F9AC6B8E9CCF86 /* JoyStickViewMonitor.swift */; };
+		8587059C8E400C517C9928CB61FDF93E /* DDLogMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 77283B95BD2FA96C8EB20FB62D38ECF3 /* DDLogMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8768BEA4827F91747A5BE59BDC26F715 /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6352E09AB5E2B1ADF00D027C1DD96AAB /* DDMultiFormatter.m */; };
+		881788D7EAABC905B6D11AC2D8FE5E5D /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFD9510232DD8F7109B7CBAA12EAC46 /* DDASLLogger.m */; };
+		89DC125A9D9CF44BE96919FC482E0A11 /* DDDispatchQueueLogFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = B23607858D76A7447E8EFDB616B4BC92 /* DDDispatchQueueLogFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		931B2A750443D856378E3853A275EBE0 /* DDOSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = E15E493226F93930A383C34CA6422056 /* DDOSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9936B791AB845B0F601D9FD972004477 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		9D1708AEB1261F7D8E4FA78952CAEDE8 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EF3FC1ABDF1C9DAC5E6374DE110A4B9F /* DDAbstractDatabaseLogger.m */; };
+		A09729B1806417EAEF0123F3EA964BB9 /* Bundle+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB4F8A0E95AAA7F17C8DD6C4EC9EFE3 /* Bundle+Additions.swift */; };
+		B141D91BA3589DD1D420958CE808626D /* DDMultiFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F90172203B1F15036B82287750E109B /* DDMultiFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B61280234CCFEC90849C153EA6FB0001 /* CLIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = B4C7E6DDC4EE5A890323A0AE00ACD0BE /* CLIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD757F63E5FF4F8FFC28CC35F9F9B119 /* JoyStickViewMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C228F2BEE51A9B9D8D53F4A3060E3A4 /* JoyStickViewMonitor.swift */; };
+		C32091C58731FA5334AD866E69B6BC1C /* DDFileLogger+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C5DF2CF8F05802779E17A021E852212A /* DDFileLogger+Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C33100F95D4BD04F97C8BDFBF8C45409 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		C6C63F6DD4CB934882D91B8F93CB8572 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		C87DE0D118ECD00F31CCEA17F2FFD496 /* Pods-OmniBot-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D3DC055A68D80F02FD3CD8C75973C351 /* Pods-OmniBot-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E82132EA5BFE0AB55A24AD53C92EB3BB /* Pods-OmniBot-OmniBotUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EB82F42326EFD15BCB2FE2636295517 /* Pods-OmniBot-OmniBotUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD8D5D7482F21DEBA86C9899AA3448E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		C8A6AA8D038EEF7D92D9C18CA267DD07 /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 692EA81726EFDF94B400E23A7D809B1E /* DDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFB104E784E1DC06373350F66B6F8638 /* DDContextFilterLogFormatter+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = A44B47061858024A5747FB3E85C27C53 /* DDContextFilterLogFormatter+Deprecated.m */; };
+		D33BACF3A7CFA42EE1D519DDF938DF99 /* CocoaLumberjack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6D8C9A27B023B8F83DD19A92C36BC7 /* CocoaLumberjack-dummy.m */; };
+		D5A0A5D7A642891025CF62D1C69A59A3 /* CocoaLumberjack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6AAC349B1592C1ED3CAB6DA08EA6D2 /* CocoaLumberjack.swift */; };
+		D8D23187EB200B7750D7CDDAD9639286 /* DDASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C4631C156F0ABAA14D0FF6B3656D6666 /* DDASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA8873CDEC36D66A0F34E77BBCCE4845 /* DDLegacyMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0407B6F07B91BE08470A61F245171F43 /* DDLegacyMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E59F6A5FB10EFCF131624E328C45382B /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 72ECDBCDA4CA440B3EEC9C0D5F4F0780 /* DDDispatchQueueLogFormatter.m */; };
+		E6A3FDBB3C1A54886C4318A90A6A8AF8 /* DDLog+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67802ECD9B70F5A4D5FFE4EF0087D80 /* DDLog+Combine.swift */; };
+		F60C6B8D4EF9E6D3FFA15B89BF821525 /* DDContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = EE7F7CD0B845F15475139B170D05652F /* DDContextFilterLogFormatter.m */; };
+		FD1AC8EAD3A624BBF7D43E604B224932 /* DDAssertMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = CAFA6E98D1679A70D1E506F49A8165BC /* DDAssertMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDE0A67B15848E66E46EEB98136ACF5A /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = DA361CC13FBD2BE441D1E5678A48B404 /* DDASLLogCapture.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1BC7119387BD91C2B3392E894F52B670 /* PBXContainerItemProxy */ = {
+		3C7CB79B0A147DB26150C926AA9DF2F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DD6F17105988B1F38EF2A3D31277833C;
-			remoteInfo = BRHJoyStickView;
+			remoteGlobalIDString = E95654B155D25890BE8E26081FCA8265;
+			remoteInfo = CocoaLumberjack;
+		};
+		530F868C32D877DD51FFEE546D4926F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CF3A883C888BDA8B774246F33427FDD;
+			remoteInfo = "Pods-OmniBot";
 		};
 		666ABC04D629FA7A97BED47037421677 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -49,7 +97,7 @@
 			remoteGlobalIDString = 6CF3A883C888BDA8B774246F33427FDD;
 			remoteInfo = "Pods-OmniBot";
 		};
-		D5F2C664B8C208BB9EEE9811F91B170F /* PBXContainerItemProxy */ = {
+		F879AB01F20EE65FFEE32F6D7B7E806B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -59,60 +107,105 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0120A116ED978AD8C8648410F30041AE /* Pods-OmniBotTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OmniBotTests.modulemap"; sourceTree = "<group>"; };
-		06E841584AD1961CB65FCE89E7C5DB2B /* Pods-OmniBot-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OmniBot-acknowledgements.markdown"; sourceTree = "<group>"; };
-		087C751F96B642228324C89172E0540C /* Pods-OmniBot-OmniBotUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OmniBot-OmniBotUITests-frameworks.sh"; sourceTree = "<group>"; };
-		1B19C44E906FB8DE9CD7941963AE3FE7 /* BRHJoyStickView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRHJoyStickView.release.xcconfig; sourceTree = "<group>"; };
-		20242D706B521D3B3058092ECE0DF844 /* BRHJoyStickView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRHJoyStickView.debug.xcconfig; sourceTree = "<group>"; };
+		0407B6F07B91BE08470A61F245171F43 /* DDLegacyMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLegacyMacros.h; path = "Sources/CocoaLumberjack/Supporting Files/DDLegacyMacros.h"; sourceTree = "<group>"; };
+		05F3183DF9AAFDBFA15504630FC7432A /* Pods-OmniBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBot.debug.xcconfig"; sourceTree = "<group>"; };
+		0849956EA922008D0E56506DF0A5198E /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDASLLogCapture.h; sourceTree = "<group>"; };
+		08837383D20B4523CA9EA5C46E8623D4 /* CocoaLumberjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.debug.xcconfig; sourceTree = "<group>"; };
+		0A70BF7532165F35178A6DC8987FA089 /* BRHJoyStickView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BRHJoyStickView.modulemap; sourceTree = "<group>"; };
+		169DB016D9908D3840E5F7D3B21890EC /* Pods-OmniBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBot.release.xcconfig"; sourceTree = "<group>"; };
+		1DF505C132FF036C34AF426F99A4CA9B /* DDLoggerNames.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLoggerNames.m; path = Sources/CocoaLumberjack/DDLoggerNames.m; sourceTree = "<group>"; };
+		2019DDFCA2B7EE704BFF12627DFC5773 /* DDFileLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Sources/CocoaLumberjack/DDFileLogger.m; sourceTree = "<group>"; };
 		2C3CCA9623DDE3B9928F05E731CAA2A8 /* BRHJoyStickView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BRHJoyStickView.framework; path = BRHJoyStickView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D4FAA247054EED38BD38B9C407C4E76 /* ResourceBundle-BRHJoyStickView-BRHJoyStickView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BRHJoyStickView-BRHJoyStickView-Info.plist"; sourceTree = "<group>"; };
+		31992AAB2DFF89AABAE50CAF52B74AAB /* Pods-OmniBot-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OmniBot-acknowledgements.markdown"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		37674BE29B8B870CDAC6427BC68CC3BE /* Pods-OmniBot-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OmniBot-frameworks.sh"; sourceTree = "<group>"; };
-		3EB82F42326EFD15BCB2FE2636295517 /* Pods-OmniBot-OmniBotUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OmniBot-OmniBotUITests-umbrella.h"; sourceTree = "<group>"; };
+		3494FE816A542164E670A7CCEA4F44D7 /* Pods-OmniBotTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBotTests-Info.plist"; sourceTree = "<group>"; };
+		359588A1BF013D6A5FE5A7717D6EE3DA /* Pods-OmniBot-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OmniBot-dummy.m"; sourceTree = "<group>"; };
+		36191FC47F2F80CCB7AD1E98173E9324 /* Pods-OmniBot-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBot-Info.plist"; sourceTree = "<group>"; };
+		411CB3B057AE3819F05EE760CE62C003 /* DDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDOSLogger.m; path = Sources/CocoaLumberjack/DDOSLogger.m; sourceTree = "<group>"; };
 		420B4A215BDBE3C312C5B49F90040453 /* Pods_OmniBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_OmniBot.framework; path = "Pods-OmniBot.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		465B70F5D269593903EA31C6B6ADA784 /* JoyStickView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JoyStickView.swift; path = JoyStickView/Src/JoyStickView.swift; sourceTree = "<group>"; };
-		47D312083BD316DB0A4E9CAD88D8439B /* Pods-OmniBot-OmniBotUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBot-OmniBotUITests-Info.plist"; sourceTree = "<group>"; };
-		558860C743751A04A63D2B3492B0B412 /* Pods-OmniBotTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OmniBotTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		421377E4795582FA9675229343B24C81 /* DDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDLog+LOGV.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDLog+LOGV.h"; sourceTree = "<group>"; };
+		4C1586F78A9CE72EB64D093D69C9EBAC /* DDFileLogger+Buffering.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Buffering.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDFileLogger+Buffering.h"; sourceTree = "<group>"; };
+		4C4B6CD1A350D0153ED61B011F151374 /* DDTTYLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
+		4E40874D7926BBBB1C4F74E4FB745A83 /* BRHJoyStickView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRHJoyStickView.release.xcconfig; sourceTree = "<group>"; };
+		54CFBBA0F24BF7FD0A78D99C26096C03 /* BRHJoyStickView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRHJoyStickView-umbrella.h"; sourceTree = "<group>"; };
+		5624FA4E76FE17D47A38387DCA7A7B9E /* CocoaLumberjack-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CocoaLumberjack-Info.plist"; sourceTree = "<group>"; };
+		5E427FCB2C1D0E5822ACFEA8C3F6E8C2 /* BRHJoyStickView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRHJoyStickView-prefix.pch"; sourceTree = "<group>"; };
+		5EC33F3D489B42905CF2990315DD8A9D /* Pods-OmniBot-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OmniBot-frameworks.sh"; sourceTree = "<group>"; };
 		5F1F40A6F099E0D63E8F2902D8A4E321 /* BRHJoyStickView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = BRHJoyStickView.bundle; path = "BRHJoyStickView-BRHJoyStickView.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FDF68A60140E949F879A6A5C4B8B556 /* BRHJoyStickView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BRHJoyStickView.modulemap; sourceTree = "<group>"; };
-		63286A919D27BB9F36F8F0D337B7AEA3 /* Pods-OmniBot.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OmniBot.modulemap"; sourceTree = "<group>"; };
-		67C139D05EBBB6531E64DC6B54E2059B /* Pods-OmniBot-OmniBotUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OmniBot-OmniBotUITests-dummy.m"; sourceTree = "<group>"; };
-		6AFC6D37D53C4611E91FB61D923F9B81 /* Pods-OmniBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBotTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6DCC9DADC9E5AF6BE9D8C8D92B61672D /* BRHJoyStickView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRHJoyStickView-umbrella.h"; sourceTree = "<group>"; };
-		6FF626CB2E6D31B14645406CD3025507 /* Pods-OmniBotTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBotTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		7C39B8C2C92A452BE8D82D9A8F9D407C /* Pods-OmniBotTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OmniBotTests-dummy.m"; sourceTree = "<group>"; };
-		80E3D83A365804D18B88E5B5701631A4 /* BRHJoyStickView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRHJoyStickView-dummy.m"; sourceTree = "<group>"; };
-		830F22BBFAD1D1180A2E43F9B72F14BC /* Pods-OmniBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBot.debug.xcconfig"; sourceTree = "<group>"; };
-		8313ABE098ADBFCE184E1A1859E9F50D /* Pods-OmniBot-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBot-acknowledgements.plist"; sourceTree = "<group>"; };
-		8F94E6B2A5C1F433286421C7954784A3 /* Pods-OmniBot-OmniBotUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OmniBot-OmniBotUITests.modulemap"; sourceTree = "<group>"; };
+		5F90172203B1F15036B82287750E109B /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDMultiFormatter.h; sourceTree = "<group>"; };
+		60B5DEB9AE9939D9BA109CB30639D252 /* Pods-OmniBotTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OmniBotTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6352E09AB5E2B1ADF00D027C1DD96AAB /* DDMultiFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMultiFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDMultiFormatter.m; sourceTree = "<group>"; };
+		692EA81726EFDF94B400E23A7D809B1E /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLog.h; sourceTree = "<group>"; };
+		6C139BFA633D005117025B9B2124638B /* Pods-OmniBotUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OmniBotUITests-dummy.m"; sourceTree = "<group>"; };
+		6EE72907A5B3B2158E80FA3E60CEA0C1 /* DDFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDFileLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDFileLogger.h; sourceTree = "<group>"; };
+		6FE274CF0C2B2F9D073515C6312AC474 /* Pods-OmniBotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBotUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		72ECDBCDA4CA440B3EEC9C0D5F4F0780 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		74D745CCD9445E79658B6EF6971AF304 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		77283B95BD2FA96C8EB20FB62D38ECF3 /* DDLogMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLogMacros.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLogMacros.h; sourceTree = "<group>"; };
+		7CBBB2A2C191996A604FB2D03E6D9732 /* BRHJoyStickView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BRHJoyStickView-Info.plist"; sourceTree = "<group>"; };
+		80AFD1DF5FBA6111B6E7B73366D32AFB /* Pods-OmniBot-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBot-acknowledgements.plist"; sourceTree = "<group>"; };
+		89861C5AC65D04E16E374E9A4ACDE310 /* CocoaLumberjack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CocoaLumberjack.modulemap; sourceTree = "<group>"; };
+		89F2D88CAC163EE5B18CF46DF9B9D7E5 /* Pods-OmniBotUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OmniBotUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8AAFB0C4B7EFCB5BAC802B07611D2C9A /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
+		8C228F2BEE51A9B9D8D53F4A3060E3A4 /* JoyStickViewMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JoyStickViewMonitor.swift; path = JoyStickView/Src/JoyStickViewMonitor.swift; sourceTree = "<group>"; };
+		8DEF23A6B77B3A2867919B987E4567AD /* Pods-OmniBotUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OmniBotUITests-umbrella.h"; sourceTree = "<group>"; };
+		8F9010EF7FA4F079819CE7A93F8DF360 /* Pods-OmniBot-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OmniBot-umbrella.h"; sourceTree = "<group>"; };
+		93140C404C3412FBF4963B96A8F0B1FD /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDContextFilterLogFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		934A5D64140BC0072A0DEA3CF03D9262 /* BRHJoyStickView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRHJoyStickView.debug.xcconfig; sourceTree = "<group>"; };
+		95FF1661BAF97B1DC8D4B8913C34B8B7 /* Pods-OmniBotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBotTests.debug.xcconfig"; sourceTree = "<group>"; };
+		974480E99A74A32A6674E8475C03AC14 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = JoyStickView/Assets.xcassets; sourceTree = "<group>"; };
+		9C392E3C39DD421FDFC75C062AFBFD90 /* Pods-OmniBotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBotUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9CA2EE3656377D10BD0748B0CD0C9C32 /* BRHJoyStickView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRHJoyStickView-dummy.m"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A8A9A4DCCEDC308004F9AC6B8E9CCF86 /* JoyStickViewMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JoyStickViewMonitor.swift; path = JoyStickView/Src/JoyStickViewMonitor.swift; sourceTree = "<group>"; };
-		AC2F7BA08D4DE751A765CBE48B546777 /* Pods-OmniBot-OmniBotUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBot-OmniBotUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BF5BCE3012CE3C62FC5014510F35F3A1 /* Bundle+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+Additions.swift"; path = "JoyStickView/Src/Bundle+Additions.swift"; sourceTree = "<group>"; };
-		C8B40A636E6C83F591E317E4E02E55BF /* Pods-OmniBot-OmniBotUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBot-OmniBotUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		D12623F7BA5EA822CB43B1B7CA0B0F06 /* Pods-OmniBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBotTests.release.xcconfig"; sourceTree = "<group>"; };
-		D3DC055A68D80F02FD3CD8C75973C351 /* Pods-OmniBot-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OmniBot-umbrella.h"; sourceTree = "<group>"; };
-		D3F50D2225FB7F46B2058A575F4706D1 /* Pods-OmniBot-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OmniBot-dummy.m"; sourceTree = "<group>"; };
-		DB0A8CAC0C0F2A38C81E55BA3247E475 /* BRHJoyStickView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRHJoyStickView-prefix.pch"; sourceTree = "<group>"; };
-		DC87C8E2901D6E97F4217A6F794A46DE /* Pods-OmniBot-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBot-Info.plist"; sourceTree = "<group>"; };
-		E088AFDD47ABB94492810183F7D3319F /* Pods-OmniBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBot.release.xcconfig"; sourceTree = "<group>"; };
-		E3CBBE138A1324502E26D0B7E7829225 /* Pods-OmniBot-OmniBotUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OmniBot-OmniBotUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EF8A4D2657E11B362B4DB7AF68CF5313 /* CoreGraphics+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CoreGraphics+Additions.swift"; path = "JoyStickView/Src/CoreGraphics+Additions.swift"; sourceTree = "<group>"; };
+		9DA7A73E4055431BBA78ECA2AC196BE4 /* Pods-OmniBotTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OmniBotTests-umbrella.h"; sourceTree = "<group>"; };
+		A319784C3919930882C88D779DA25D5B /* DDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Sources/CocoaLumberjack/DDLog.m; sourceTree = "<group>"; };
+		A3DD92490F6962D1E89D133E87584CC8 /* CoreGraphics+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CoreGraphics+Additions.swift"; path = "JoyStickView/Src/CoreGraphics+Additions.swift"; sourceTree = "<group>"; };
+		A44B47061858024A5747FB3E85C27C53 /* DDContextFilterLogFormatter+Deprecated.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DDContextFilterLogFormatter+Deprecated.m"; path = "Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter+Deprecated.m"; sourceTree = "<group>"; };
+		A8B2AFB60394709EBF4F92D3D2BC667D /* Pods-OmniBotTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OmniBotTests.modulemap"; sourceTree = "<group>"; };
+		AD6D8C9A27B023B8F83DD19A92C36BC7 /* CocoaLumberjack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaLumberjack-dummy.m"; sourceTree = "<group>"; };
+		ADB4F8A0E95AAA7F17C8DD6C4EC9EFE3 /* Bundle+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+Additions.swift"; path = "JoyStickView/Src/Bundle+Additions.swift"; sourceTree = "<group>"; };
+		B23607858D76A7447E8EFDB616B4BC92 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		B3E1ED9215483CF8E1E0A0A51BBD6FFC /* DDFileLogger+Buffering.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DDFileLogger+Buffering.m"; path = "Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m"; sourceTree = "<group>"; };
+		B4C7E6DDC4EE5A890323A0AE00ACD0BE /* CLIColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLIColor.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/CLIColor.h; sourceTree = "<group>"; };
+		B67802ECD9B70F5A4D5FFE4EF0087D80 /* DDLog+Combine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DDLog+Combine.swift"; path = "Sources/CocoaLumberjackSwift/DDLog+Combine.swift"; sourceTree = "<group>"; };
+		C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaLumberjack.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2ED388C9582A199DBBB41D14DD2AC02 /* Pods-OmniBotUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OmniBotUITests.modulemap"; sourceTree = "<group>"; };
+		C4631C156F0ABAA14D0FF6B3656D6666 /* DDASLLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDASLLogger.h; sourceTree = "<group>"; };
+		C5DF2CF8F05802779E17A021E852212A /* DDFileLogger+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Internal.h"; path = "Sources/CocoaLumberjack/DDFileLogger+Internal.h"; sourceTree = "<group>"; };
+		C61E174EA725ACE77786041AAEB9EB27 /* DDLoggerNames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLoggerNames.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLoggerNames.h; sourceTree = "<group>"; };
+		C7C2CF71835D47898E5AC5F0F5CF21D9 /* ResourceBundle-BRHJoyStickView-BRHJoyStickView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BRHJoyStickView-BRHJoyStickView-Info.plist"; sourceTree = "<group>"; };
+		CAFA6E98D1679A70D1E506F49A8165BC /* DDAssertMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAssertMacros.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDAssertMacros.h; sourceTree = "<group>"; };
+		CBF80BABA6A457025AA549FB6D2D0079 /* Pods-OmniBotUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBotUITests-Info.plist"; sourceTree = "<group>"; };
+		CC69D5311CCE37EA47CF3A7DA6A71C05 /* JoyStickView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JoyStickView.swift; path = JoyStickView/Src/JoyStickView.swift; sourceTree = "<group>"; };
+		DA361CC13FBD2BE441D1E5678A48B404 /* DDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogCapture.m; path = Sources/CocoaLumberjack/DDASLLogCapture.m; sourceTree = "<group>"; };
+		DAFD9510232DD8F7109B7CBAA12EAC46 /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Sources/CocoaLumberjack/DDASLLogger.m; sourceTree = "<group>"; };
+		DE684CD63FF4870717DB56A036BC2BD5 /* SwiftLogLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftLogLevel.h; path = Sources/CocoaLumberjackSwiftSupport/include/CocoaLumberjackSwiftSupport/SwiftLogLevel.h; sourceTree = "<group>"; };
+		DF986B157DA72DAF7B5C4C31BD19C934 /* DDTTYLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = Sources/CocoaLumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
+		E0C608911042F755E887C472649C75C8 /* CocoaLumberjack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.release.xcconfig; sourceTree = "<group>"; };
+		E15E493226F93930A383C34CA6422056 /* DDOSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDOSLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDOSLogger.h; sourceTree = "<group>"; };
+		E1600578503787F638962A67D2CF5C7F /* Pods_OmniBotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_OmniBotUITests.framework; path = "Pods-OmniBotUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56F7E48AC6AA9A4C144343F86179542 /* Pods-OmniBotUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBotUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		E7EAEA30E20A12288C4F2E91BF86C530 /* DDContextFilterLogFormatter+Deprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDContextFilterLogFormatter+Deprecated.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDContextFilterLogFormatter+Deprecated.h"; sourceTree = "<group>"; };
+		EC3CA382D6A82C2ED9C90F4F85F0DFE9 /* Pods-OmniBotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBotTests.release.xcconfig"; sourceTree = "<group>"; };
+		EC6AAC349B1592C1ED3CAB6DA08EA6D2 /* CocoaLumberjack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CocoaLumberjack.swift; path = Sources/CocoaLumberjackSwift/CocoaLumberjack.swift; sourceTree = "<group>"; };
+		ECB3AF36E7EFF7A4922BDD2ED04435E1 /* Pods-OmniBotTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBotTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EE7F7CD0B845F15475139B170D05652F /* DDContextFilterLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDContextFilterLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		EF3FC1ABDF1C9DAC5E6374DE110A4B9F /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Sources/CocoaLumberjack/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
 		EFA2F84C32E247CB041F541C159471FB /* Pods_OmniBotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_OmniBotTests.framework; path = "Pods-OmniBotTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F002AB21FBC85B23655B99C5EA3D659B /* BRHJoyStickView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BRHJoyStickView-Info.plist"; sourceTree = "<group>"; };
-		F01CD554B26F682184F98F5D114B359E /* Pods-OmniBot-OmniBotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OmniBot-OmniBotUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F073757DF4C4A14C5D4A2A2A38241A9A /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = JoyStickView/Assets.xcassets; sourceTree = "<group>"; };
-		F286C430912B115E632A067AC8D7FB28 /* Pods-OmniBotTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OmniBotTests-umbrella.h"; sourceTree = "<group>"; };
-		F33F3A0D49E7856706EB0977F4F2EE51 /* Pods-OmniBotTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OmniBotTests-Info.plist"; sourceTree = "<group>"; };
-		F8EAD15C54214B9F10B8C6CA9622AFF5 /* Pods_OmniBot_OmniBotUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_OmniBot_OmniBotUITests.framework; path = "Pods-OmniBot-OmniBotUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F028D871F6EE00A476A059554C9E1DCD /* Pods-OmniBotTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OmniBotTests-dummy.m"; sourceTree = "<group>"; };
+		F147968A475C2C23D1B6341D2CE1D86C /* Pods-OmniBot.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OmniBot.modulemap"; sourceTree = "<group>"; };
+		F38C915D15AB1BC15CCCCC1FA11A9CF8 /* CocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaLumberjack.h; path = "Sources/CocoaLumberjack/Supporting Files/CocoaLumberjack.h"; sourceTree = "<group>"; };
+		F6818001AE24BAF4E2BD048107D96022 /* CLIColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLIColor.m; path = Sources/CocoaLumberjack/CLI/CLIColor.m; sourceTree = "<group>"; };
+		FA9ED6BC1399B3E56E5AB0F9BB782B69 /* DDAssert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DDAssert.swift; path = Sources/CocoaLumberjackSwift/DDAssert.swift; sourceTree = "<group>"; };
+		FF01B43B644D97515D4BA029A44B5319 /* CocoaLumberjack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		12168D01E501B0E43B0ED6A95DCAD1F0 /* Frameworks */ = {
+		273EB75F0882AC0858FF8B0212B4E420 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6091D1E2A209343654DE9CBB8564ED01 /* Foundation.framework in Frameworks */,
+				9936B791AB845B0F601D9FD972004477 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,11 +217,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		493D9CF587567898F270059EA9669D87 /* Frameworks */ = {
+		47ABD43A0B4208EA4F919B0775095282 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD8D5D7482F21DEBA86C9899AA3448E4 /* Foundation.framework in Frameworks */,
+				C33100F95D4BD04F97C8BDFBF8C45409 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +229,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FFE511BAC0098DC3C65970AAA94882 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CBDB5E8280997A4585BD11BA3D28439 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,72 +251,147 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B8F1ADA358447DBEF86E3D72B7C111B /* Pods */ = {
+		05899D399F20ACF19A580D89A42B0C09 /* Pods-OmniBot */ = {
 			isa = PBXGroup;
 			children = (
-				879A65D316337EB1E1BC703C54B0E709 /* BRHJoyStickView */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		3E06CE96084E1D71FEAD9892500CCE4A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5F1F40A6F099E0D63E8F2902D8A4E321 /* BRHJoyStickView.bundle */,
-				2C3CCA9623DDE3B9928F05E731CAA2A8 /* BRHJoyStickView.framework */,
-				420B4A215BDBE3C312C5B49F90040453 /* Pods_OmniBot.framework */,
-				F8EAD15C54214B9F10B8C6CA9622AFF5 /* Pods_OmniBot_OmniBotUITests.framework */,
-				EFA2F84C32E247CB041F541C159471FB /* Pods_OmniBotTests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4A1056032B633F41BB6412FA4FD7B0A4 /* Pods-OmniBot-OmniBotUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8F94E6B2A5C1F433286421C7954784A3 /* Pods-OmniBot-OmniBotUITests.modulemap */,
-				E3CBBE138A1324502E26D0B7E7829225 /* Pods-OmniBot-OmniBotUITests-acknowledgements.markdown */,
-				C8B40A636E6C83F591E317E4E02E55BF /* Pods-OmniBot-OmniBotUITests-acknowledgements.plist */,
-				67C139D05EBBB6531E64DC6B54E2059B /* Pods-OmniBot-OmniBotUITests-dummy.m */,
-				087C751F96B642228324C89172E0540C /* Pods-OmniBot-OmniBotUITests-frameworks.sh */,
-				47D312083BD316DB0A4E9CAD88D8439B /* Pods-OmniBot-OmniBotUITests-Info.plist */,
-				3EB82F42326EFD15BCB2FE2636295517 /* Pods-OmniBot-OmniBotUITests-umbrella.h */,
-				AC2F7BA08D4DE751A765CBE48B546777 /* Pods-OmniBot-OmniBotUITests.debug.xcconfig */,
-				F01CD554B26F682184F98F5D114B359E /* Pods-OmniBot-OmniBotUITests.release.xcconfig */,
-			);
-			name = "Pods-OmniBot-OmniBotUITests";
-			path = "Target Support Files/Pods-OmniBot-OmniBotUITests";
-			sourceTree = "<group>";
-		};
-		84C48965AA7A0D4581EA669C354642B0 /* Pods-OmniBot */ = {
-			isa = PBXGroup;
-			children = (
-				63286A919D27BB9F36F8F0D337B7AEA3 /* Pods-OmniBot.modulemap */,
-				06E841584AD1961CB65FCE89E7C5DB2B /* Pods-OmniBot-acknowledgements.markdown */,
-				8313ABE098ADBFCE184E1A1859E9F50D /* Pods-OmniBot-acknowledgements.plist */,
-				D3F50D2225FB7F46B2058A575F4706D1 /* Pods-OmniBot-dummy.m */,
-				37674BE29B8B870CDAC6427BC68CC3BE /* Pods-OmniBot-frameworks.sh */,
-				DC87C8E2901D6E97F4217A6F794A46DE /* Pods-OmniBot-Info.plist */,
-				D3DC055A68D80F02FD3CD8C75973C351 /* Pods-OmniBot-umbrella.h */,
-				830F22BBFAD1D1180A2E43F9B72F14BC /* Pods-OmniBot.debug.xcconfig */,
-				E088AFDD47ABB94492810183F7D3319F /* Pods-OmniBot.release.xcconfig */,
+				F147968A475C2C23D1B6341D2CE1D86C /* Pods-OmniBot.modulemap */,
+				31992AAB2DFF89AABAE50CAF52B74AAB /* Pods-OmniBot-acknowledgements.markdown */,
+				80AFD1DF5FBA6111B6E7B73366D32AFB /* Pods-OmniBot-acknowledgements.plist */,
+				359588A1BF013D6A5FE5A7717D6EE3DA /* Pods-OmniBot-dummy.m */,
+				5EC33F3D489B42905CF2990315DD8A9D /* Pods-OmniBot-frameworks.sh */,
+				36191FC47F2F80CCB7AD1E98173E9324 /* Pods-OmniBot-Info.plist */,
+				8F9010EF7FA4F079819CE7A93F8DF360 /* Pods-OmniBot-umbrella.h */,
+				05F3183DF9AAFDBFA15504630FC7432A /* Pods-OmniBot.debug.xcconfig */,
+				169DB016D9908D3840E5F7D3B21890EC /* Pods-OmniBot.release.xcconfig */,
 			);
 			name = "Pods-OmniBot";
 			path = "Target Support Files/Pods-OmniBot";
 			sourceTree = "<group>";
 		};
-		879A65D316337EB1E1BC703C54B0E709 /* BRHJoyStickView */ = {
+		22C60FC8FDF6D2BDF0D9DA9311D1B0A4 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BF5BCE3012CE3C62FC5014510F35F3A1 /* Bundle+Additions.swift */,
-				EF8A4D2657E11B362B4DB7AF68CF5313 /* CoreGraphics+Additions.swift */,
-				465B70F5D269593903EA31C6B6ADA784 /* JoyStickView.swift */,
-				A8A9A4DCCEDC308004F9AC6B8E9CCF86 /* JoyStickViewMonitor.swift */,
-				D08091DBD05AE590DF453D492737497E /* Resources */,
-				C8B4B0EFD7B2FED71F66785D981787C0 /* Support Files */,
+				05899D399F20ACF19A580D89A42B0C09 /* Pods-OmniBot */,
+				ED3AF687C1C5131ABE0C36B8B86E3B0A /* Pods-OmniBotTests */,
+				B0043C934A7D592791BB5AA792CD3F69 /* Pods-OmniBotUITests */,
 			);
-			name = BRHJoyStickView;
-			path = BRHJoyStickView;
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		2D1F3CF49FDD984DFA95812CF7DE8C98 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				974480E99A74A32A6674E8475C03AC14 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3EAF59DDEF0FDE673E764125899513D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E620587B947A4FF79A4AD1623B515A49 /* BRHJoyStickView */,
+				5D413F787EEA15A8B5D3099C5C2A6C32 /* CocoaLumberjack */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5D413F787EEA15A8B5D3099C5C2A6C32 /* CocoaLumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				61265EA884219B974E80AFFFDC5A71F4 /* Core */,
+				B7D159748E3A53A56171C162C659E3B4 /* Support Files */,
+				FD26F6DADE04F2DB953183461DF7A0ED /* Swift */,
+			);
+			name = CocoaLumberjack;
+			path = CocoaLumberjack;
+			sourceTree = "<group>";
+		};
+		61265EA884219B974E80AFFFDC5A71F4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B4C7E6DDC4EE5A890323A0AE00ACD0BE /* CLIColor.h */,
+				F6818001AE24BAF4E2BD048107D96022 /* CLIColor.m */,
+				F38C915D15AB1BC15CCCCC1FA11A9CF8 /* CocoaLumberjack.h */,
+				74D745CCD9445E79658B6EF6971AF304 /* DDAbstractDatabaseLogger.h */,
+				EF3FC1ABDF1C9DAC5E6374DE110A4B9F /* DDAbstractDatabaseLogger.m */,
+				0849956EA922008D0E56506DF0A5198E /* DDASLLogCapture.h */,
+				DA361CC13FBD2BE441D1E5678A48B404 /* DDASLLogCapture.m */,
+				C4631C156F0ABAA14D0FF6B3656D6666 /* DDASLLogger.h */,
+				DAFD9510232DD8F7109B7CBAA12EAC46 /* DDASLLogger.m */,
+				CAFA6E98D1679A70D1E506F49A8165BC /* DDAssertMacros.h */,
+				93140C404C3412FBF4963B96A8F0B1FD /* DDContextFilterLogFormatter.h */,
+				EE7F7CD0B845F15475139B170D05652F /* DDContextFilterLogFormatter.m */,
+				E7EAEA30E20A12288C4F2E91BF86C530 /* DDContextFilterLogFormatter+Deprecated.h */,
+				A44B47061858024A5747FB3E85C27C53 /* DDContextFilterLogFormatter+Deprecated.m */,
+				B23607858D76A7447E8EFDB616B4BC92 /* DDDispatchQueueLogFormatter.h */,
+				72ECDBCDA4CA440B3EEC9C0D5F4F0780 /* DDDispatchQueueLogFormatter.m */,
+				6EE72907A5B3B2158E80FA3E60CEA0C1 /* DDFileLogger.h */,
+				2019DDFCA2B7EE704BFF12627DFC5773 /* DDFileLogger.m */,
+				4C1586F78A9CE72EB64D093D69C9EBAC /* DDFileLogger+Buffering.h */,
+				B3E1ED9215483CF8E1E0A0A51BBD6FFC /* DDFileLogger+Buffering.m */,
+				C5DF2CF8F05802779E17A021E852212A /* DDFileLogger+Internal.h */,
+				0407B6F07B91BE08470A61F245171F43 /* DDLegacyMacros.h */,
+				692EA81726EFDF94B400E23A7D809B1E /* DDLog.h */,
+				A319784C3919930882C88D779DA25D5B /* DDLog.m */,
+				421377E4795582FA9675229343B24C81 /* DDLog+LOGV.h */,
+				C61E174EA725ACE77786041AAEB9EB27 /* DDLoggerNames.h */,
+				1DF505C132FF036C34AF426F99A4CA9B /* DDLoggerNames.m */,
+				77283B95BD2FA96C8EB20FB62D38ECF3 /* DDLogMacros.h */,
+				5F90172203B1F15036B82287750E109B /* DDMultiFormatter.h */,
+				6352E09AB5E2B1ADF00D027C1DD96AAB /* DDMultiFormatter.m */,
+				E15E493226F93930A383C34CA6422056 /* DDOSLogger.h */,
+				411CB3B057AE3819F05EE760CE62C003 /* DDOSLogger.m */,
+				4C4B6CD1A350D0153ED61B011F151374 /* DDTTYLogger.h */,
+				DF986B157DA72DAF7B5C4C31BD19C934 /* DDTTYLogger.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		B0043C934A7D592791BB5AA792CD3F69 /* Pods-OmniBotUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C2ED388C9582A199DBBB41D14DD2AC02 /* Pods-OmniBotUITests.modulemap */,
+				89F2D88CAC163EE5B18CF46DF9B9D7E5 /* Pods-OmniBotUITests-acknowledgements.markdown */,
+				E56F7E48AC6AA9A4C144343F86179542 /* Pods-OmniBotUITests-acknowledgements.plist */,
+				6C139BFA633D005117025B9B2124638B /* Pods-OmniBotUITests-dummy.m */,
+				CBF80BABA6A457025AA549FB6D2D0079 /* Pods-OmniBotUITests-Info.plist */,
+				8DEF23A6B77B3A2867919B987E4567AD /* Pods-OmniBotUITests-umbrella.h */,
+				6FE274CF0C2B2F9D073515C6312AC474 /* Pods-OmniBotUITests.debug.xcconfig */,
+				9C392E3C39DD421FDFC75C062AFBFD90 /* Pods-OmniBotUITests.release.xcconfig */,
+			);
+			name = "Pods-OmniBotUITests";
+			path = "Target Support Files/Pods-OmniBotUITests";
+			sourceTree = "<group>";
+		};
+		B7D159748E3A53A56171C162C659E3B4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				89861C5AC65D04E16E374E9A4ACDE310 /* CocoaLumberjack.modulemap */,
+				AD6D8C9A27B023B8F83DD19A92C36BC7 /* CocoaLumberjack-dummy.m */,
+				5624FA4E76FE17D47A38387DCA7A7B9E /* CocoaLumberjack-Info.plist */,
+				8AAFB0C4B7EFCB5BAC802B07611D2C9A /* CocoaLumberjack-prefix.pch */,
+				FF01B43B644D97515D4BA029A44B5319 /* CocoaLumberjack-umbrella.h */,
+				08837383D20B4523CA9EA5C46E8623D4 /* CocoaLumberjack.debug.xcconfig */,
+				E0C608911042F755E887C472649C75C8 /* CocoaLumberjack.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CocoaLumberjack";
+			sourceTree = "<group>";
+		};
+		BCC00E0367C5C8825CA210374959A651 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A70BF7532165F35178A6DC8987FA089 /* BRHJoyStickView.modulemap */,
+				9CA2EE3656377D10BD0748B0CD0C9C32 /* BRHJoyStickView-dummy.m */,
+				7CBBB2A2C191996A604FB2D03E6D9732 /* BRHJoyStickView-Info.plist */,
+				5E427FCB2C1D0E5822ACFEA8C3F6E8C2 /* BRHJoyStickView-prefix.pch */,
+				54CFBBA0F24BF7FD0A78D99C26096C03 /* BRHJoyStickView-umbrella.h */,
+				934A5D64140BC0072A0DEA3CF03D9262 /* BRHJoyStickView.debug.xcconfig */,
+				4E40874D7926BBBB1C4F74E4FB745A83 /* BRHJoyStickView.release.xcconfig */,
+				C7C2CF71835D47898E5AC5F0F5CF21D9 /* ResourceBundle-BRHJoyStickView-BRHJoyStickView-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BRHJoyStickView";
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -226,39 +402,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C8B4B0EFD7B2FED71F66785D981787C0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5FDF68A60140E949F879A6A5C4B8B556 /* BRHJoyStickView.modulemap */,
-				80E3D83A365804D18B88E5B5701631A4 /* BRHJoyStickView-dummy.m */,
-				F002AB21FBC85B23655B99C5EA3D659B /* BRHJoyStickView-Info.plist */,
-				DB0A8CAC0C0F2A38C81E55BA3247E475 /* BRHJoyStickView-prefix.pch */,
-				6DCC9DADC9E5AF6BE9D8C8D92B61672D /* BRHJoyStickView-umbrella.h */,
-				20242D706B521D3B3058092ECE0DF844 /* BRHJoyStickView.debug.xcconfig */,
-				1B19C44E906FB8DE9CD7941963AE3FE7 /* BRHJoyStickView.release.xcconfig */,
-				2D4FAA247054EED38BD38B9C407C4E76 /* ResourceBundle-BRHJoyStickView-BRHJoyStickView-Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/BRHJoyStickView";
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				2B8F1ADA358447DBEF86E3D72B7C111B /* Pods */,
-				3E06CE96084E1D71FEAD9892500CCE4A /* Products */,
-				EB082BA65F6B27B40AAAC4277AE853DD /* Targets Support Files */,
+				3EAF59DDEF0FDE673E764125899513D5 /* Pods */,
+				DB38934E78D75D757C76307358F6DB0E /* Products */,
+				22C60FC8FDF6D2BDF0D9DA9311D1B0A4 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D08091DBD05AE590DF453D492737497E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F073757DF4C4A14C5D4A2A2A38241A9A /* Assets.xcassets */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -269,56 +421,84 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D67F156644F18387A25F423DF0F7ECA6 /* Pods-OmniBotTests */ = {
+		DB38934E78D75D757C76307358F6DB0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0120A116ED978AD8C8648410F30041AE /* Pods-OmniBotTests.modulemap */,
-				558860C743751A04A63D2B3492B0B412 /* Pods-OmniBotTests-acknowledgements.markdown */,
-				6FF626CB2E6D31B14645406CD3025507 /* Pods-OmniBotTests-acknowledgements.plist */,
-				7C39B8C2C92A452BE8D82D9A8F9D407C /* Pods-OmniBotTests-dummy.m */,
-				F33F3A0D49E7856706EB0977F4F2EE51 /* Pods-OmniBotTests-Info.plist */,
-				F286C430912B115E632A067AC8D7FB28 /* Pods-OmniBotTests-umbrella.h */,
-				6AFC6D37D53C4611E91FB61D923F9B81 /* Pods-OmniBotTests.debug.xcconfig */,
-				D12623F7BA5EA822CB43B1B7CA0B0F06 /* Pods-OmniBotTests.release.xcconfig */,
+				5F1F40A6F099E0D63E8F2902D8A4E321 /* BRHJoyStickView.bundle */,
+				2C3CCA9623DDE3B9928F05E731CAA2A8 /* BRHJoyStickView.framework */,
+				C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack.framework */,
+				420B4A215BDBE3C312C5B49F90040453 /* Pods_OmniBot.framework */,
+				EFA2F84C32E247CB041F541C159471FB /* Pods_OmniBotTests.framework */,
+				E1600578503787F638962A67D2CF5C7F /* Pods_OmniBotUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E620587B947A4FF79A4AD1623B515A49 /* BRHJoyStickView */ = {
+			isa = PBXGroup;
+			children = (
+				ADB4F8A0E95AAA7F17C8DD6C4EC9EFE3 /* Bundle+Additions.swift */,
+				A3DD92490F6962D1E89D133E87584CC8 /* CoreGraphics+Additions.swift */,
+				CC69D5311CCE37EA47CF3A7DA6A71C05 /* JoyStickView.swift */,
+				8C228F2BEE51A9B9D8D53F4A3060E3A4 /* JoyStickViewMonitor.swift */,
+				2D1F3CF49FDD984DFA95812CF7DE8C98 /* Resources */,
+				BCC00E0367C5C8825CA210374959A651 /* Support Files */,
+			);
+			name = BRHJoyStickView;
+			path = BRHJoyStickView;
+			sourceTree = "<group>";
+		};
+		ED3AF687C1C5131ABE0C36B8B86E3B0A /* Pods-OmniBotTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8B2AFB60394709EBF4F92D3D2BC667D /* Pods-OmniBotTests.modulemap */,
+				60B5DEB9AE9939D9BA109CB30639D252 /* Pods-OmniBotTests-acknowledgements.markdown */,
+				ECB3AF36E7EFF7A4922BDD2ED04435E1 /* Pods-OmniBotTests-acknowledgements.plist */,
+				F028D871F6EE00A476A059554C9E1DCD /* Pods-OmniBotTests-dummy.m */,
+				3494FE816A542164E670A7CCEA4F44D7 /* Pods-OmniBotTests-Info.plist */,
+				9DA7A73E4055431BBA78ECA2AC196BE4 /* Pods-OmniBotTests-umbrella.h */,
+				95FF1661BAF97B1DC8D4B8913C34B8B7 /* Pods-OmniBotTests.debug.xcconfig */,
+				EC3CA382D6A82C2ED9C90F4F85F0DFE9 /* Pods-OmniBotTests.release.xcconfig */,
 			);
 			name = "Pods-OmniBotTests";
 			path = "Target Support Files/Pods-OmniBotTests";
 			sourceTree = "<group>";
 		};
-		EB082BA65F6B27B40AAAC4277AE853DD /* Targets Support Files */ = {
+		FD26F6DADE04F2DB953183461DF7A0ED /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				84C48965AA7A0D4581EA669C354642B0 /* Pods-OmniBot */,
-				4A1056032B633F41BB6412FA4FD7B0A4 /* Pods-OmniBot-OmniBotUITests */,
-				D67F156644F18387A25F423DF0F7ECA6 /* Pods-OmniBotTests */,
+				EC6AAC349B1592C1ED3CAB6DA08EA6D2 /* CocoaLumberjack.swift */,
+				FA9ED6BC1399B3E56E5AB0F9BB782B69 /* DDAssert.swift */,
+				B67802ECD9B70F5A4D5FFE4EF0087D80 /* DDLog+Combine.swift */,
+				DE684CD63FF4870717DB56A036BC2BD5 /* SwiftLogLevel.h */,
 			);
-			name = "Targets Support Files";
+			name = Swift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		07B6F682B4424E188DD32B7A4F9F778C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C87DE0D118ECD00F31CCEA17F2FFD496 /* Pods-OmniBot-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3DBC6D7F9E8BE30D9F28F7297FC2FCA2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E82132EA5BFE0AB55A24AD53C92EB3BB /* Pods-OmniBot-OmniBotUITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3DF5F5FB7106F397E75B57DD91259BC2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				701EFC638C5EEF415AFB97DD6888E839 /* BRHJoyStickView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B8CB7A6F4FACB74F0C7FA58A99B59E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				368E5CD921977496020D007D58E4FA2E /* Pods-OmniBot-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C8AE805054541CE362C66C485AE434 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25D9809C1E586D17A843173436D45952 /* Pods-OmniBotUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +510,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9667AF1733D8CB60DD4DAD7B23A1B19C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B61280234CCFEC90849C153EA6FB0001 /* CLIColor.h in Headers */,
+				1D58446DEC8D6C2AD6985FBE1D84CE85 /* CocoaLumberjack-umbrella.h in Headers */,
+				6F000658E97C8980D2EE8094E8AB79A2 /* CocoaLumberjack.h in Headers */,
+				49EE80ACE832DFB751960D04383848F6 /* DDAbstractDatabaseLogger.h in Headers */,
+				37F5190466279B220EBEC62B21BE6299 /* DDASLLogCapture.h in Headers */,
+				D8D23187EB200B7750D7CDDAD9639286 /* DDASLLogger.h in Headers */,
+				FD1AC8EAD3A624BBF7D43E604B224932 /* DDAssertMacros.h in Headers */,
+				227DBC24F49B733022CB34D18901F0A8 /* DDContextFilterLogFormatter+Deprecated.h in Headers */,
+				275006D423BADF47527E436D22F11FAF /* DDContextFilterLogFormatter.h in Headers */,
+				89DC125A9D9CF44BE96919FC482E0A11 /* DDDispatchQueueLogFormatter.h in Headers */,
+				7B185D5D43D37E3A35B559B23460587D /* DDFileLogger+Buffering.h in Headers */,
+				C32091C58731FA5334AD866E69B6BC1C /* DDFileLogger+Internal.h in Headers */,
+				472DB6DBAE1A77BC90155D079EFDB532 /* DDFileLogger.h in Headers */,
+				DA8873CDEC36D66A0F34E77BBCCE4845 /* DDLegacyMacros.h in Headers */,
+				56F91FA81942575207E08BC8A4282F1A /* DDLog+LOGV.h in Headers */,
+				C8A6AA8D038EEF7D92D9C18CA267DD07 /* DDLog.h in Headers */,
+				26CF55B50EFD96F686F1034DC77FC1B1 /* DDLoggerNames.h in Headers */,
+				8587059C8E400C517C9928CB61FDF93E /* DDLogMacros.h in Headers */,
+				B141D91BA3589DD1D420958CE808626D /* DDMultiFormatter.h in Headers */,
+				931B2A750443D856378E3853A275EBE0 /* DDOSLogger.h in Headers */,
+				01CE51FB76D0147E1872C7CD10F7C761 /* DDTTYLogger.h in Headers */,
+				016F6B908BB437FF7F0AE11A18067FD5 /* SwiftLogLevel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0642DE2E2AEAD440769DB47D3D22B0AC /* Pods-OmniBotUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 581DFBA24C395A58AE5DE669C0829748 /* Build configuration list for PBXNativeTarget "Pods-OmniBotUITests" */;
+			buildPhases = (
+				64C8AE805054541CE362C66C485AE434 /* Headers */,
+				C4FC619D7E61FA717D116839DEEB7A86 /* Sources */,
+				273EB75F0882AC0858FF8B0212B4E420 /* Frameworks */,
+				E631901A62DF0B84FE93B1FB6DD667E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD35A04F441AEEE7354B110645734AF1 /* PBXTargetDependency */,
+			);
+			name = "Pods-OmniBotUITests";
+			productName = "Pods-OmniBotUITests";
+			productReference = E1600578503787F638962A67D2CF5C7F /* Pods_OmniBotUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		69DB37D32E4103D95B632DDF492B6A34 /* BRHJoyStickView-BRHJoyStickView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D090B554D56AA4D6EE7FB387200BA71A /* Build configuration list for PBXNativeTarget "BRHJoyStickView-BRHJoyStickView" */;
@@ -352,17 +580,18 @@
 		};
 		6CF3A883C888BDA8B774246F33427FDD /* Pods-OmniBot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C9D0E30C94B2C6577FEB880734D05C6 /* Build configuration list for PBXNativeTarget "Pods-OmniBot" */;
+			buildConfigurationList = 54538FAEAB30520D838501A23F740F81 /* Build configuration list for PBXNativeTarget "Pods-OmniBot" */;
 			buildPhases = (
-				07B6F682B4424E188DD32B7A4F9F778C /* Headers */,
-				F27E51CEEB856C79CDE771B47C35DE6B /* Sources */,
-				12168D01E501B0E43B0ED6A95DCAD1F0 /* Frameworks */,
-				C5479ED8153173D6BF5F94E394334DFB /* Resources */,
+				5B8CB7A6F4FACB74F0C7FA58A99B59E4 /* Headers */,
+				5D295EE625463409C9569065686B8643 /* Sources */,
+				B5FFE511BAC0098DC3C65970AAA94882 /* Frameworks */,
+				A463815E9E264C36E3F78EE1307DE0CE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4A0AE2039894695C778C3E02D08BE98F /* PBXTargetDependency */,
+				EF473B9E18BD7EB5F1BB7C85CD91298B /* PBXTargetDependency */,
+				C5EC488383CF816CD0C280140151C81E /* PBXTargetDependency */,
 			);
 			name = "Pods-OmniBot";
 			productName = "Pods-OmniBot";
@@ -388,25 +617,6 @@
 			productReference = EFA2F84C32E247CB041F541C159471FB /* Pods_OmniBotTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B71C6FC2F1367B7315F5A16F41C3EFE0 /* Pods-OmniBot-OmniBotUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50AF5ABA2FD359086A178455C044343C /* Build configuration list for PBXNativeTarget "Pods-OmniBot-OmniBotUITests" */;
-			buildPhases = (
-				3DBC6D7F9E8BE30D9F28F7297FC2FCA2 /* Headers */,
-				8DF8D7E773D00CE7E2A5868CBCF95E51 /* Sources */,
-				493D9CF587567898F270059EA9669D87 /* Frameworks */,
-				94093371AFBC956285F1922B8E9AD8E0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A3DD6FC4A69EB632C2F3F823941B21B6 /* PBXTargetDependency */,
-			);
-			name = "Pods-OmniBot-OmniBotUITests";
-			productName = "Pods-OmniBot-OmniBotUITests";
-			productReference = F8EAD15C54214B9F10B8C6CA9622AFF5 /* Pods_OmniBot_OmniBotUITests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		DD6F17105988B1F38EF2A3D31277833C /* BRHJoyStickView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F05496213AFA62E01A90E1F05089923 /* Build configuration list for PBXNativeTarget "BRHJoyStickView" */;
@@ -426,6 +636,24 @@
 			productReference = 2C3CCA9623DDE3B9928F05E731CAA2A8 /* BRHJoyStickView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75892CD94F4DFCC19161FC52A3AE99FD /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */;
+			buildPhases = (
+				9667AF1733D8CB60DD4DAD7B23A1B19C /* Headers */,
+				1A3BB61F11247163DCE1A5F39895F661 /* Sources */,
+				47ABD43A0B4208EA4F919B0775095282 /* Frameworks */,
+				E6800683362B753CC10F2DF923F459F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CocoaLumberjack;
+			productName = CocoaLumberjack;
+			productReference = C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -436,7 +664,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -444,15 +672,16 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 3E06CE96084E1D71FEAD9892500CCE4A /* Products */;
+			productRefGroup = DB38934E78D75D757C76307358F6DB0E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DD6F17105988B1F38EF2A3D31277833C /* BRHJoyStickView */,
 				69DB37D32E4103D95B632DDF492B6A34 /* BRHJoyStickView-BRHJoyStickView */,
+				E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */,
 				6CF3A883C888BDA8B774246F33427FDD /* Pods-OmniBot */,
-				B71C6FC2F1367B7315F5A16F41C3EFE0 /* Pods-OmniBot-OmniBotUITests */,
 				AAE02709DF167815951C97C51822BF61 /* Pods-OmniBotTests */,
+				0642DE2E2AEAD440769DB47D3D22B0AC /* Pods-OmniBotUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -473,14 +702,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94093371AFBC956285F1922B8E9AD8E0 /* Resources */ = {
+		A463815E9E264C36E3F78EE1307DE0CE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5479ED8153173D6BF5F94E394334DFB /* Resources */ = {
+		E631901A62DF0B84FE93B1FB6DD667E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6800683362B753CC10F2DF923F459F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -498,6 +734,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1A3BB61F11247163DCE1A5F39895F661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4536834B0F6D3F4ED48748D8D7DFCFE5 /* CLIColor.m in Sources */,
+				D33BACF3A7CFA42EE1D519DDF938DF99 /* CocoaLumberjack-dummy.m in Sources */,
+				D5A0A5D7A642891025CF62D1C69A59A3 /* CocoaLumberjack.swift in Sources */,
+				9D1708AEB1261F7D8E4FA78952CAEDE8 /* DDAbstractDatabaseLogger.m in Sources */,
+				FDE0A67B15848E66E46EEB98136ACF5A /* DDASLLogCapture.m in Sources */,
+				881788D7EAABC905B6D11AC2D8FE5E5D /* DDASLLogger.m in Sources */,
+				30188DA09667D4A5C2DD5709211EB8E9 /* DDAssert.swift in Sources */,
+				CFB104E784E1DC06373350F66B6F8638 /* DDContextFilterLogFormatter+Deprecated.m in Sources */,
+				F60C6B8D4EF9E6D3FFA15B89BF821525 /* DDContextFilterLogFormatter.m in Sources */,
+				E59F6A5FB10EFCF131624E328C45382B /* DDDispatchQueueLogFormatter.m in Sources */,
+				67EBC918B2AC3A624FA3D28BBDF03559 /* DDFileLogger+Buffering.m in Sources */,
+				2C765699AF1CF1A778E416159FA66908 /* DDFileLogger.m in Sources */,
+				E6A3FDBB3C1A54886C4318A90A6A8AF8 /* DDLog+Combine.swift in Sources */,
+				42488D973FD3B653FC0D6E950E13AAF9 /* DDLog.m in Sources */,
+				5428B95B1A635363D142E862BFA62880 /* DDLoggerNames.m in Sources */,
+				8768BEA4827F91747A5BE59BDC26F715 /* DDMultiFormatter.m in Sources */,
+				5AAAE8F6550BABD77821CF4997DC762F /* DDOSLogger.m in Sources */,
+				243897837AF23E4F4D6487B35322EDB1 /* DDTTYLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F5C0FBDF252E06F7152D221F8D48395 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,6 +774,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5D295EE625463409C9569065686B8643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36F22BDE5B481248C3536BEFFE61293E /* Pods-OmniBot-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D965CFF4659E2E2C341B287D817DCC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -525,31 +794,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8DF8D7E773D00CE7E2A5868CBCF95E51 /* Sources */ = {
+		C4FC619D7E61FA717D116839DEEB7A86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF0DBFF78C7FD67E5FEF6AA59367081 /* Pods-OmniBot-OmniBotUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F27E51CEEB856C79CDE771B47C35DE6B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				992741BC67C3763C10E247092817F5AF /* Pods-OmniBot-dummy.m in Sources */,
+				3BA60EBE9FFE3290F3EC3B340C455B28 /* Pods-OmniBotUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4A0AE2039894695C778C3E02D08BE98F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BRHJoyStickView;
-			target = DD6F17105988B1F38EF2A3D31277833C /* BRHJoyStickView */;
-			targetProxy = 1BC7119387BD91C2B3392E894F52B670 /* PBXContainerItemProxy */;
-		};
 		5B66EF3B7209A3709A1D5AD6B6045B91 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-OmniBot";
@@ -562,18 +817,30 @@
 			target = 69DB37D32E4103D95B632DDF492B6A34 /* BRHJoyStickView-BRHJoyStickView */;
 			targetProxy = 666ABC04D629FA7A97BED47037421677 /* PBXContainerItemProxy */;
 		};
-		A3DD6FC4A69EB632C2F3F823941B21B6 /* PBXTargetDependency */ = {
+		C5EC488383CF816CD0C280140151C81E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaLumberjack;
+			target = E95654B155D25890BE8E26081FCA8265 /* CocoaLumberjack */;
+			targetProxy = 3C7CB79B0A147DB26150C926AA9DF2F0 /* PBXContainerItemProxy */;
+		};
+		CD35A04F441AEEE7354B110645734AF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-OmniBot";
+			target = 6CF3A883C888BDA8B774246F33427FDD /* Pods-OmniBot */;
+			targetProxy = 530F868C32D877DD51FFEE546D4926F6 /* PBXContainerItemProxy */;
+		};
+		EF473B9E18BD7EB5F1BB7C85CD91298B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BRHJoyStickView;
 			target = DD6F17105988B1F38EF2A3D31277833C /* BRHJoyStickView */;
-			targetProxy = D5F2C664B8C208BB9EEE9811F91B170F /* PBXContainerItemProxy */;
+			targetProxy = F879AB01F20EE65FFEE32F6D7B7E806B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1C060A3D306580198BBAC4628EF0C20B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B19C44E906FB8DE9CD7941963AE3FE7 /* BRHJoyStickView.release.xcconfig */;
+			baseConfigurationReference = 4E40874D7926BBBB1C4F74E4FB745A83 /* BRHJoyStickView.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -610,7 +877,7 @@
 		};
 		1DD53917EDE682AA3D6A256C97043F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AFC6D37D53C4611E91FB61D923F9B81 /* Pods-OmniBotTests.debug.xcconfig */;
+			baseConfigurationReference = 95FF1661BAF97B1DC8D4B8913C34B8B7 /* Pods-OmniBotTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -646,9 +913,48 @@
 			};
 			name = Debug;
 		};
+		3658C6951BF591C2DA987CB00CE63493 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C392E3C39DD421FDFC75C062AFBFD90 /* Pods-OmniBotUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-OmniBotUITests/Pods-OmniBotUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OmniBotUITests/Pods-OmniBotUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		4863FF8D63EF8BF6C0B3CD130D1AFECB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20242D706B521D3B3058092ECE0DF844 /* BRHJoyStickView.debug.xcconfig */;
+			baseConfigurationReference = 934A5D64140BC0072A0DEA3CF03D9262 /* BRHJoyStickView.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -682,47 +988,9 @@
 			};
 			name = Debug;
 		};
-		50E435ACF8501FDB38D887ECF1FDC3F6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 830F22BBFAD1D1180A2E43F9B72F14BC /* Pods-OmniBot.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		54FA2924BFE993CB0867FF8A7C36A4AA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D12623F7BA5EA822CB43B1B7CA0B0F06 /* Pods-OmniBotTests.release.xcconfig */;
+			baseConfigurationReference = EC3CA382D6A82C2ED9C90F4F85F0DFE9 /* Pods-OmniBotTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -745,45 +1013,6 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-OmniBotTests/Pods-OmniBotTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		76C99D9F78632067F6D8EB0BC563E7A9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E088AFDD47ABB94492810183F7D3319F /* Pods-OmniBot.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -862,9 +1091,80 @@
 			};
 			name = Debug;
 		};
-		95190EB45B4C012CCBA62189DB6D6EE5 /* Debug */ = {
+		9CA22C67EB795A433B77C12D1F2B5E98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC2F7BA08D4DE751A765CBE48B546777 /* Pods-OmniBot-OmniBotUITests.debug.xcconfig */;
+			baseConfigurationReference = E0C608911042F755E887C472649C75C8 /* CocoaLumberjack.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack.modulemap";
+				PRODUCT_MODULE_NAME = CocoaLumberjack;
+				PRODUCT_NAME = CocoaLumberjack;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AA6E3D4F45592202D1B57281FCB6C154 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08837383D20B4523CA9EA5C46E8623D4 /* CocoaLumberjack.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CocoaLumberjack/CocoaLumberjack.modulemap";
+				PRODUCT_MODULE_NAME = CocoaLumberjack;
+				PRODUCT_NAME = CocoaLumberjack;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA8C1E6C6567A8B002C028DD67B295B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FE274CF0C2B2F9D073515C6312AC474 /* Pods-OmniBotUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -877,7 +1177,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-OmniBotUITests/Pods-OmniBotUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -886,7 +1186,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-OmniBotUITests/Pods-OmniBotUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -902,7 +1202,7 @@
 		};
 		E6C8BF69C88A0476C20253795F65D946 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20242D706B521D3B3058092ECE0DF844 /* BRHJoyStickView.debug.xcconfig */;
+			baseConfigurationReference = 934A5D64140BC0072A0DEA3CF03D9262 /* BRHJoyStickView.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BRHJoyStickView";
@@ -979,7 +1279,7 @@
 		};
 		ED22F1C3870C3BE1C79D461108B77789 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B19C44E906FB8DE9CD7941963AE3FE7 /* BRHJoyStickView.release.xcconfig */;
+			baseConfigurationReference = 4E40874D7926BBBB1C4F74E4FB745A83 /* BRHJoyStickView.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BRHJoyStickView";
@@ -994,9 +1294,9 @@
 			};
 			name = Release;
 		};
-		FDD13950A0BFCDCF81A36740BFC9FFE5 /* Release */ = {
+		F596A805E23B5653AAEA90B59E83F163 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F01CD554B26F682184F98F5D114B359E /* Pods-OmniBot-OmniBotUITests.release.xcconfig */;
+			baseConfigurationReference = 169DB016D9908D3840E5F7D3B21890EC /* Pods-OmniBot.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1009,7 +1309,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1018,7 +1318,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OmniBot-OmniBotUITests/Pods-OmniBot-OmniBotUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -1032,6 +1332,44 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		FB8D7FAA6C62797BE7D60AAF7C239B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05F3183DF9AAFDBFA15504630FC7432A /* Pods-OmniBot.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-OmniBot/Pods-OmniBot.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1054,20 +1392,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50AF5ABA2FD359086A178455C044343C /* Build configuration list for PBXNativeTarget "Pods-OmniBot-OmniBotUITests" */ = {
+		54538FAEAB30520D838501A23F740F81 /* Build configuration list for PBXNativeTarget "Pods-OmniBot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				95190EB45B4C012CCBA62189DB6D6EE5 /* Debug */,
-				FDD13950A0BFCDCF81A36740BFC9FFE5 /* Release */,
+				FB8D7FAA6C62797BE7D60AAF7C239B3D /* Debug */,
+				F596A805E23B5653AAEA90B59E83F163 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C9D0E30C94B2C6577FEB880734D05C6 /* Build configuration list for PBXNativeTarget "Pods-OmniBot" */ = {
+		581DFBA24C395A58AE5DE669C0829748 /* Build configuration list for PBXNativeTarget "Pods-OmniBotUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50E435ACF8501FDB38D887ECF1FDC3F6 /* Debug */,
-				76C99D9F78632067F6D8EB0BC563E7A9 /* Release */,
+				CA8C1E6C6567A8B002C028DD67B295B9 /* Debug */,
+				3658C6951BF591C2DA987CB00CE63493 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75892CD94F4DFCC19161FC52A3AE99FD /* Build configuration list for PBXNativeTarget "CocoaLumberjack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA6E3D4F45592202D1B57281FCB6C154 /* Debug */,
+				9CA22C67EB795A433B77C12D1F2B5E98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
